@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "463140061061",
+    "firebase_url": "https://smartrestaurant-a3d0a-default-rtdb.firebaseio.com",
+    "project_id": "smartrestaurant-a3d0a",
+    "storage_bucket": "smartrestaurant-a3d0a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:463140061061:android:7dcf99cf0ea48828b08eec",
+        "android_client_info": {
+          "package_name": "com.example.smartrestaurant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "463140061061-dgk5ka3sjkk4281q4605efknv8jco10c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfHl-jwfQWiGjnKL4JtSzlVQjQvZ84y4g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "463140061061-dgk5ka3sjkk4281q4605efknv8jco10c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
