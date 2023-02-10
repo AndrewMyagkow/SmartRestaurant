@@ -30,9 +30,9 @@ public class AdminActivity extends AppCompatActivity {
 
         init();
         menu.setOnClickListener((View view) -> {
-           // Intent AdminMenu = new Intent(AdminActivity.this, MenuScrollingActivity.class );
-           // AdminMenu.putExtra("hello",10);
-          //  startActivity(AdminMenu);
+            Intent AdminMenu = new Intent(AdminActivity.this, QQQMainActivity.class );
+            AdminMenu.putExtra("hello",10);
+            startActivity(AdminMenu);
         });
     }
     private void init()

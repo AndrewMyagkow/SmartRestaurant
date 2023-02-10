@@ -13,6 +13,13 @@
         android:theme="@style/Theme.SmartRestaurant"
         tools:targetApi="31">
         <activity
+            android:name=".QQQMainActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".QWEMainActivity"
             android:exported="false">
             <meta-data
