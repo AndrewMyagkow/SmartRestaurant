@@ -1,10 +1,15 @@
-package com.example.smartrestaurant;
+package com.example.smartrestaurant.Waiter;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.smartrestaurant.Entry.MainActivity;
+import com.example.smartrestaurant.R;
+
+import io.paperdb.Paper;
 
 public class WaiterActivity extends AppCompatActivity {
 
@@ -14,7 +19,8 @@ public class WaiterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_waiter);
         Button waiterOutBtn = findViewById(R.id.WaiterExitBtn);
         waiterOutBtn.setOnClickListener(view -> {
-            Intent WaiterOutIntent = new Intent(WaiterActivity.this,MainActivity.class);
+            Paper.book().destroy();
+            Intent WaiterOutIntent = new Intent(WaiterActivity.this, MainActivity.class);
             startActivity(WaiterOutIntent);
         });
     }

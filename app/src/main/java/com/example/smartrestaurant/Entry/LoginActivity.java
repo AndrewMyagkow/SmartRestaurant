@@ -1,4 +1,4 @@
-package com.example.smartrestaurant;
+package com.example.smartrestaurant.Entry;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,39 +7,45 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.smartrestaurant.Admin.AdminActivity;
+import com.example.smartrestaurant.Barman.BarmanActivity;
+import com.example.smartrestaurant.Cook.CookActivity;
+import com.example.smartrestaurant.Guest.GuestActivity;
 import com.example.smartrestaurant.Model.Users;
+import com.example.smartrestaurant.Prevalent.Prevalent;
+import com.example.smartrestaurant.R;
+import com.example.smartrestaurant.Waiter.WaiterActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import io.paperdb.Paper;
+
 public class LoginActivity extends AppCompatActivity {
-    private Button loginButton;
     private EditText phoneInput, passwordInput;
     private ProgressDialog loadingBar;
-    private String parentDBName = "Users";
+    private final String parentDBName = "Users";
+    private CheckBox CheckBoxRememberMe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        loginButton = (Button) findViewById(R.id.login_button);
+        Button loginButton = (Button) findViewById(R.id.login_button);
         phoneInput = (EditText) findViewById(R.id.login_phone_input);
         passwordInput = (EditText) findViewById(R.id.login_password_input);
 
         loadingBar = new ProgressDialog(this);
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                loginUser();
-            }
-        });
+        CheckBoxRememberMe = (CheckBox)findViewById(R.id.login_checkbox);
+        Paper.init(this);
+        loginButton.setOnClickListener(view -> loginUser());
     }
         private void loginUser()
         {
@@ -64,6 +70,10 @@ public class LoginActivity extends AppCompatActivity {
         }
 
     private void ValidateUser(String phone, String password) {
+        if(CheckBoxRememberMe.isChecked()){
+            Paper.book().write(Prevalent.UsingPhoneKey,phone);
+            Paper.book().write(Prevalent.UsingPasswordKey,password);
+        }
 
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
@@ -76,6 +86,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     Users usersData = snapshot.child(parentDBName).child(phone).getValue(Users.class);
 
+                    assert usersData != null;
                     if(usersData.getPhone().equals(phone))
                     {
 

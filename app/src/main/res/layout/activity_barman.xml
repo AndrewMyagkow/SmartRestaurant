@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BarmanActivity">
+    tools:context=".Barman.BarmanActivity">
     <Button
         android:id="@+id/BarmanExitBtn"
         android:layout_width="230dp"

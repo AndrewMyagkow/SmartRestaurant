@@ -3,17 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminActivity">
+    tools:context=".Admin.AdminActivity">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="113dp"
-        android:layout_height="123dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="181dp"
-        android:layout_marginBottom="363dp"
-        />
 
     <Button
         android:id="@+id/AdminExitBtn"
@@ -21,9 +12,82 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="58dp"
-        android:layout_marginBottom="496dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="408dp"
         android:text="@string/NameBtnExitAdmin"
 
         />
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="-1dp"
+        android:layout_marginBottom="0dp"
+        android:background="@color/gainsboro"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/menu"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="20dp"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/menu" />
+
+        <ImageView
+
+            android:id="@+id/biznes"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/biznes"
+
+
+            />
+
+        <ImageView
+            android:id="@+id/reserved"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/reserved" />
+
+        <ImageView
+            android:id="@+id/writingBook"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/writebook" />
+
+        <ImageView
+            android:id="@+id/chat"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/chat" />
+
+        <ImageView
+            android:id="@+id/zalobi"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/zalobi"
+            android:layout_marginRight="20dp"/>
+
+        <ImageView
+            android:id="@+id/setings"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/setings" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/probn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
 </RelativeLayout>

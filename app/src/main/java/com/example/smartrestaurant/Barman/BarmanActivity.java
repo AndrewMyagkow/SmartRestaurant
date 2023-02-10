@@ -1,4 +1,4 @@
-package com.example.smartrestaurant;
+package com.example.smartrestaurant.Barman;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.smartrestaurant.Entry.MainActivity;
+import com.example.smartrestaurant.R;
+
+import io.paperdb.Paper;
 
 public class BarmanActivity extends AppCompatActivity {
 
@@ -15,7 +20,8 @@ public class BarmanActivity extends AppCompatActivity {
         setContentView(R.layout.activity_barman);
         Button barmanOutBtn = findViewById(R.id.BarmanExitBtn);
         barmanOutBtn.setOnClickListener((View view) -> {
-            Intent BarmanOutIntent = new Intent(BarmanActivity.this,MainActivity.class);
+            Paper.book().destroy();
+            Intent BarmanOutIntent = new Intent(BarmanActivity.this, MainActivity.class);
             startActivity(BarmanOutIntent);
         });
     }
