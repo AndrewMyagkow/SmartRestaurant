@@ -13,44 +13,7 @@
         android:theme="@style/Theme.SmartRestaurant"
         tools:targetApi="31">
         <activity
-            android:name=".QQQMainActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".QWEMainActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".MainActivityZZZZZZZZZZ"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".AAAMainActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".MenuScrollingActivity"
-            android:exported="false"
-            android:label="@string/title_activity_menu_scrolling"
-            android:theme="@style/Theme.SmartRestaurant.NoActionBar">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".AdminMainActivity"
+            android:name=".Admin.AdminMainActivity"
             android:exported="false"
             android:label="@string/title_activity_admin_main"
             android:theme="@style/Theme.SmartRestaurant.NoActionBar">
@@ -58,14 +21,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".AdminSettingsActivity"
-            android:exported="false"
-            android:label="@string/title_activity_admin_settings">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+
         <activity
             android:name=".Guest.GuestActivity"
             android:exported="false">
@@ -89,13 +45,6 @@
         </activity>
         <activity
             android:name=".Waiter.WaiterActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".Admin.AdminActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

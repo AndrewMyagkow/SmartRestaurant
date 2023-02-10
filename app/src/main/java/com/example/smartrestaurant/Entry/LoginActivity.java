@@ -12,7 +12,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.smartrestaurant.Admin.AdminActivity;
+import com.example.smartrestaurant.Admin.AdminMainActivity;
 import com.example.smartrestaurant.Barman.BarmanActivity;
 import com.example.smartrestaurant.Cook.CookActivity;
 import com.example.smartrestaurant.Guest.GuestActivity;
@@ -96,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
                                 loadingBar.dismiss();
                                 Toast.makeText(LoginActivity.this, "Успешно", Toast.LENGTH_SHORT).show();
                             if(usersData.getRole().equals("Администратор")) {
-                                Intent adminIntent = new Intent(LoginActivity.this, AdminActivity.class);
+                                Intent adminIntent = new Intent(LoginActivity.this, AdminMainActivity.class);
                                 startActivity(adminIntent);
                             }
                             if(usersData.getRole().equals("Официант")) {
