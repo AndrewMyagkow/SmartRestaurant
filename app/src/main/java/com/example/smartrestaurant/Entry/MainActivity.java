@@ -81,10 +81,10 @@ public class MainActivity extends AppCompatActivity {
                     if(usersData.getPhone().equals(phone))
                     {
 
+                        loadingBar.dismiss();
                         if(usersData.getPassword().equals(password))
                         {
 
-                            loadingBar.dismiss();
                             Toast.makeText(MainActivity.this, "Успешно", Toast.LENGTH_SHORT).show();
                             if(usersData.getRole().equals("Администратор")) {
                                 Intent adminIntent = new Intent(MainActivity.this, AdminActivity.class);
@@ -109,22 +109,10 @@ public class MainActivity extends AppCompatActivity {
 
 
                         }
-                        else
-                        {
-                            loadingBar.dismiss();
-
-
-                        }
                     }
 
                 }
-                else
-                {
-                    loadingBar.dismiss();
-                    Toast.makeText(MainActivity.this,"Аккаунт с номером "+phone+" не существует", Toast.LENGTH_SHORT).show();
-                    Intent registerIntent = new Intent(MainActivity.this, RegisterActivity.class);
-                    startActivity(registerIntent);
-                }
+
             }
 
             @Override

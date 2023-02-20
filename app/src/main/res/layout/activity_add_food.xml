@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#52535A"
+    tools:context=".Admin.Menu.AddFoodActivity">
+
+
+    <LinearLayout
+
+        android:layout_width="400dp"
+        android:layout_height="40dp"
+
+        android:background="#38393C"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="7dp"
+            android:src="@drawable/back"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:layout_width="257dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Добавление блюда"
+            android:textColor="#B1B2B3" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/view"
+        android:layout_width="154dp"
+        android:layout_height="123dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="104dp"
+        android:layout_marginBottom="403dp"
+        android:background="#38393C"
+
+
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/addphoto"
+            android:layout_width="74dp"
+            android:layout_height="62dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="29dp"
+            android:layout_marginEnd="144dp"
+            android:layout_marginBottom="503dp"
+           android:src="@drawable/camera"
+            tools:ignore="MissingConstraints"
+            />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/name_food"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="180dp"
+        android:hint="Наименование"
+        android:textSize="13dp"
+        android:textColor="#B1B2B3"
+        android:textColorHint="#B1B2B3"
+        android:backgroundTint="#B1B2B3"
+        android:inputType="textMultiLine"
+        />
+    <EditText
+        android:id="@+id/text_food"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/name_food"
+        android:backgroundTint="#B1B2B3"
+        android:textColorHint="#B1B2B3"
+        android:hint="Описание"
+        android:textSize="13dp"
+        android:textColor="#B1B2B3"
+        android:inputType="textMultiLine"/>
+    <EditText
+        android:id="@+id/food_price"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/text_food"
+        android:backgroundTint="#B1B2B3"
+        android:textColorHint="#B1B2B3"
+        android:hint="Цена"
+        android:textSize="13dp"
+        android:textColor="#B1B2B3"
+        android:inputType="number"
+
+
+        />
+
+    <Button
+        android:id="@+id/addphotobtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="124dp"
+        android:layout_marginBottom="158dp"
+        android:text="Добавить" />
+</RelativeLayout>
+

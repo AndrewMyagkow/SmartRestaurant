@@ -1,20 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Admin.AdminActivity"
-    android:background="#3A3939">
+    android:background="#52535A">
+
+
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="66dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="516dp"
-        android:background="#575454"
+        android:layout_width="360dp"
+        android:layout_height="45dp"
 
-        android:orientation="horizontal" />
+        android:background="#38393C"
+
+        tools:ignore="MissingConstraints"
+        android:translationZ="90dp"
+        android:gravity="right">
+        <ImageView
+            android:id="@+id/setings"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/setings"
+            tools:ignore="MissingConstraints"
+            android:layout_margin="10dp"/>
+        <ImageView
+            android:id="@+id/zalobi"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/zalobi"
+            tools:ignore="MissingConstraints"
+            android:layout_margin="10dp"/>
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="359dp"
+        android:layout_height="51dp"
+
+        android:layout_marginBottom="0dp"
+        android:background="#38393C"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp">
+
+        <ImageView
+            android:id="@+id/biznes"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="12dp"
+            android:src="@drawable/biznes"
+            tools:ignore="MissingConstraints"
+
+            />
+
+        <ImageView
+            android:id="@+id/writebook"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="12dp"
+            android:src="@drawable/writebook"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/menu"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="12dp"
+            android:src="@drawable/menu"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/chat"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="12dp"
+            android:src="@drawable/chat"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/reserved"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="12dp"
+            android:src="@drawable/reserved"
+            tools:ignore="MissingConstraints" />
 
 
-</RelativeLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="358dp"
+        android:layout_height="456dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="52dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
