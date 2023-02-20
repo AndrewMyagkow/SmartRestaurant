@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Barman.BarmanActivity"
+    android:background="#52535A">
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="45dp"
+
+        android:background="#38393C"
+        android:gravity="right">
+
+        <ImageView
+            android:id="@+id/setingsbarman"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/setings"
+            tools:ignore="MissingConstraints"
+            android:layout_margin="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="51dp"
+
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:background="#38393C"
+
+        android:gravity="center"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp">
+        <ImageView
+            android:id="@+id/writebookbarman"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="12dp"
+            android:src="@drawable/writebook"
+            tools:ignore="MissingConstraints" />
+        <ImageView
+            android:id="@+id/chatbarman"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="12dp"
+            android:src="@drawable/chat"
+            tools:ignore="MissingConstraints" />
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>
