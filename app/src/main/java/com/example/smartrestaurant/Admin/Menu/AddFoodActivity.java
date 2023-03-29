@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -17,10 +16,10 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.smartrestaurant.Admin.AdminActivity;
+import com.example.smartrestaurant.Admin.WriteBookActivity;
+import com.example.smartrestaurant.R;
 import com.example.smartrestaurant.Entry.LoginActivity;
 import com.example.smartrestaurant.Entry.RegisterActivity;
-import com.example.smartrestaurant.R;
-import com.google.android.gms.common.api.internal.TaskUtil;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -37,93 +36,109 @@ import java.util.Calendar;
 import java.util.HashMap;
 
 public class AddFoodActivity extends AppCompatActivity {
-    private ImageView back,camera;
+
+    private String categoryName, Description, Price, Pname, saveCurrentDate, saveCurrentTime, productRandomKey, Primer;
+    private String downloadImageUrl;
+    private ImageView productImage,back;
+    private EditText productName, productDescription, productPrice, productPrimer;
+    private Button addNewProductButton;
     private static final int GALLERYPICK = 1;
     private Uri ImageUri;
-    private Button addphotobtn;
-    private EditText namefood,textfood,foodprice;
-    private String name,text,price,saveCurentDate,saveCurentTime,ProductRandomKey;
-    private String downloadImageUrl;
     private StorageReference ProductImageRef;
     private DatabaseReference ProductsRef;
     private ProgressDialog loadingBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_food);
 
         init();
-        addphotobtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-              ValidateProductData();
-            }
-        });
-        camera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               OpenGallery();
-            }
-        });
-
+        back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AddFoodActivity.this, MenuActivity.class);
+                Intent intent = new Intent(AddFoodActivity.this, HomeActivity.class);
                 startActivity(intent);
             }
         });
+        productImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OpenGallery();
+            }
+        });
 
+        addNewProductButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ValidateProductData();
+            }
+        });
     }
 
     private void ValidateProductData() {
-        text = textfood.getText().toString();
-        name = namefood.getText().toString();
-        price = foodprice.getText().toString();
+        Description = productDescription.getText().toString();
+        Price = productPrice.getText().toString();
+        Pname = productName.getText().toString();
+        Primer = productPrimer.getText().toString();
+
+
+
         if(ImageUri == null){
-            Toast.makeText(this,"Добавьте изображение",Toast.LENGTH_SHORT).show();}
-        else if(TextUtils.isEmpty(text)){
-            Toast.makeText(this,"Добавьте описание",Toast.LENGTH_SHORT).show();}
-        else if(TextUtils.isEmpty(price)){
-            Toast.makeText(this,"Добавьте цену",Toast.LENGTH_SHORT).show();}
-        else if(TextUtils.isEmpty(name)){
-            Toast.makeText(this,"Добавьте название",Toast.LENGTH_SHORT).show();}
+            Toast.makeText(this, "Добавьте изображение товара.", Toast.LENGTH_SHORT).show();
+        }
+        else if(TextUtils.isEmpty(Description)){
+            Toast.makeText(this, "Добавьте описание товара.", Toast.LENGTH_SHORT).show();
+        }
+        else if(TextUtils.isEmpty(Price)){
+            Toast.makeText(this, "Добавьте стоимость товара.", Toast.LENGTH_SHORT).show();
+        }
+        else if(TextUtils.isEmpty(Pname)){
+            Toast.makeText(this, "Добавьте название товара.", Toast.LENGTH_SHORT).show();
+        }
         else {
             StoreProductInformation();
         }
-
     }
 
     private void StoreProductInformation() {
-        loadingBar.setTitle("Загрузка");
+
+        loadingBar.setTitle("Загрузка данных");
         loadingBar.setMessage("Пожалуйста, подождите...");
         loadingBar.setCanceledOnTouchOutside(false);
         loadingBar.show();
+
         Calendar calendar = Calendar.getInstance();
 
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat curentDate = new SimpleDateFormat("dd.MM.yyyy");
-        saveCurentDate = curentDate.format(calendar.getTime());
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat curentTime = new SimpleDateFormat("HH:mm:ss");
-        saveCurentTime = curentTime.format(calendar.getTime());
-        ProductRandomKey = saveCurentDate + saveCurentTime;
-        StorageReference filePath = ProductImageRef.child(ImageUri.getLastPathSegment() + ProductRandomKey + ".jpg");
-        final UploadTask uploadTask = filePath.putFile(ImageUri); //для того чтобы понять загрузилось изображение
+        SimpleDateFormat currentDate = new SimpleDateFormat("ddMMyyyy");
+        saveCurrentDate = currentDate.format(calendar.getTime());
+
+        SimpleDateFormat currentTime = new SimpleDateFormat("HHmmss");
+        saveCurrentTime = currentTime.format(calendar.getTime());
+
+        productRandomKey = saveCurrentDate + saveCurrentTime;
+
+        final StorageReference filePath = ProductImageRef.child(ImageUri.getLastPathSegment() + productRandomKey + ".jpg");
+
+        final UploadTask uploadTask = filePath.putFile(ImageUri);
+
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-               String message = e.toString();
-               Toast.makeText(AddFoodActivity.this,"Ошибка: " + message,Toast.LENGTH_SHORT).show();
-            loadingBar.dismiss();
+                String message = e.toString();
+                Toast.makeText(AddFoodActivity.this, "Ошибка: " + message, Toast.LENGTH_SHORT).show();
+                loadingBar.dismiss();
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(AddFoodActivity.this,"Изображение загружено", Toast.LENGTH_SHORT).show();
-                Task<Uri> uriTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                Toast.makeText(AddFoodActivity.this, "Изображение успешно загружено.", Toast.LENGTH_SHORT).show();
+
+                uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                     @Override
                     public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                        if(!task.isSuccessful())
-                        {
+                        if(!task.isSuccessful()){
                             throw task.getException();
                         }
                         downloadImageUrl = filePath.getDownloadUrl().toString();
@@ -132,10 +147,12 @@ public class AddFoodActivity extends AppCompatActivity {
                 }).addOnCompleteListener(new OnCompleteListener<Uri>() {
                     @Override
                     public void onComplete(@NonNull Task<Uri> task) {
-                        if(task.isSuccessful())
-                        {
-                            Toast.makeText(AddFoodActivity.this,"Фото сохранено",Toast.LENGTH_SHORT).show();
-                       SaveProductInfoToDataBase();
+                        if(task.isSuccessful()){
+                            downloadImageUrl = task.getResult().toString();
+
+                            Toast.makeText(AddFoodActivity.this, "Фото сохранено", Toast.LENGTH_SHORT).show();
+
+                            SaveProductInfoToDatabase();
                         }
                     }
                 });
@@ -143,31 +160,40 @@ public class AddFoodActivity extends AppCompatActivity {
         });
     }
 
-    private void SaveProductInfoToDataBase() {
-        HashMap<String,Object> productMap = new HashMap<>();
-        productMap.put("pid",ProductRandomKey);
-        productMap.put("date",saveCurentDate);
-        productMap.put("time",saveCurentTime);
-        productMap.put("image",downloadImageUrl);
-        productMap.put("foodprice",price);
-        productMap.put("name_food",name);
-        productMap.put("textfood",text);
-        ProductsRef.child(ProductRandomKey).updateChildren(productMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful())
-                {  loadingBar.dismiss();
-                    Toast.makeText(AddFoodActivity.this,"Товар добавлен", Toast.LENGTH_SHORT).show();
+    private void SaveProductInfoToDatabase() {
+        HashMap<String, Object> productMap = new HashMap<>();
 
-                }
-                else
-                {
-                    String message = task.getException().toString();
-                    Toast.makeText(AddFoodActivity.this, "Ошибка " + message, Toast.LENGTH_SHORT).show();
-                    loadingBar.dismiss();
-                }
-            }
-        });
+        productMap.put("pid", productRandomKey);
+        productMap.put("date", saveCurrentDate);
+        productMap.put("time", saveCurrentTime);
+        productMap.put("description", Description);
+        productMap.put("image", downloadImageUrl);
+        productMap.put("category", categoryName);
+        productMap.put("price", Price);
+        productMap.put("pname", Pname);
+        productMap.put("primer",Primer);
+
+
+        ProductsRef.child(productRandomKey).updateChildren(productMap)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+
+                            loadingBar.dismiss();
+                            Toast.makeText(AddFoodActivity.this, "Товар добавлен", Toast.LENGTH_SHORT).show();
+
+                            Intent loginIntent = new Intent(AddFoodActivity.this, HomeActivity.class);
+                            startActivity(loginIntent);
+                        }
+                        else {
+                            String message = task.getException().toString();
+                            Toast.makeText(AddFoodActivity.this, "Ошибка: "+ message, Toast.LENGTH_SHORT).show();
+                            loadingBar.dismiss();
+
+                        }
+                    }
+                });
     }
 
     private void OpenGallery() {
@@ -175,30 +201,29 @@ public class AddFoodActivity extends AppCompatActivity {
         galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
         galleryIntent.setType("image/*");
         startActivityForResult(galleryIntent,GALLERYPICK);
-
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==GALLERYPICK && resultCode == RESULT_OK && data != null)
-        {
+
+        if(requestCode == GALLERYPICK && resultCode == RESULT_OK && data != null){
             ImageUri = data.getData();
-            camera.setImageURI(ImageUri);
+            productImage.setImageURI(ImageUri);
         }
     }
 
-    private void init()
-    {
-        back = findViewById(R.id.back);
-        camera = findViewById(R.id.addphoto);
-        addphotobtn = findViewById(R.id.addphotobtn);
-        namefood = findViewById(R.id.name_food);
-        textfood = findViewById(R.id.text_food);
-        foodprice = findViewById(R.id.food_price);
-
-        ProductImageRef = FirebaseStorage.getInstance().getReference().child("Product_Images");
+    private void init() {
+      //  categoryName = getIntent().getExtras().get("category").toString();
+        productImage = findViewById(R.id.select_product_image);
+        productName = findViewById(R.id.product_name);
+        productDescription = findViewById(R.id.product_description);
+        productPrice = findViewById(R.id.product_price);
+        addNewProductButton = findViewById(R.id.btn_add_new_product);
+        productPrimer = findViewById(R.id.product_primer);
+        ProductImageRef = FirebaseStorage.getInstance().getReference().child("Product Images");
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
         loadingBar = new ProgressDialog(this);
-        }
+
+    }
 }

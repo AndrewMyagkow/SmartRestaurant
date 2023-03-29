@@ -48,7 +48,7 @@
         android:orientation="horizontal" >
 
         <ImageView
-            android:id="@+id/addphoto"
+            android:id="@+id/select_product_image"
             android:layout_width="74dp"
             android:layout_height="62dp"
             android:layout_marginStart="40dp"
@@ -61,7 +61,7 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/name_food"
+        android:id="@+id/product_name"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="180dp"
@@ -73,10 +73,10 @@
         android:inputType="textMultiLine"
         />
     <EditText
-        android:id="@+id/text_food"
+        android:id="@+id/product_description"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@+id/name_food"
+        android:layout_below="@+id/product_name"
         android:backgroundTint="#B1B2B3"
         android:textColorHint="#B1B2B3"
         android:hint="Описание"
@@ -84,10 +84,10 @@
         android:textColor="#B1B2B3"
         android:inputType="textMultiLine"/>
     <EditText
-        android:id="@+id/food_price"
+        android:id="@+id/product_price"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@+id/text_food"
+        android:layout_below="@+id/product_description"
         android:backgroundTint="#B1B2B3"
         android:textColorHint="#B1B2B3"
         android:hint="Цена"
@@ -97,9 +97,18 @@
 
 
         />
+    <EditText
+        android:id="@+id/product_primer"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/product_price"
+
+
+
+        />
 
     <Button
-        android:id="@+id/addphotobtn"
+        android:id="@+id/btn_add_new_product"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"

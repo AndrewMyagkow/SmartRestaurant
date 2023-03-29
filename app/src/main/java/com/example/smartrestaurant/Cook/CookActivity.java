@@ -5,17 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
-import com.example.smartrestaurant.Barman.BarmanActivity;
-import com.example.smartrestaurant.Barman.ChatBarmanActivity;
-import com.example.smartrestaurant.Barman.SetingsBarmanActivity;
-import com.example.smartrestaurant.Barman.WriteBookBarmanActivity;
-import com.example.smartrestaurant.Entry.MainActivity;
-import com.example.smartrestaurant.R;
+import com.example.smartrestaurant.Admin.Message.Message;
 
-import io.paperdb.Paper;
+import com.example.smartrestaurant.R;
 
 public class CookActivity extends AppCompatActivity {
     private ImageView writebook,chat;
@@ -32,7 +26,8 @@ public class CookActivity extends AppCompatActivity {
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CookActivity.this, ChatCookActivity.class);
+                Intent intent = new Intent(CookActivity.this, Message.class);
+                intent.putExtra("role", "Повар");
                 startActivity(intent);
             }
         });
@@ -46,7 +41,7 @@ public class CookActivity extends AppCompatActivity {
         writebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CookActivity.this, WriteBookCookActivity.class);
+                Intent intent = new Intent(CookActivity.this, WriteBookCook.class);
                 startActivity(intent);
             }
         });

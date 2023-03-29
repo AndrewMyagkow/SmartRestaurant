@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Admin.WriteBookActivity"
+    android:background="#52535A">
+
+
+    <include layout="@layout/content_main_writebookadmin"
+
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:background="#38393C"
+        android:gravity="center"
+
+        >
+
+        <ImageView
+            android:id="@+id/back_writebook"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+
+            android:layout_marginRight="300dp"
+            android:src="@drawable/back"
+            tools:ignore="MissingConstraints" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#38393C"
+
+        android:layout_marginTop="505dp"
+        >
+
+        <EditText
+            android:id="@+id/write_text"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:hint="  Введите заметку..."
+            android:textSize="13dp"
+            android:textColor="#B1B2B3"
+            android:textColorHint="#B1B2B3"
+
+            android:inputType="textMultiLine"
+            android:background="@drawable/edittextform"
+            />
+        <ImageView
+            android:id="@+id/add_new_text"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+
+
+            android:layout_marginTop="14dp"
+            android:layout_marginLeft="14dp"
+            android:src="@drawable/add"
+            tools:ignore="MissingConstraints" />
+
+
+
+
+    </LinearLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

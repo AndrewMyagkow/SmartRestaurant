@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 loadingBar.setTitle("Вход");
                 loadingBar.setMessage("Пожалуйста, подождите...");
                 loadingBar.setCanceledOnTouchOutside(false);
-                loadingBar.show();
+               // loadingBar.show();
             }
         }
         }

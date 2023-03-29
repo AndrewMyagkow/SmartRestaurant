@@ -7,6 +7,9 @@ public class Users {
 
     }
 
+
+
+
     public Users(String name, String surname, String phone, String password, String id) {
         this.name = name;
         this.surname = surname;
@@ -14,6 +17,7 @@ public class Users {
         this.password = password;
         this.id = id;
         this.role = role;
+
     }
 
     public String getRole() {
@@ -63,4 +67,6 @@ public class Users {
     public void setId(String id) {
         this.id = id;
     }
+
+
 }

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#52535A">
+
+        <TextView
+            android:id="@+id/write_text"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+
+            android:text="Сообшение"
+
+            android:textColor="#B1B2B3"
+            android:textSize="17dp" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="200dp"
+            android:text="Время"
+            android:textAlignment="center"
+            android:textColor="#B1B2B3"
+            android:textSize="15dp" />
+
+
+
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -28,7 +28,7 @@
         android:textColorHint="#B5B5B8"
         android:inputType="number"
         android:minHeight="48dp"
-
+        android:textColor="#B5B5B8"
         android:textStyle="bold"
         tools:ignore="TextFields"
        />
@@ -46,6 +46,7 @@
         android:inputType="textPassword"
         android:textColorHint="#B5B5B8"
         android:minHeight="48dp"
+        android:textColor="#B5B5B8"
 
         android:textStyle="bold"
         />

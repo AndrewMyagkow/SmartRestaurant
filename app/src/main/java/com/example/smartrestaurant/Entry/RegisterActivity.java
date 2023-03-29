@@ -26,7 +26,7 @@ import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
   private Button registerButton;
-    private EditText nameInput;
+    public EditText nameInput;
     private EditText surnameInput;
     private EditText phoneInput;
     private EditText passwordInput;
@@ -54,6 +54,15 @@ public class RegisterActivity extends AppCompatActivity {
        });
 
     }
+
+    public EditText getNameInput() {
+        return nameInput;
+    }
+
+    public void setNameInput(EditText nameInput) {
+        this.nameInput = nameInput;
+    }
+
     private void CreateAccount()
     {
         String name = nameInput.getText().toString();

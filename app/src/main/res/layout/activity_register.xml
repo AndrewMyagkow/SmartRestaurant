@@ -26,7 +26,7 @@
         android:layout_marginBottom="230dp"
         android:hint="Придумайте пароль"
         android:textColorHint="#B5B5B8"
-
+        android:textColor="#B5B5B8"
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:textStyle="bold"
@@ -44,6 +44,7 @@
         android:textColorHint="#B5B5B8"
         android:inputType="number"
         android:minHeight="48dp"
+        android:textColor="#B5B5B8"
 
         android:textStyle="bold" />
 
@@ -59,8 +60,10 @@
         android:layout_marginBottom="109dp"
         android:entries="@array/role"
         android:hint="Роль"
+        android:textColor="#B5B5B8"
         android:minHeight="48dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        />
 
     <EditText
         android:id="@+id/register_surname_input"
@@ -73,6 +76,7 @@
         android:hint="Фамилия"
         android:textColorHint="#B5B5B8"
         android:minHeight="48dp"
+        android:textColor="#B5B5B8"
 
         android:textStyle="bold" />
     <EditText
@@ -87,6 +91,7 @@
         android:hint="Имя"
         android:textColorHint="#B5B5B8"
         android:minHeight="48dp"
+        android:textColor="#B5B5B8"
 
         android:textStyle="bold" />
     <EditText
@@ -102,6 +107,7 @@
         android:inputType="number"
         android:textColorHint="#B5B5B8"
         android:minHeight="48dp"
+        android:textColor="#B5B5B8"
 
         android:textStyle="bold" />
     <Button

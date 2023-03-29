@@ -1,22 +1,30 @@
 package com.example.smartrestaurant.Model;
 
 public class Products {
+    private String pname, description, price, image, category, pid, date, time,primer;
 
-    private String pname, discription, price, image,pid,date, time;
-    public Products()
-    {
-
+    public Products(){
 
     }
 
-    public Products(String pname, String siscription, String price, String image, String pid, String date, String time) {
+    public Products(String pname, String description, String price, String image, String category, String pid, String date, String time, String primer) {
         this.pname = pname;
-        this.discription = discription;
+        this.description = description;
         this.price = price;
         this.image = image;
+        this.category = category;
         this.pid = pid;
         this.date = date;
         this.time = time;
+        this.primer = primer;
+    }
+
+    public String getPrimer() {
+        return primer;
+    }
+
+    public void setPrimer(String primer) {
+        this.primer = primer;
     }
 
     public String getPname() {
@@ -27,12 +35,12 @@ public class Products {
         this.pname = pname;
     }
 
-    public String getDiscription() {
-        return discription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDiscription(String discription) {
-        this.discription = discription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getPrice() {
@@ -49,6 +57,14 @@ public class Products {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getPid() {

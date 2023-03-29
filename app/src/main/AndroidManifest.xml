@@ -13,14 +13,85 @@
         android:theme="@style/Theme.SmartRestaurant"
         tools:targetApi="31">
         <activity
-            android:name=".Waiter.MenuWaiterActivity"
-            android:exported="false">
+            android:name=".ZalobiBook.AddZalobiBook"
+            android:exported="false"
+            android:label="@string/title_activity_home"
+            android:theme="@style/Theme.SmartRestaurant.NoActionBar"
+            android:windowSoftInputMode="adjustPan">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Waiter.WriteBookWaiterActivity"
+            android:name=".Admin.Menu.HomeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_home"
+            android:theme="@style/Theme.SmartRestaurant.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ZalobiBook.ZalobiBookActivity"
+            android:exported="false"
+            android:label="@string/title_activity_home"
+            android:theme="@style/Theme.SmartRestaurant.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Admin.Message.Message"
+            android:exported="false"
+            android:label="@string/title_activity_home"
+            android:theme="@style/Theme.SmartRestaurant.NoActionBar"
+            android:windowSoftInputMode="adjustPan">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Admin.WriteBookActivity"
+            android:exported="false"
+            android:label="@string/title_activity_home"
+            android:theme="@style/Theme.SmartRestaurant.NoActionBar"
+            android:windowSoftInputMode="adjustPan">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Barman.WriteBookBarman"
+            android:exported="false"
+            android:label="@string/title_activity_home"
+            android:theme="@style/Theme.SmartRestaurant.NoActionBar"
+            android:windowSoftInputMode="adjustPan">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Cook.WriteBookCook"
+            android:exported="false"
+            android:label="@string/title_activity_home"
+            android:theme="@style/Theme.SmartRestaurant.NoActionBar"
+            android:windowSoftInputMode="adjustPan">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Waiter.WriteBookWaiter"
+            android:exported="false"
+            android:label="@string/title_activity_home"
+            android:theme="@style/Theme.SmartRestaurant.NoActionBar"
+            android:windowSoftInputMode="adjustPan">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Waiter.MenuWaiterActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -34,35 +105,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Waiter.ChatWaiterActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".Cook.WriteBookCookActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".Cook.SetingsCookActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".Cook.ChatCookActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".Barman.WriteBookBarmanActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -76,33 +119,13 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Barman.ChatBarmanActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".Admin.Menu.AddFoodActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".Admin.Menu.MenuActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".Admin.ZalobiActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+
         <activity
             android:name=".Admin.SetingsActivity"
             android:exported="false">
@@ -112,20 +135,6 @@
         </activity>
         <activity
             android:name=".Admin.ReservedActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".Admin.ChatActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".Admin.WriteBookActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

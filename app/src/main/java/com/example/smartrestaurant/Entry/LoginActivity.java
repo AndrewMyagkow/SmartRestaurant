@@ -29,6 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 import io.paperdb.Paper;
 
 public class LoginActivity extends AppCompatActivity {
+    private String name;
     private EditText phoneInput, passwordInput;
     private ProgressDialog loadingBar;
     private final String parentDBName = "Users";

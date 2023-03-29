@@ -134,4 +134,5 @@
     <string name="title_activity_menu_scrolling">MenuScrollingActivity</string>
     <string name="title_activity_admin_menu_scrolling">AdminMenuScrollingActivity</string>
     <string name="title_activity_admin_scrolling">AdminScrollingActivity</string>
+    <string name="title_activity_home">HomeActivity</string>
 </resources>
