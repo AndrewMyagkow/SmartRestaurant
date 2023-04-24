@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.smartrestaurant.Cook.SetingsCookActivity;
 import com.example.smartrestaurant.Entry.MainActivity;
 import com.example.smartrestaurant.R;
 
@@ -19,10 +20,12 @@ public class SetingsBarmanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setings_barman);
         Button barmanOutBtn = findViewById(R.id.BarmanExitBtn);
-        barmanOutBtn.setOnClickListener((View view) -> {
-            Paper.book().destroy();
-            Intent BarmanOutIntent = new Intent(SetingsBarmanActivity.this, MainActivity.class);
-            startActivity(BarmanOutIntent);
+        barmanOutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SetingsBarmanActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
         });
     }
 }

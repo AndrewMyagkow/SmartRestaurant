@@ -1,13 +1,15 @@
 package com.example.smartrestaurant.Model;
 
+import android.content.Context;
+
 public class Products {
     private String pname, description, price, image, category, pid, date, time,primer;
-
+    private Context context;
     public Products(){
 
     }
 
-    public Products(String pname, String description, String price, String image, String category, String pid, String date, String time, String primer) {
+    public Products(String pname, String description, String price, String image, String category, String pid, String date, String time, String primer,Context context) {
         this.pname = pname;
         this.description = description;
         this.price = price;
@@ -17,6 +19,7 @@ public class Products {
         this.date = date;
         this.time = time;
         this.primer = primer;
+        this.context = context;
     }
 
     public String getPrimer() {

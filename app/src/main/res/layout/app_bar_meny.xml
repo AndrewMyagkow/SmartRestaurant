@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Guest.Meny"
+    android:background="@drawable/fonguest">
+
+
+    <include layout="@layout/content_main_meny"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:background="#1B1C1E"
+        android:layout_marginTop="525dp"
+        >
+
+        <ImageView
+            android:id="@+id/pokypki"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="270dp"
+            android:src="@drawable/pokypki"
+            tools:ignore="MissingConstraints" />
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:background="#1B1C1E"
+
+
+        >
+
+        <ImageView
+            android:id="@+id/back_meny"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/back_guest"
+            tools:ignore="MissingConstraints" />
+
+
+
+    </LinearLayout>
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

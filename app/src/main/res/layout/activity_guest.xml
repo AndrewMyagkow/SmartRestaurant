@@ -3,18 +3,202 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fonguest"
     tools:context=".Guest.GuestActivity">
-    <Button
-        android:id="@+id/GuestExitBtn"
-        android:layout_width="230dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="58dp"
-        android:layout_marginBottom="496dp"
-        android:text="@string/NameBtnExitGuest"
+    <RelativeLayout
 
+        android:layout_width="400dp"
+        android:layout_height="65dp"
+
+        android:background="#1B1C1E"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:id="@+id/settingguest"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="19dp"
+            android:src="@drawable/settingguest"
+            tools:ignore="MissingConstraints" />
+        <ImageView
+            android:id="@+id/zalobiguest"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="290dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/zalobiguest"
+            tools:ignore="MissingConstraints" />
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="23dp"
+            android:textColor="#B1B2B3"
+            android:layout_marginLeft="280dp"
+            android:layout_marginTop="40dp"
+            android:textSize="9dp"
+            android:text="Книга жалоб и предложений"
+            />
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/salat"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginLeft="30dp"
+        android:src="@drawable/salat"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:textColor="#B1B2B3"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="40dp"
+        android:text="Салаты"
         />
+    <ImageView
+        android:id="@+id/hotbluda"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginLeft="140dp"
+        android:src="@drawable/hotbluda"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:textColor="#B1B2B3"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="130dp"
+        android:text="Горячие блюда"
+        />
+    <ImageView
+        android:id="@+id/syp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+       android:layout_marginLeft="250dp"
+        android:layout_marginTop="130dp"
+        android:src="@drawable/syp"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:textColor="#B1B2B3"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="267dp"
+        android:text="Супы"
+        />
+    <ImageView
+        android:id="@+id/desert"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="230dp"
+
+        android:src="@drawable/desert"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:textColor="#B1B2B3"
+        android:layout_marginTop="305dp"
+        android:layout_marginLeft="38dp"
+        android:text="Десерты"
+        />
+    <ImageView
+        android:id="@+id/holodnzakyski"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="230dp"
+        android:src="@drawable/holodnzakyski"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:textColor="#B1B2B3"
+        android:layout_marginTop="305dp"
+        android:layout_marginLeft="147dp"
+        android:text="Закуски"
+        />
+    <ImageView
+        android:id="@+id/garniry"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="230dp"
+        android:layout_marginLeft="250dp"
+        android:src="@drawable/garniry"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:textColor="#B1B2B3"
+        android:layout_marginTop="305dp"
+        android:layout_marginLeft="255dp"
+        android:text="Гарниры"
+        />
+    <ImageView
+        android:id="@+id/fastfyd"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/fastfyd"
+        android:layout_marginTop="330dp"
+        android:layout_marginLeft="30dp"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:layout_width="70dp"
+        android:layout_height="20dp"
+        android:textColor="#B1B2B3"
+        android:layout_marginTop="410dp"
+        android:layout_marginLeft="40dp"
+        android:text="Фаст Фуд"
+        />
+    <ImageView
+        android:id="@+id/napitki"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="330dp"
+        android:layout_marginLeft="140dp"
+        android:src="@drawable/napitki"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:textColor="#B1B2B3"
+        android:layout_marginTop="410dp"
+        android:layout_marginLeft="145dp"
+        android:text="Напитки"
+        />
+    <ImageView
+        android:id="@+id/vinnyakarta"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="250dp"
+        android:src="@drawable/vinnyakarta"
+        android:layout_marginTop="330dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:textColor="#B1B2B3"
+        android:layout_marginTop="410dp"
+        android:layout_marginLeft="240dp"
+        android:text="Винная карта"
+        />
+    <ImageView
+        android:id="@+id/pokypk"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="279dp"
+        android:src="@drawable/pokypk"
+        android:layout_marginTop="530dp"
+        tools:ignore="MissingConstraints" />
+
+
+
 
 
 </RelativeLayout>

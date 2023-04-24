@@ -20,10 +20,12 @@ public class SetingsWaiterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setings_waiter);
         Button waiterOutBtn = findViewById(R.id.WaiterExitBtn);
-        waiterOutBtn.setOnClickListener((View view) -> {
-            Paper.book().destroy();
-            Intent WaiterOutIntent = new Intent(SetingsWaiterActivity.this, MainActivity.class);
-            startActivity(WaiterOutIntent);
+        waiterOutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SetingsWaiterActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
         });
     }
 }

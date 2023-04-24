@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:background="@drawable/fonguest">
+
+        <TextView
+            android:id="@+id/product_name_basket"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Название"
+            android:textAlignment="center"
+            android:textColor="#B1B2B3"
+            android:textSize="15sp" />
+
+
+
+        <TextView
+            android:id="@+id/product_price_basket"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="Цена"
+            android:layout_marginStart="150dp"
+            android:textAlignment="center"
+            android:textColor="#B1B2B3"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/product_colvo_basket"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text=" Колличество"
+            android:layout_marginStart="250dp"
+            android:textAlignment="center"
+            android:textColor="#B1B2B3"
+            android:textSize="15sp" />
+
+
+
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

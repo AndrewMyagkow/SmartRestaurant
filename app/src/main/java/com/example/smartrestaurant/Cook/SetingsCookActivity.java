@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.smartrestaurant.Admin.AdminActivity;
+import com.example.smartrestaurant.Admin.Menu.HomeActivity;
 import com.example.smartrestaurant.Barman.SetingsBarmanActivity;
 import com.example.smartrestaurant.Entry.MainActivity;
 import com.example.smartrestaurant.R;
@@ -19,11 +21,13 @@ public class SetingsCookActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings_cook);
-        Button barmanOutBtn = findViewById(R.id.CookExitBtn);
-        barmanOutBtn.setOnClickListener((View view) -> {
-            Paper.book().destroy();
-            Intent BarmanOutIntent = new Intent(SetingsCookActivity.this, MainActivity.class);
-            startActivity(BarmanOutIntent);
+        Button cookOutBtn = findViewById(R.id.CookExitBtn);
+        cookOutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SetingsCookActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
         });
     }
 }

@@ -66,6 +66,8 @@
         android:layout_height="50dp"
         android:layout_marginTop="180dp"
         android:hint="Наименование"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:textSize="13dp"
         android:textColor="#B1B2B3"
         android:textColorHint="#B1B2B3"
@@ -81,6 +83,8 @@
         android:textColorHint="#B1B2B3"
         android:hint="Описание"
         android:textSize="13dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:textColor="#B1B2B3"
         android:inputType="textMultiLine"/>
     <EditText
@@ -90,6 +94,8 @@
         android:layout_below="@+id/product_description"
         android:backgroundTint="#B1B2B3"
         android:textColorHint="#B1B2B3"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:hint="Цена"
         android:textSize="13dp"
         android:textColor="#B1B2B3"
@@ -97,15 +103,29 @@
 
 
         />
-    <EditText
-        android:id="@+id/product_primer"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/product_price"
-
-
-
+    <Spinner
+        android:id="@+id/add_category"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="190dp"
+        android:entries="@array/Category"
+        android:textColor="#B5B5B8"
+        android:minHeight="48dp"
+        android:textStyle="bold"
         />
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="350dp"
+        android:layout_marginLeft="10dp"
+
+        android:text="Категория"
+        android:textColor="#B1B2B3" />
 
     <Button
         android:id="@+id/btn_add_new_product"
@@ -116,7 +136,9 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="124dp"
-        android:layout_marginBottom="158dp"
+        android:layout_marginBottom="80dp"
         android:text="Добавить" />
+
+
 </RelativeLayout>
 

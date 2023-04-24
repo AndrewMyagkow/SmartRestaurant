@@ -8,6 +8,18 @@
         <item>Бармэн</item>
         <item>Гость</item>
     </string-array>
+    <string-array name="Category">
+        <item> </item>
+        <item>Салаты</item>
+        <item>Горячие блюда</item>
+        <item>Супы</item>
+        <item>Десерты</item>
+        <item>Закуски</item>
+        <item>Гарниры</item>
+        <item>Фаст Фуд</item>
+        <item>Напитки</item>
+        <item>Винная Карта</item>
+    </string-array>
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"

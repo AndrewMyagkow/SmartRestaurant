@@ -1,5 +1,6 @@
 package com.example.smartrestaurant.Admin.Menu;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -12,10 +13,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.smartrestaurant.Admin.AdminActivity;
+import com.example.smartrestaurant.Interface.ItemClickListener;
 import com.example.smartrestaurant.Model.Products;
 
 import com.example.smartrestaurant.R;
-import com.example.smartrestaurant.ViewHolder.ProductViewHolder;
+
 import com.example.smartrestaurant.Entry.LoginActivity;
 import com.example.smartrestaurant.Entry.RegisterActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -37,6 +39,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -66,7 +69,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         recyclerView = findViewById(R.id.recycler_menu);
         recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
+        GridLayoutManager layoutManager=new GridLayoutManager(this,2);
         recyclerView.setLayoutManager(layoutManager);
 
     }
@@ -99,7 +102,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             @Override
             protected void onBindViewHolder(@NonNull @NotNull ProductViewHolder holder, int i, @NonNull @NotNull Products model) {
                 holder.txtProductName.setText(model.getPname());
-                holder.txtProductPrimer.setText(model.getPrimer());
                 holder.txtProductDescription.setText(model.getDescription());
                 holder.txtProductPrice.setText("Стоимость = " + model.getPrice() + " рублей");
                 Picasso.get().load(model.getImage()).into(holder.imageView);
@@ -133,5 +135,43 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         return false;
+    }
+    public static class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        public TextView txtProductName, txtProductDescription, txtProductPrice, txtProductPrimer, txtProductCategory;
+        public ImageView imageView;
+        public ItemClickListener listner;
+        private Context context;
+
+
+        public ProductViewHolder(View itemView) {
+            super(itemView);
+
+
+            imageView = itemView.findViewById(R.id.product_image);
+            txtProductName = itemView.findViewById(R.id.product_name);
+            txtProductDescription = itemView.findViewById(R.id.product_description);
+            txtProductPrice = itemView.findViewById(R.id.product_price);
+            txtProductCategory = itemView.findViewById(R.id.add_category);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                   /* int position = getAdapterPosition();
+                    Intent adminIntent = new Intent(context, AdminActivity.class);
+                    context.startActivity(adminIntent);*/
+                }
+            });
+        }
+
+
+        public void setItemClickListner(ItemClickListener listner) {
+            this.listner = listner;
+        }
+
+        @Override
+        public void onClick(View view) {
+            listner.onClick(view, getAdapterPosition(), false);
+
+        }
     }
 }

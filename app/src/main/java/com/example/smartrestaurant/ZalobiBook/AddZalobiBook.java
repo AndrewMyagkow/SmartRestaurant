@@ -79,13 +79,13 @@ public class AddZalobiBook extends AppCompatActivity {
 
 
          if(TextUtils.isEmpty(Description)){
-            Toast.makeText(this, "Добавьте описание товара.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Добавьте ваш возраст.", Toast.LENGTH_SHORT).show();
         }
         else if(TextUtils.isEmpty(Price)){
-            Toast.makeText(this, "Добавьте стоимость товара.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Добавьте отзыв.", Toast.LENGTH_SHORT).show();
         }
         else if(TextUtils.isEmpty(Pname)){
-            Toast.makeText(this, "Добавьте название товара.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Добавьте имя.", Toast.LENGTH_SHORT).show();
         }
         else {
             StoreProductInformation();

@@ -35,7 +35,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 
 public class WriteBookActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private ImageView back;
+    private ImageView back,delete;
     DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
     private String  Description, Price, Pname, saveCurrentDate, saveCurrentTime, productRandomKey,TimeWrite,DateWrite;
@@ -48,7 +48,7 @@ public class WriteBookActivity extends AppCompatActivity implements NavigationVi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_writebookadmin);
+        setContentView(R.layout.app_bar_writebookadmin);
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("WriteBookAdmin");
         recyclerView = findViewById(R.id.recycler_writebook);
         recyclerView.setHasFixedSize(true);
@@ -70,6 +70,7 @@ public class WriteBookActivity extends AppCompatActivity implements NavigationVi
     protected void onStart() {
         super.onStart();
         back = findViewById(R.id.back_writebook);
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

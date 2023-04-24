@@ -31,6 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText phoneInput;
     private EditText passwordInput;
     private EditText idInput;
+    private String nom;
     private Spinner roleInput;
     private ProgressDialog loadingBar;
     @Override
@@ -63,6 +64,9 @@ public class RegisterActivity extends AppCompatActivity {
         this.nameInput = nameInput;
     }
 
+
+
+
     private void CreateAccount()
     {
         String name = nameInput.getText().toString();
@@ -71,6 +75,8 @@ public class RegisterActivity extends AppCompatActivity {
         String password = passwordInput.getText().toString();
         String id = idInput.getText().toString();
         String role = roleInput.getSelectedItem().toString();
+
+
         if(TextUtils.isEmpty(name))
         {
             Toast.makeText(this,"Введите имя",Toast.LENGTH_SHORT).show();

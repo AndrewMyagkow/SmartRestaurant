@@ -39,7 +39,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 
 public class Message extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private ImageView back;
+    private ImageView back,deletemessage;
     DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
     private String  Description, Role, Pname, saveCurrentDate, saveCurrentTime, productRandomKey,TimeSms;
@@ -52,7 +52,7 @@ public class Message extends AppCompatActivity implements NavigationView.OnNavig
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_message);
+        setContentView(R.layout.app_bar_message);
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Chat");
         recyclerView = findViewById(R.id.recycler_menuz);
         recyclerView.setHasFixedSize(true);
@@ -68,34 +68,39 @@ public class Message extends AppCompatActivity implements NavigationView.OnNavig
                 ValidateProductData();
             }
         });
+
     }
+
 
     @Override
     protected void onStart() {
         super.onStart();
         back = findViewById(R.id.backz);
-        back.setOnClickListener(new View.OnClickListener() {
+
+       back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (Role.equals("Администратор"))
-                {
-                    Intent intent = new Intent(Message.this, AdminActivity.class);
-                    startActivity(intent);
-                }
-                if (Role.equals("Повар"))
-                {
-                    Intent intent = new Intent(Message.this, CookActivity.class);
-                    startActivity(intent);
-                }
-                if (Role.equals("Бармэн"))
-                {
-                    Intent intent = new Intent(Message.this, BarmanActivity.class);
-                    startActivity(intent);
-                }
-                if (Role.equals("Оффициант"))
-                {
-                    Intent intent = new Intent(Message.this, WaiterActivity.class);
-                    startActivity(intent);
+                switch (Role) {
+                    case "Администратор": {
+                        Intent intent = new Intent(Message.this, AdminActivity.class);
+                        startActivity(intent);
+                        break;
+                    }
+                    case "Повар": {
+                        Intent intent = new Intent(Message.this, CookActivity.class);
+                        startActivity(intent);
+                        break;
+                    }
+                    case "Бармэн": {
+                        Intent intent = new Intent(Message.this, BarmanActivity.class);
+                        startActivity(intent);
+                        break;
+                    }
+                    case "Оффициант": {
+                        Intent intent = new Intent(Message.this, WaiterActivity.class);
+                        startActivity(intent);
+                        break;
+                    }
                 }
 
 
@@ -147,6 +152,7 @@ public class Message extends AppCompatActivity implements NavigationView.OnNavig
         return false;
     }
     private void ValidateProductData() {
+
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat Time = new SimpleDateFormat("HH:mm");
         TimeSms = Time.format(calendar.getTime());

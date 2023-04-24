@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Guest.Basket"
+    android:background="@drawable/fonguest">
+
+
+    <include layout="@layout/content_main_basket"
+        />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="#1B1C1E"
+        android:layout_marginTop="445dp"
+        >
+        <EditText
+            android:id="@+id/komment"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/guestphon"
+            android:hint="  Введите комментарий к заказу"
+            android:inputType="textMultiLine"
+            android:textColor="#B1B2B3"
+            android:textColorHint="#B1B2B3"
+            android:textSize="13dp" />
+        <TextView
+            android:id="@+id/itog"
+            android:layout_width="110sp"
+            android:layout_height="30sp"
+          android:layout_marginStart="20dp"
+            android:layout_marginTop="90dp"
+            android:textColor="#B1B2B3"
+            android:textSize="20sp"/>
+        <Button
+            android:id="@+id/zakaz"
+            android:layout_marginTop="85dp"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:text="Заказать"
+            android:layout_marginStart="170dp"/>
+
+
+
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:background="#1B1C1E"
+
+
+        >
+
+        <ImageView
+            android:id="@+id/back_basket"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/back_guest"
+            tools:ignore="MissingConstraints" />
+
+
+
+    </LinearLayout>
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,6 +1,7 @@
 package com.example.smartrestaurant.ViewHolder;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +13,7 @@ public class WriteBookAdminViewHolder extends RecyclerView.ViewHolder implements
 {
     public TextView txtProductName, txtProductDescription, txtProductPrice, txtProductPrimer;
     public ItemClickListenerWriteBookAdmin listnerzs;
+
 
 
     public WriteBookAdminViewHolder(View itemView)

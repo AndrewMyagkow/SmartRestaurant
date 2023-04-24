@@ -21,10 +21,12 @@ public class SetingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setings);
         Button adminOutBtn = findViewById(R.id.AdminExitBtn);
-        adminOutBtn.setOnClickListener((View view) -> {
-            Paper.book().destroy();
-            Intent AdminOutIntent = new Intent(SetingsActivity.this, MainActivity.class);
-            startActivity(AdminOutIntent);
+        adminOutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SetingsActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
         });
     }
 }

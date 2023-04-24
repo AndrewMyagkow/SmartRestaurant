@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.smartrestaurant.Admin.AdminActivity;
@@ -37,11 +38,12 @@ import java.util.HashMap;
 
 public class AddFoodActivity extends AppCompatActivity {
 
-    private String categoryName, Description, Price, Pname, saveCurrentDate, saveCurrentTime, productRandomKey, Primer;
+    private String  Description, Price, Pname, saveCurrentDate, saveCurrentTime, productRandomKey, Primer,Category;
     private String downloadImageUrl;
     private ImageView productImage,back;
     private EditText productName, productDescription, productPrice, productPrimer;
     private Button addNewProductButton;
+    private Spinner categoryN;
     private static final int GALLERYPICK = 1;
     private Uri ImageUri;
     private StorageReference ProductImageRef;
@@ -81,7 +83,7 @@ public class AddFoodActivity extends AppCompatActivity {
         Description = productDescription.getText().toString();
         Price = productPrice.getText().toString();
         Pname = productName.getText().toString();
-        Primer = productPrimer.getText().toString();
+        Category = categoryN.getSelectedItem().toString();
 
 
 
@@ -96,6 +98,9 @@ public class AddFoodActivity extends AppCompatActivity {
         }
         else if(TextUtils.isEmpty(Pname)){
             Toast.makeText(this, "Добавьте название товара.", Toast.LENGTH_SHORT).show();
+        }
+        else if(TextUtils.isEmpty(Category)){
+            Toast.makeText(this, "Добавьте категорию.", Toast.LENGTH_SHORT).show();
         }
         else {
             StoreProductInformation();
@@ -168,7 +173,7 @@ public class AddFoodActivity extends AppCompatActivity {
         productMap.put("time", saveCurrentTime);
         productMap.put("description", Description);
         productMap.put("image", downloadImageUrl);
-        productMap.put("category", categoryName);
+        productMap.put("category",Category);
         productMap.put("price", Price);
         productMap.put("pname", Pname);
         productMap.put("primer",Primer);
@@ -220,7 +225,7 @@ public class AddFoodActivity extends AppCompatActivity {
         productDescription = findViewById(R.id.product_description);
         productPrice = findViewById(R.id.product_price);
         addNewProductButton = findViewById(R.id.btn_add_new_product);
-        productPrimer = findViewById(R.id.product_primer);
+        categoryN = (Spinner) findViewById(R.id.add_category);
         ProductImageRef = FirebaseStorage.getInstance().getReference().child("Product Images");
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
         loadingBar = new ProgressDialog(this);

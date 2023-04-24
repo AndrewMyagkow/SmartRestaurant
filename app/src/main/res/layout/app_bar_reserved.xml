@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Admin.Menu.HomeActivity"
+    android:background="#52535A">
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_reserved"
+        android:layout_width="match_parent"
+        android:layout_height="510dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:background="#38393C"
+        android:gravity="center"
+
+        >
+
+        <ImageView
+            android:id="@+id/back_list_reserved"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="140dp"
+            android:src="@drawable/back"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/add_item_reserved"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="140dp"
+            android:src="@drawable/add"
+            tools:ignore="MissingConstraints" />
+
+    </LinearLayout>
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
