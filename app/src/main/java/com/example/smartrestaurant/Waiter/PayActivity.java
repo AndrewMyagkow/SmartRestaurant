@@ -1,4 +1,4 @@
-package com.example.smartrestaurant.Barman;
+package com.example.smartrestaurant.Waiter;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,17 +9,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.smartrestaurant.Admin.Menu.HomeActivity;
 import com.example.smartrestaurant.Admin.Message.Message;
-import com.example.smartrestaurant.Cook.CookActivity;
-import com.example.smartrestaurant.Cook.CookDisplay;
 import com.example.smartrestaurant.Interface.ItemClickListener;
+import com.example.smartrestaurant.Model.ReadyOrder;
 import com.example.smartrestaurant.Model.Zakaz;
 import com.example.smartrestaurant.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -29,48 +26,29 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import org.jetbrains.annotations.NotNull;
 
-public class BarmanActivity extends AppCompatActivity {
-    private ImageView writebook,chat;
-    private ImageView setings;
+public class PayActivity extends AppCompatActivity {
+    private ImageView back;
     DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_barman);
-        init();
-
-
-        chat.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_pay);
+        back = findViewById(R.id.back_waiter_pay);
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(BarmanActivity.this, Message.class);
-                intent.putExtra("role", "Бармэн");
+                Intent intent = new Intent(PayActivity.this, WaiterActivity.class);
                 startActivity(intent);
             }
         });
-        setings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(BarmanActivity.this, SetingsBarmanActivity.class);
-                startActivity(intent);
-            }
-        });
-        writebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(BarmanActivity.this, WriteBookBarman.class);
-                startActivity(intent);
-            }
-        });
-        ProductsRef = FirebaseDatabase.getInstance().getReference().child("AccomplishmentBar");
-        recyclerView = findViewById(R.id.recycler_cook);
+        ProductsRef = FirebaseDatabase.getInstance().getReference().child("Pay");
+        recyclerView = findViewById(R.id.recycler_waiter);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(layoutManager);
-
     }
     @Override
     protected void onStart() {
@@ -79,27 +57,22 @@ public class BarmanActivity extends AppCompatActivity {
         FirebaseRecyclerOptions<Zakaz> options = new FirebaseRecyclerOptions.Builder<Zakaz>()
                 .setQuery(ProductsRef, Zakaz.class).build();
 
-        FirebaseRecyclerAdapter<Zakaz, BarmanActivity.ProductViewHolder> adapter = new FirebaseRecyclerAdapter<Zakaz, BarmanActivity.ProductViewHolder>(options) {
+        FirebaseRecyclerAdapter<Zakaz, PayActivity.ProductViewHolder> adapter = new FirebaseRecyclerAdapter<Zakaz, PayActivity.ProductViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull @NotNull BarmanActivity.ProductViewHolder holder, int i, @NonNull @NotNull Zakaz model) {
-                holder.txtZakaz.setText(model.getBarman());
-                holder.txtKomment.setText(model.getKomment());
+            protected void onBindViewHolder(@NonNull @NotNull PayActivity.ProductViewHolder holder, int i, @NonNull @NotNull Zakaz model) {
+                holder.txtZakaz.setText(model.getDishes());
                 holder.txttable.setText(model.getTable());
                 holder.txtsymma.setText(model.getSymma());
                 holder.txtpid.setText(model.getPid());
-                if (model.getBarman().equals(""))
-                {
-                    holder.itemView.setVisibility(View.GONE);
-                    holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
-                }
+                holder.txtBarman.setText(model.getBarman());
             }
 
             @NonNull
             @NotNull
             @Override
-            public BarmanActivity.ProductViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cook_items_layout, parent, false);
-                BarmanActivity.ProductViewHolder holder = new BarmanActivity.ProductViewHolder(view);
+            public PayActivity.ProductViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.waiter_pay_items_layout, parent, false);
+                PayActivity.ProductViewHolder holder = new PayActivity.ProductViewHolder(view);
                 return holder;
             }
         };
@@ -109,14 +82,6 @@ public class BarmanActivity extends AppCompatActivity {
 
 
     }
-    private void init()
-    {
-        writebook = findViewById(R.id.writebookbarman);
-        chat = findViewById(R.id.chatbarman);
-        setings = findViewById(R.id.setingsbarman);
-    }
-
-
     @Override
     public void onBackPressed() {
     }
@@ -128,35 +93,32 @@ public class BarmanActivity extends AppCompatActivity {
 
 
     public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView txtZakaz, txtKomment,txttable, txtsymma,txtpid;
+        public TextView txtZakaz, txttable, txtsymma,txtpid,txtBarman;
         public ItemClickListener listner;
-        private ImageView done;
-
-
         public ProductViewHolder(View itemView) {
             super(itemView);
 
-            txtZakaz = itemView.findViewById(R.id.zakaz_cook);
-            txtKomment= itemView.findViewById(R.id.komment_cook);
-            txttable = itemView.findViewById(R.id.table);
-            txtsymma = itemView.findViewById(R.id.symma);
-            txtpid = itemView.findViewById(R.id.pid);
+            txtZakaz = itemView.findViewById(R.id.zakaz_waiter_pay);
+            txttable = itemView.findViewById(R.id.table_waiter_pay);
+            txtsymma = itemView.findViewById(R.id.symma_waiter_pay);
+            txtpid = itemView.findViewById(R.id.id_zakaz);
+            txtBarman = itemView.findViewById(R.id.barman_waiter_pay);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
-                    Intent intent = new Intent(BarmanActivity.this,BarmanDisplay.class);
+                    Intent intent = new Intent(PayActivity.this, PayDisplay.class);
                     String zakaz = txtZakaz.getText().toString();
-                    String koment = txtKomment.getText().toString();
                     String table = txttable.getText().toString();
                     String symma = txtsymma.getText().toString();
                     String pid = txtpid.getText().toString();
+                    String bar = txtBarman.getText().toString();
                     intent.putExtra("zakaz", zakaz);
-                    intent.putExtra("koment", koment);
                     intent.putExtra("table", table);
                     intent.putExtra("symma", symma);
                     intent.putExtra("pid", pid);
+                    intent.putExtra("bar", bar);
                     startActivity(intent);
                 }
             });

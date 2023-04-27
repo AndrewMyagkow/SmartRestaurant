@@ -70,8 +70,10 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
     private String allZakazbar = "";
     private int sym,itog,kol;
     private AppBarConfiguration mAppBarConfiguration;
-    DatabaseReference ProductsRef;
+    static DatabaseReference ProductsRef;
     private DatabaseReference AccomplishmentRef;
+    private DatabaseReference PayRef;
+    private DatabaseReference AccomplishmentRefBar;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     private ProgressDialog loadingBar;
@@ -84,6 +86,8 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
 
         ProductsRef = FirebaseDatabase.getInstance().getReference().child(SettingsGuest.numtab);
         AccomplishmentRef = FirebaseDatabase.getInstance().getReference().child("Accomplishment");
+        PayRef = FirebaseDatabase.getInstance().getReference().child("Pay");
+        AccomplishmentRefBar = FirebaseDatabase.getInstance().getReference().child("AccomplishmentBar");
         loadingBar = new ProgressDialog(this);
         recyclerView = findViewById(R.id.recycler_basket);
         recyclerView.setHasFixedSize(true);
@@ -132,6 +136,7 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
                 productMap.put("symma", ITOG);
                 productMap.put("komment", Komment);
                 productMap.put("barman", allZakazbar);
+                productMap.put("table", SettingsGuest.numtab);
 
 
 
@@ -142,9 +147,26 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
                                 if(task.isSuccessful()){
                                     Toast.makeText(Basket.this, "Заказ принят" , Toast.LENGTH_SHORT).show();
                                     loadingBar.dismiss();
+
+                                    ProductsRef = FirebaseDatabase.getInstance().getReference();
+                                    ProductsRef.child(SettingsGuest.numtab).setValue(null);
                                     Intent loginIntent = new Intent(Basket.this, GuestActivity.class);
                                     startActivity(loginIntent);
                                 }
+
+                            }
+                        });
+                PayRef.child(productRandomKey).updateChildren(productMap)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+
+                            }
+                        });
+                AccomplishmentRefBar.child(productRandomKey).updateChildren(productMap)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
 
                             }
                         });
@@ -158,8 +180,9 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
         FirebaseRecyclerAdapter<Baskets, ProductViewHolder> adapter = new FirebaseRecyclerAdapter<Baskets, ProductViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull @NotNull ProductViewHolder holder, int i, @NonNull @NotNull Baskets model) {
-                holder.txtProductName.setText(model.getName());
+                holder.txtProductName.setText(model.getPid());
                 holder.txtProductPrice.setText( model.getPrice());
+               // holder.txtPid.setText(model.getPid());
                 holder.txtColvo.setText(model.getValuekolvo()+" шт");
                if ((model.getCategory().equals("Напитки"))||(model.getCategory().equals("Винная Карта")))
                {
@@ -221,8 +244,10 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
     }
 
     public static class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView txtProductName, txtProductPrice,txtColvo;
+        public TextView txtProductName, txtProductPrice,txtColvo,txtPid;
         public ItemClickListener listner;
+        public ImageView delet;
+        private String pid;
 
 
         public ProductViewHolder(View itemView) {
@@ -232,11 +257,22 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
             txtProductName = itemView.findViewById(R.id.product_name_basket);
             txtProductPrice = itemView.findViewById(R.id.product_price_basket);
             txtColvo = itemView.findViewById(R.id.product_colvo_basket);
+            //txtPid = itemView.findViewById(R.id.pid_basket);
+            delet = itemView.findViewById(R.id.delet_basket);
+            pid = txtPid.getText().toString();
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
-
+                 //   ProductsRef = FirebaseDatabase.getInstance().getReference();
+                 //   ProductsRef.child(SettingsGuest.numtab+"/"+pid).setValue(null);
+                 //   System.out.println(SettingsGuest.numtab+"/"+pid);
+                }
+            });
+            delet.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                  //  ProductsRef = FirebaseDatabase.getInstance().getReference();
+                 //   ProductsRef.child(SettingsGuest.numtab+"/"+pid).setValue(null);
                 }
             });
         }

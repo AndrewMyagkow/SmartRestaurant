@@ -11,6 +11,7 @@ import com.example.smartrestaurant.Admin.AdminActivity;
 import com.example.smartrestaurant.Admin.Menu.HomeActivity;
 import com.example.smartrestaurant.Barman.SetingsBarmanActivity;
 import com.example.smartrestaurant.Entry.MainActivity;
+import com.example.smartrestaurant.Prevalent.Prevalent;
 import com.example.smartrestaurant.R;
 
 import io.paperdb.Paper;
@@ -25,6 +26,8 @@ public class SetingsCookActivity extends AppCompatActivity {
         cookOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Paper.book().write(Prevalent.UsingPhoneKey,"");
+                Paper.book().write(Prevalent.UsingPasswordKey,"");
                 Intent intent = new Intent(SetingsCookActivity.this, MainActivity.class);
                 startActivity(intent);
             }

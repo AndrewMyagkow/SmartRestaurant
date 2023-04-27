@@ -15,9 +15,24 @@
         android:theme="@style/Theme.SmartRestaurant"
         tools:targetApi="31">
         <activity
+            android:name=".Waiter.PayDisplay"
+            android:exported="false" />
+        <activity
+            android:name=".Waiter.PayActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Barman.BarmanDisplay"
+            android:exported="false" />
+        <activity
+            android:name=".Waiter.WaiterDisplay"
+            android:exported="false" />
+        <activity
+            android:name=".Cook.CookDisplay"
+            android:exported="false" />
+        <activity
             android:name=".Guest.Basket"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Guest.Primer"
             android:exported="false" />

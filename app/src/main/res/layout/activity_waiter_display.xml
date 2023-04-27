@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Waiter.WaiterDisplay"
+    android:background="#52535A">
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="45dp"
+
+        android:background="#38393C"
+        android:gravity="left">
+
+        <ImageView
+            android:id="@+id/back_waiter_display"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/back"
+            tools:ignore="MissingConstraints"
+            android:layout_margin="10dp"/>
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/textkyhnya"
+        android:layout_marginTop="45dp"
+        android:layout_width="wrap_content"
+        android:text="Заказ:"
+        android:layout_marginStart="10dp"
+        android:textColor="#B5B5B8"
+        android:textSize="15sp"
+        android:layout_height="wrap_content"/>
+
+
+    <TextView
+        android:id="@+id/kyhnya_display_waiter"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/textkyhnya"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:textColor="#B5B5B8"
+        android:textSize="15sp"
+        android:background="@drawable/inputdate"/>
+
+    <TextView
+        android:id="@+id/textkommentwaiter"
+        android:layout_width="wrap_content"
+        android:text="Комментарий:"
+        android:layout_marginStart="10dp"
+        android:layout_below="@+id/kyhnya_display_waiter"
+        android:textColor="#B5B5B8"
+        android:textSize="15sp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/komment_display_waiter"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/textkommentwaiter"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:textColor="#B5B5B8"
+        android:textSize="15sp"
+        android:background="@drawable/inputdate"/>
+
+
+    <TextView
+        android:id="@+id/textnom"
+        android:layout_marginTop="445dp"
+        android:layout_width="wrap_content"
+        android:text="№ стола:"
+        android:layout_marginStart="20dp"
+        android:textColor="#B5B5B8"
+        android:textSize="15sp"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/nom"
+        android:layout_marginTop="445dp"
+        android:layout_width="40dp"
+        android:layout_marginStart="90dp"
+        android:textColor="#B5B5B8"
+        android:textSize="15sp"
+        android:layout_height="20dp"
+        android:background="@drawable/inputdate"/>
+    <Button
+        android:id="@+id/done_waiter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="520dp"
+        android:layout_marginStart="200dp"
+        android:text="Выполнено"
+        />
+
+</RelativeLayout>

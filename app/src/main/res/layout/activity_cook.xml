@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Cook.CookActivity"
     android:background="#52535A">
-    <LinearLayout
+
+    <include layout="@layout/content_main_cook"
+        />
+
+    <RelativeLayout
         android:layout_width="360dp"
         android:layout_height="45dp"
 
@@ -16,41 +20,40 @@
             android:id="@+id/setingscook"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:src="@drawable/setings"
-            tools:ignore="MissingConstraints"
-            android:layout_margin="10dp"/>
+            tools:ignore="MissingConstraints" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="360dp"
         android:layout_height="51dp"
-
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="0dp"
         android:background="#38393C"
-
-        android:gravity="center"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp">
+        android:layout_marginTop="523dp"
+        >
         <ImageView
             android:id="@+id/writebookcook"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_margin="12dp"
+           android:layout_marginStart="140dp"
+            android:layout_marginTop="7dp"
             android:src="@drawable/writebookdob"
-            tools:ignore="MissingConstraints" />
+            />
         <ImageView
             android:id="@+id/chatcook"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_margin="12dp"
+            android:layout_marginTop="7dp"
             android:src="@drawable/chat"
-            tools:ignore="MissingConstraints" />
+           android:layout_marginStart="200dp"/>
 
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
 
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

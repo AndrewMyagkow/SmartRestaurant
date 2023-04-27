@@ -63,7 +63,7 @@ public class Primer extends AppCompatActivity implements NavigationView.OnNaviga
     private ImageView back, pokypki,plus,minus;
     private int kolvobl = 1;
     private ProgressDialog loadingBar;
-    private String txtname,txtdeck,txtprice,cat, saveCurrentDate, saveCurrentTime, productRandomKey,titleDB;
+    private String txtname,txtdeck,txtprice,cat, saveCurrentDate, saveCurrentTime, productRandomKey,pid;
     private String valuekolvo;
     DatabaseReference ProductsRef;
     DatabaseReference BasketRef;
@@ -141,6 +141,7 @@ public class Primer extends AppCompatActivity implements NavigationView.OnNaviga
         txtprice = arguments.get("price").toString();
         txtname = arguments.get("name").toString();
         cat = arguments.get("cat").toString();
+        pid = arguments.get("pid").toString();
 
         FirebaseRecyclerOptions<Products> options = new FirebaseRecyclerOptions.Builder<Products>()
                 .setQuery(ProductsRef, Products.class).build();
@@ -190,6 +191,7 @@ public class Primer extends AppCompatActivity implements NavigationView.OnNaviga
         productMap.put("price", txtprice);
         productMap.put("valuekolvo", valuekolvo);
         productMap.put("category", cat);
+        productMap.put("pid", pid);
 
        BasketRef.child(productRandomKey).updateChildren(productMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {

@@ -1,7 +1,7 @@
 package com.example.smartrestaurant.Model;
 
 public class Baskets {
-    private String name,price, valuekolvo,category;
+    private String name,price, valuekolvo,category,pid;
 
     public Baskets(){
 
@@ -39,10 +39,19 @@ public class Baskets {
         this.category = category;
     }
 
-    public Baskets(String name, String price, String valuekolvo, String category) {
+    public String getPid() {
+        return pid;
+    }
+
+    public void setPid(String pid) {
+        this.pid = pid;
+    }
+
+    public Baskets(String name, String price, String valuekolvo, String category, String pid) {
         this.name = name;
         this.price = price;
         this.valuekolvo = valuekolvo;
         this.category = category;
+        this.pid = pid;
     }
 }

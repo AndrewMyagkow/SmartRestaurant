@@ -109,6 +109,7 @@ public class Meny extends AppCompatActivity implements NavigationView.OnNavigati
                 holder.txtProductName.setText(model.getPname());
                 holder.txtProductDescription.setText(model.getDescription());
                 holder.txtProductCategory.setText(model.getCategory());
+                holder.txtProductid.setText(model.getPid());
                 holder.txtProductPrice.setText( model.getPrice() + " рублей");
 //                holder.id.setText( model.getPid());
                 Picasso.get().load(model.getImage()).into(holder.imageView);
@@ -152,7 +153,7 @@ public class Meny extends AppCompatActivity implements NavigationView.OnNavigati
     }
 
     public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView txtProductName, txtProductDescription, txtProductPrice, txtProductPrimer, txtProductCategory,ide;
+        public TextView txtProductName, txtProductDescription, txtProductPrice, txtProductid, txtProductCategory,ide;
         public String qwe;
         public ImageView imageView;
         public ItemClickListener listner;
@@ -168,6 +169,7 @@ public class Meny extends AppCompatActivity implements NavigationView.OnNavigati
             txtProductDescription = itemView.findViewById(R.id.product_description);
             txtProductPrice = itemView.findViewById(R.id.product_price);
             txtProductCategory = itemView.findViewById(R.id.add_category);
+            txtProductid = itemView.findViewById(R.id.id_eat);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -177,11 +179,13 @@ public class Meny extends AppCompatActivity implements NavigationView.OnNavigati
                     String name = txtProductName.getText().toString();
                     String desk = txtProductDescription.getText().toString();
                     String price = txtProductPrice.getText().toString();
+                    String pid = txtProductid.getText().toString();
                   //  String q = id.getText().toString();
                     intent.putExtra("name", name);
                     intent.putExtra("desk", desk);
                     intent.putExtra("price", price);
                     intent.putExtra("cat", Category);
+                    intent.putExtra("pid", pid);
                     //intent.putExtra("vibor",idy);
                     startActivity(intent);
                 }
