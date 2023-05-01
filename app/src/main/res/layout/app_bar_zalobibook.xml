@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="58dp"
         android:background="#38393C"
-        android:gravity="center"
+        android:gravity="left"
 
         >
 
@@ -24,23 +24,19 @@
             android:id="@+id/back_zalobibook"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_margin="45dp"
+           android:layout_margin="10dp"
             android:src="@drawable/back"
+
             tools:ignore="MissingConstraints" />
         <TextView
             android:layout_width="200dp"
             android:layout_height="match_parent"
             android:gravity="center"
+            android:layout_marginStart="30dp"
             android:text="Книга жалоб и предложений"
             android:textColor="#B1B2B3" />
 
-        <ImageView
-            android:id="@+id/add_zalobibook"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_margin="45dp"
-            android:src="@drawable/add"
-            tools:ignore="MissingConstraints" />
+
 
     </LinearLayout>
 

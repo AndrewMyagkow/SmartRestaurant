@@ -1,32 +1,21 @@
 package com.example.smartrestaurant.Admin.Reserved;
 
-import static android.app.job.JobInfo.PRIORITY_HIGH;
-
-import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.navigation.ui.AppBarConfiguration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartrestaurant.Admin.AdminActivity;
-import com.example.smartrestaurant.Admin.Menu.AddFoodActivity;
-import com.example.smartrestaurant.Model.Products;
 import com.example.smartrestaurant.Model.Reserved;
 import com.example.smartrestaurant.R;
 
@@ -36,13 +25,11 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.concurrent.TimeUnit;
 
 public class ReservedActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private ImageView back,add;
@@ -100,10 +87,10 @@ public class ReservedActivity extends AppCompatActivity implements NavigationVie
                 protected void onBindViewHolder(@NonNull @NotNull ReservedViewHolder holder, int i, @NonNull @NotNull Reserved model) {
 
 
-                    holder.txtProductName.setText(model.getPname());
-                    holder.txtProductPrimer.setText(model.getPrimer());
-                    holder.txtProductDescription.setText(model.getDescription());
-                    holder.txtProductPrice.setText(model.getPrice());
+                    holder.txtNameGuest.setText(model.getPname());
+                    holder.txtYear.setText(model.getPrimer());
+                    holder.txtDate.setText(model.getDescription());
+                    holder.txtMounth.setText(model.getPrice());
                     holder.txtClock.setText(model.getClock());
                     holder.txtMinuts.setText(model.getMinuts());
                     holder.txtKolvoGuest.setText(model.getKolvoguest());

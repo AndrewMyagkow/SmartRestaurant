@@ -1,25 +1,9 @@
 package com.example.smartrestaurant.Model;
 
 public class Reserved {
-    private String pname, description, price, image, category, pid, date, time,primer,clock,minuts,kolvoguest;
+    private String pname, description, price, image, category, pid, date, time,primer,clock,minuts,kolvoguest, dishes, symma, komment, barman, table, admin;
 
     public Reserved(){
-
-    }
-
-    public Reserved(String pname, String description, String price, String image, String category, String pid, String date, String time, String primer, String clock, String minuts, String kolvoguest) {
-        this.pname = pname;
-        this.description = description;
-        this.price = price;
-        this.image = image;
-        this.category = category;
-        this.pid = pid;
-        this.date = date;
-        this.time = time;
-        this.primer = primer;
-        this.clock = clock;
-        this.minuts = minuts;
-        this.kolvoguest = kolvoguest;
 
     }
 
@@ -117,5 +101,74 @@ public class Reserved {
 
     public void setKolvoguest(String kolvoguest) {
         this.kolvoguest = kolvoguest;
+    }
+
+    public String getDishes() {
+        return dishes;
+    }
+
+    public void setDishes(String dishes) {
+        this.dishes = dishes;
+    }
+
+    public String getSymma() {
+        return symma;
+    }
+
+    public void setSymma(String symma) {
+        this.symma = symma;
+    }
+
+    public String getKomment() {
+        return komment;
+    }
+
+    public void setKomment(String komment) {
+        this.komment = komment;
+    }
+
+    public String getBarman() {
+        return barman;
+    }
+
+    public void setBarman(String barman) {
+        this.barman = barman;
+    }
+
+    public String getTable() {
+        return table;
+    }
+
+    public void setTable(String table) {
+        this.table = table;
+    }
+
+    public String getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(String admin) {
+        this.admin = admin;
+    }
+
+    public Reserved(String pname, String description, String price, String image, String category, String pid, String date, String time, String primer, String clock, String minuts, String kolvoguest, String dishes, String symma, String komment, String barman, String table, String admin) {
+        this.pname = pname;
+        this.description = description;
+        this.price = price;
+        this.image = image;
+        this.category = category;
+        this.pid = pid;
+        this.date = date;
+        this.time = time;
+        this.primer = primer;
+        this.clock = clock;
+        this.minuts = minuts;
+        this.kolvoguest = kolvoguest;
+        this.dishes = dishes;
+        this.symma = symma;
+        this.komment = komment;
+        this.barman = barman;
+        this.table = table;
+        this.admin = admin;
     }
 }

@@ -40,6 +40,7 @@ public class AddReservedActivity extends AppCompatActivity {
     private Uri ImageUri;
     private StorageReference ProductImageRef;
     private DatabaseReference ProductsRef;
+    private DatabaseReference InfoRef;
     private ProgressDialog loadingBar;
 
 
@@ -130,7 +131,6 @@ public class AddReservedActivity extends AppCompatActivity {
         productMap.put("date", saveCurrentDate);
         productMap.put("time", saveCurrentTime);
         productMap.put("description", Description);
-        productMap.put("image", downloadImageUrl);
         productMap.put("category", categoryName);
         productMap.put("price", Price);
         productMap.put("pname", Pname);
@@ -159,6 +159,13 @@ public class AddReservedActivity extends AppCompatActivity {
                         }
                     }
                 });
+        InfoRef.child(productRandomKey).updateChildren(productMap)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                    }
+                });
     }
 
 
@@ -173,6 +180,7 @@ public class AddReservedActivity extends AppCompatActivity {
         productMinuts = findViewById(R.id.minuts);
         productKolvoGuest = findViewById(R.id.kolvoguest);
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Reserved");
+        InfoRef = FirebaseDatabase.getInstance().getReference().child("InfoAdmin");
         loadingBar = new ProgressDialog(this);
 
     }

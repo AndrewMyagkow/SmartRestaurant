@@ -1,16 +1,17 @@
 package com.example.smartrestaurant.Model;
 
-public class Zakaz {
-    private String barman,dishes,komment,symma,table,pid,admin;
-    public  Zakaz()
+public class Info {
+    private String pid, dishes, symma, komment, barman, table, admin;
+
+    public  Info()
     {}
 
-    public String getBarman() {
-        return barman;
+    public String getPid() {
+        return pid;
     }
 
-    public void setBarman(String barman) {
-        this.barman = barman;
+    public void setPid(String pid) {
+        this.pid = pid;
     }
 
     public String getDishes() {
@@ -21,6 +22,14 @@ public class Zakaz {
         this.dishes = dishes;
     }
 
+    public String getSymma() {
+        return symma;
+    }
+
+    public void setSymma(String symma) {
+        this.symma = symma;
+    }
+
     public String getKomment() {
         return komment;
     }
@@ -29,12 +38,12 @@ public class Zakaz {
         this.komment = komment;
     }
 
-    public String getSymma() {
-        return symma;
+    public String getBarman() {
+        return barman;
     }
 
-    public void setSymma(String symma) {
-        this.symma = symma;
+    public void setBarman(String barman) {
+        this.barman = barman;
     }
 
     public String getTable() {
@@ -45,14 +54,6 @@ public class Zakaz {
         this.table = table;
     }
 
-    public String getPid() {
-        return pid;
-    }
-
-    public void setPid(String pid) {
-        this.pid = pid;
-    }
-
     public String getAdmin() {
         return admin;
     }
@@ -61,13 +62,13 @@ public class Zakaz {
         this.admin = admin;
     }
 
-    public Zakaz(String barman, String dishes, String komment, String symma, String table, String pid, String admin) {
-        this.barman = barman;
-        this.dishes = dishes;
-        this.komment = komment;
-        this.symma = symma;
-        this.table = table;
+    public Info(String pid, String dishes, String symma, String komment, String barman, String table, String admin) {
         this.pid = pid;
+        this.dishes = dishes;
+        this.symma = symma;
+        this.komment = komment;
+        this.barman = barman;
+        this.table = table;
         this.admin = admin;
     }
 }

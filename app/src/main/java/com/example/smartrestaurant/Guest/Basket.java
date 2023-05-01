@@ -65,6 +65,7 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
     private ImageView back;
     private EditText komment;
     private Button zakaz;
+    private String AdminInfo ="Выполняется";
     private String Symma,Kolvo,Accomplishment,saveCurrentDate, saveCurrentTime, productRandomKey, ITOG,Komment,category,barman;
     //public String deletedpid;
     private String allZakaz = "";
@@ -75,6 +76,7 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
     private DatabaseReference AccomplishmentRef;
     private DatabaseReference PayRef;
     private DatabaseReference AccomplishmentRefBar;
+    private DatabaseReference InfoRef;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     private ProgressDialog loadingBar;
@@ -89,6 +91,7 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
         AccomplishmentRef = FirebaseDatabase.getInstance().getReference().child("Accomplishment");
         PayRef = FirebaseDatabase.getInstance().getReference().child("Pay");
         AccomplishmentRefBar = FirebaseDatabase.getInstance().getReference().child("AccomplishmentBar");
+        InfoRef = FirebaseDatabase.getInstance().getReference().child("InfoAdmin");
         loadingBar = new ProgressDialog(this);
         recyclerView = findViewById(R.id.recycler_basket);
         recyclerView.setHasFixedSize(true);
@@ -138,25 +141,78 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
                 productMap.put("komment", Komment);
                 productMap.put("barman", allZakazbar);
                 productMap.put("table", SettingsGuest.numtab);
+                productMap.put("admin", AdminInfo);
 
 
+              if((!allZakaz.equals(""))&&(!allZakazbar.equals(""))) {
+                  AccomplishmentRef.child(productRandomKey).updateChildren(productMap)
+                          .addOnCompleteListener(new OnCompleteListener<Void>() {
+                              @Override
+                              public void onComplete(@NonNull Task<Void> task) {
+                                  if (task.isSuccessful()) {
+                                      Toast.makeText(Basket.this, "Заказ принят", Toast.LENGTH_SHORT).show();
+                                      loadingBar.dismiss();
 
-                AccomplishmentRef.child(productRandomKey).updateChildren(productMap)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if(task.isSuccessful()){
-                                    Toast.makeText(Basket.this, "Заказ принят" , Toast.LENGTH_SHORT).show();
-                                    loadingBar.dismiss();
+                                      ProductsRef = FirebaseDatabase.getInstance().getReference();
+                                      ProductsRef.child(SettingsGuest.numtab).setValue(null);
+                                      Intent loginIntent = new Intent(Basket.this, GuestActivity.class);
+                                      startActivity(loginIntent);
+                                  }
 
-                                    ProductsRef = FirebaseDatabase.getInstance().getReference();
-                                    ProductsRef.child(SettingsGuest.numtab).setValue(null);
-                                    Intent loginIntent = new Intent(Basket.this, GuestActivity.class);
-                                    startActivity(loginIntent);
-                                }
+                              }
+                          });
 
-                            }
-                        });
+                  AccomplishmentRefBar.child(productRandomKey).updateChildren(productMap)
+                          .addOnCompleteListener(new OnCompleteListener<Void>() {
+                              @Override
+                              public void onComplete(@NonNull Task<Void> task) {
+
+                              }
+                          });
+              }
+              else if ((!allZakaz.equals(""))&&(allZakazbar.equals("")))
+              {
+                  AccomplishmentRef.child(productRandomKey).updateChildren(productMap)
+                          .addOnCompleteListener(new OnCompleteListener<Void>() {
+                              @Override
+                              public void onComplete(@NonNull Task<Void> task) {
+                                  if (task.isSuccessful()) {
+                                      Toast.makeText(Basket.this, "Заказ принят", Toast.LENGTH_SHORT).show();
+                                      loadingBar.dismiss();
+
+                                      ProductsRef = FirebaseDatabase.getInstance().getReference();
+                                      ProductsRef.child(SettingsGuest.numtab).setValue(null);
+                                      Intent loginIntent = new Intent(Basket.this, GuestActivity.class);
+                                      startActivity(loginIntent);
+                                  }
+
+                              }
+                          });
+                  InfoRef.child(productRandomKey).updateChildren(productMap)
+                          .addOnCompleteListener(new OnCompleteListener<Void>() {
+                              @Override
+                              public void onComplete(@NonNull Task<Void> task) {
+                              }
+                          });
+              }
+              else if ((allZakaz.equals(""))&&(!allZakazbar.equals("")))
+              {
+                  AccomplishmentRefBar.child(productRandomKey).updateChildren(productMap)
+                          .addOnCompleteListener(new OnCompleteListener<Void>() {
+                              @Override
+                              public void onComplete(@NonNull Task<Void> task) {
+                                  if (task.isSuccessful()) {
+                                      Toast.makeText(Basket.this, "Заказ принят", Toast.LENGTH_SHORT).show();
+                                      loadingBar.dismiss();
+
+                                      ProductsRef = FirebaseDatabase.getInstance().getReference();
+                                      ProductsRef.child(SettingsGuest.numtab).setValue(null);
+                                      Intent loginIntent = new Intent(Basket.this, GuestActivity.class);
+                                      startActivity(loginIntent);
+                                  }
+                              }
+                          });
+              }
                 PayRef.child(productRandomKey).updateChildren(productMap)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
@@ -164,13 +220,7 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
 
                             }
                         });
-                AccomplishmentRefBar.child(productRandomKey).updateChildren(productMap)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
 
-                            }
-                        });
             }
         });
 

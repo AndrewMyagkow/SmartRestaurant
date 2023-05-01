@@ -21,7 +21,7 @@ import com.example.smartrestaurant.Admin.Message.Message;
 import com.example.smartrestaurant.Admin.Reserved.ReservedActivity;
 import com.example.smartrestaurant.Model.Reserved;
 import com.example.smartrestaurant.R;
-import com.example.smartrestaurant.ViewHolder.ReservedViewHolder;
+import com.example.smartrestaurant.ViewHolder.InfoAdminViewHolder;
 import com.example.smartrestaurant.Admin.ZalobiBook.ZalobiBookActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -38,7 +38,8 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
     private String date,mounth,year,clock,minuts,info,secund;
     int fl=0;
     private ImageView biznes,writebook,menu,chat,reserved;
-    private ImageView setings,zalobi; DatabaseReference ProductsRef;
+    private ImageView setings,zalobi;
+    DatabaseReference InfoRef;
     Handler handler;
     int limit = 40;
     int count = 0;
@@ -55,7 +56,7 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
         setContentView(R.layout.activity_admin);
 
 
-        ProductsRef = FirebaseDatabase.getInstance().getReference().child("Reserved");
+        InfoRef = FirebaseDatabase.getInstance().getReference().child("InfoAdmin");
         recyclerView = findViewById(R.id.recycler_admin);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -66,21 +67,23 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
 
 
 
-            FirebaseRecyclerOptions<Reserved> options = new FirebaseRecyclerOptions.Builder<Reserved>()
-                    .setQuery(ProductsRef, Reserved.class).build();
+        FirebaseRecyclerOptions<Reserved> options = new FirebaseRecyclerOptions.Builder<Reserved>()
+                .setQuery(InfoRef, Reserved.class).build();
 
-            FirebaseRecyclerAdapter<Reserved, ReservedViewHolder> adapter = new FirebaseRecyclerAdapter<Reserved, ReservedViewHolder>(options) {
-                @Override
-                protected void onBindViewHolder(@NonNull @NotNull ReservedViewHolder holder, int i, @NonNull @NotNull Reserved model) {
+        FirebaseRecyclerAdapter<Reserved, InfoAdminViewHolder> adapter = new FirebaseRecyclerAdapter<Reserved, InfoAdminViewHolder>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull @NotNull InfoAdminViewHolder holder, int i, @NonNull @NotNull Reserved model) {
 
-
-                    holder.txtProductName.setText(model.getPname());
-                    holder.txtProductPrimer.setText(model.getPrimer());
-                    holder.txtProductDescription.setText(model.getDescription());
-                    holder.txtProductPrice.setText(model.getPrice());
-                    holder.txtClock.setText(model.getClock());
-                    holder.txtMinuts.setText(model.getMinuts());
-                    holder.txtKolvoGuest.setText(model.getKolvoguest());
+                if(model.getAdmin() == null)
+                {
+                    holder.txtDateId.setText(model.getDescription()+"."+model.getPrice()+"."+model.getPrimer());
+                    holder.txtTimeStatus.setText(model.getClock()+":"+model.getMinuts());
+                    holder.txtKolvoGuestNumTab.setText(model.getKolvoguest());
+                    holder.txtNameGuest.setText(model.getPname());
+                    holder.txtTextName.setText("ФИО");
+                    holder.txtTextDateId.setText("Дата");
+                    holder.txtTextTimeStatus.setText("Время");
+                    holder.txtKolvoNumTab.setText("Кол-во");
                     Calendar calendar = Calendar.getInstance();
                     SimpleDateFormat currentDate = new SimpleDateFormat("dd");
                     date = currentDate.format(calendar.getTime());
@@ -92,99 +95,108 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
                     clock = currentClock.format(calendar.getTime());
                     SimpleDateFormat currentMinuts = new SimpleDateFormat("mm");
                     minuts = currentMinuts.format(calendar.getTime());
-
-
                     if (!(model.getDescription().equals(date)) || !(model.getPrice().equals(mounth)) || !(model.getPrimer().equals(year)) || !(model.getClock().equals(clock)) || !(model.getMinuts().equals(minuts))) {
                         holder.itemView.setVisibility(View.GONE);
                         holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
 
                     }
-
+                }
+                else
+                {
+                    holder.txtDateId.setText(model.getPid());
+                    holder.txtTimeStatus.setText(model.getAdmin());
+                    holder.txtKolvoGuestNumTab.setText(model.getTable());
+                    holder.txtTextDateId.setText("ID");
+                    holder.txtTextTimeStatus.setText("Статус");
+                    holder.txtKolvoNumTab.setText("№ стола");
                 }
 
-                @NonNull
-                @NotNull
-                @Override
-                public ReservedViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent,
-                                                             int viewType) {
 
-                    View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.reserved_items_layout, parent, false);
-                    ReservedViewHolder holder = new ReservedViewHolder(view);
-                    return holder;
-                }
+            }
 
-            };
+            @NonNull
+            @NotNull
+            @Override
+            public InfoAdminViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent,
+                                                         int viewType) {
 
-            recyclerView.setAdapter(adapter);
-            adapter.startListening();
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.info_admin_item_layout, parent, false);
+                InfoAdminViewHolder holder = new InfoAdminViewHolder(view);
+                return holder;
+            }
 
+        };
 
-            init();
-
-
-            biznes.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    count=41;
-                    Intent intent = new Intent(AdminActivity.this, BiznesActivity.class);
-                    startActivity(intent);
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
 
 
-                }
-            });
-            writebook.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    count=41;
-                    Intent intent = new Intent(AdminActivity.this, WriteBookActivity.class);
-                    startActivity(intent);
-                }
-            });
-            menu.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    count=41;
-                    Intent intent = new Intent(AdminActivity.this, HomeActivity.class);
-                    startActivity(intent);
-                }
-            });
-            chat.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    count=41;
-                    Intent intent = new Intent(AdminActivity.this, Message.class);
-                    intent.putExtra("role", "Администратор");
-                    startActivity(intent);
-                }
-            });
-            reserved.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    count=41;
-                    Intent intent = new Intent(AdminActivity.this, ReservedActivity.class);
-                    startActivity(intent);
-                }
-            });
-            setings.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    count=41;
-                    Intent intent = new Intent(AdminActivity.this, SetingsActivity.class);
-                    startActivity(intent);
-                }
-            });
-            zalobi.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    count=41;
-                    Intent intent = new Intent(AdminActivity.this, ZalobiBookActivity.class);
-                    startActivity(intent);
-                }
-            });
+        init();
+
+
+        biznes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                count=41;
+                Intent intent = new Intent(AdminActivity.this, BiznesActivity.class);
+                startActivity(intent);
+
+
+            }
+        });
+        writebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                count=41;
+                Intent intent = new Intent(AdminActivity.this, WriteBookActivity.class);
+                startActivity(intent);
+            }
+        });
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                count=41;
+                Intent intent = new Intent(AdminActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+        chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                count=41;
+                Intent intent = new Intent(AdminActivity.this, Message.class);
+                intent.putExtra("role", "Администратор");
+                startActivity(intent);
+            }
+        });
+        reserved.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                count=41;
+                Intent intent = new Intent(AdminActivity.this, ReservedActivity.class);
+                startActivity(intent);
+            }
+        });
+        setings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                count=41;
+                Intent intent = new Intent(AdminActivity.this, SetingsActivity.class);
+                startActivity(intent);
+            }
+        });
+        zalobi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                count=41;
+                Intent intent = new Intent(AdminActivity.this, ZalobiBookActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
 
-        }
+    }
 
     Runnable onEverySecond=new Runnable() {
         public void run() {
@@ -200,30 +212,30 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
             }
         }
     };
-        private void init ()
-        {
-            biznes = findViewById(R.id.biznes);
-            writebook = findViewById(R.id.writebook);
-            menu = findViewById(R.id.menu);
-            chat = findViewById(R.id.chat);
-            reserved = findViewById(R.id.reserved);
-            setings = findViewById(R.id.setings);
-            zalobi = findViewById(R.id.zalobi);
-        }
+    private void init ()
+    {
+        biznes = findViewById(R.id.biznes);
+        writebook = findViewById(R.id.writebook);
+        menu = findViewById(R.id.menu);
+        chat = findViewById(R.id.chat);
+        reserved = findViewById(R.id.reserved);
+        setings = findViewById(R.id.setings);
+        zalobi = findViewById(R.id.zalobi);
+    }
 
 
-        @Override
-        public void onBackPressed () {
-        }
+    @Override
+    public void onBackPressed () {
+    }
 
-        @Override
-        public boolean onCreateOptionsMenu (Menu menu){
-            return true;
-        }
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu){
+        return true;
+    }
 
-        @Override
-        public boolean onNavigationItemSelected (@NonNull MenuItem item){
-            return false;
-        }
+    @Override
+    public boolean onNavigationItemSelected (@NonNull MenuItem item){
+        return false;
+    }
 
 }

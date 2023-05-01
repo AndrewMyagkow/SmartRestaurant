@@ -87,6 +87,7 @@ public class CookDisplay extends AppCompatActivity {
                 productMap.put("table", tab);
                 productMap.put("symma", sym);
                 productMap.put("bar", bar);
+                productMap.put("komment", kom);
 
 
 

@@ -13,18 +13,19 @@ public class ReservedViewHolder extends RecyclerView.ViewHolder implements View.
 
 {
     public RelativeLayout txtrelative;
-    public TextView txtProductName, txtProductDescription, txtProductPrice, txtProductPrimer,txtClock,txtMinuts,txtKolvoGuest,txtDateText,txtTiming;
+    public TextView txtNameGuest, txtDate, txtMounth, txtYear,txtClock,txtMinuts,txtKolvoGuest,txtDateText,txtTiming;
     public ItemClickListenerReserved listner;
+
 
     public ReservedViewHolder(View itemView)
     {
         super(itemView);
 
 
-        txtProductName = itemView.findViewById(R.id.namereservedguest);
-        txtProductDescription = itemView.findViewById(R.id.date);
-        txtProductPrice = itemView.findViewById(R.id.mounth);
-        txtProductPrimer = itemView.findViewById(R.id.year);
+        txtNameGuest = itemView.findViewById(R.id.namereservedguest);
+        txtDate = itemView.findViewById(R.id.date);
+        txtMounth = itemView.findViewById(R.id.mounth);
+        txtYear = itemView.findViewById(R.id.year);
         txtClock = itemView.findViewById(R.id.clock);
         txtMinuts = itemView.findViewById(R.id.minuts);
         txtKolvoGuest = itemView.findViewById(R.id.kolvoguest);

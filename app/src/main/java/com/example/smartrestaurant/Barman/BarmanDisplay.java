@@ -82,6 +82,7 @@ public class BarmanDisplay extends AppCompatActivity {
                 productMap.put("zakaz", zak);
                 productMap.put("table", tab);
                 productMap.put("symma", sym);
+                productMap.put("komment", kom);
 
 
 

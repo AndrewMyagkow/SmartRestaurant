@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#52535A">
+        <TextView
+
+            android:id="@+id/text_date_and_id"
+            android:layout_width="140dp"
+            android:layout_height="20dp"
+            android:textAlignment="center"
+            android:textColor="#B1B2B3"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/date_and_id"
+            android:layout_width="140dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+
+            android:textAlignment="center"
+            android:textColor="#B1B2B3"
+            android:textSize="15dp" />
+        <TextView
+
+            android:id="@+id/text_time_and_status"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="140dp"
+            android:textAlignment="center"
+            android:textColor="#B1B2B3"
+            android:textSize="15dp" />
+        <TextView
+            android:id="@+id/time_and_status"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="140dp"
+            android:textAlignment="center"
+            android:textColor="#B1B2B3"
+            android:textSize="15dp" />
+        <TextView
+
+            android:id="@+id/text_kolvoguest_and_numtable"
+            android:layout_width="110dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="240dp"
+            android:textAlignment="center"
+            android:textColor="#B1B2B3"
+            android:textSize="15dp" />
+        <TextView
+            android:id="@+id/kolvoguest_and_numtable"
+            android:layout_width="110dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="240dp"
+            android:textAlignment="center"
+            android:textColor="#B1B2B3"
+            android:textSize="15dp" />
+        <TextView
+
+            android:id="@+id/text_FIO"
+            android:layout_width="110dp"
+            android:layout_height="20dp"
+            android:textAlignment="center"
+            android:textColor="#B1B2B3"
+            android:layout_marginTop="50dp"
+            android:textSize="15dp" />
+        <TextView
+            android:id="@+id/FIO"
+            android:layout_width="170dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="110dp"
+            android:textAlignment="center"
+            android:textColor="#B1B2B3"
+            android:textSize="15dp" />
+
+
+
+
+
+
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>
