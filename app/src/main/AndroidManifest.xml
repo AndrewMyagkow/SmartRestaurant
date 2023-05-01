@@ -40,16 +40,6 @@
             android:name=".Guest.SettingsGuest"
             android:exported="false" />
         <activity
-            android:name=".ZalobiBook.AddZalobiBook"
-            android:exported="false"
-            android:label="@string/title_activity_home"
-            android:theme="@style/Theme.SmartRestaurant.NoActionBar"
-            android:windowSoftInputMode="adjustPan">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".Guest.GuestAddZalobiBook"
             android:exported="false"
             android:label="@string/title_activity_home"
@@ -78,7 +68,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ZalobiBook.ZalobiBookActivity"
+            android:name=".Admin.ZalobiBook.ZalobiBookActivity"
             android:exported="false"
             android:label="@string/title_activity_home"
             android:theme="@style/Theme.SmartRestaurant.NoActionBar">

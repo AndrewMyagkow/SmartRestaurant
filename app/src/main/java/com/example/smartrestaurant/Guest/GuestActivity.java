@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.smartrestaurant.R;
-import com.example.smartrestaurant.ZalobiBook.ZalobiBookActivity;
 
 public class GuestActivity extends AppCompatActivity {
     private ImageView salaty,hotbluda,syp,deserty,zakyski,garniry,fastfud,napitki,vinnaakarta,zalobi,pokypk,settings;

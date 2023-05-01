@@ -191,7 +191,7 @@ public class Primer extends AppCompatActivity implements NavigationView.OnNaviga
         productMap.put("price", txtprice);
         productMap.put("valuekolvo", valuekolvo);
         productMap.put("category", cat);
-        productMap.put("pid", pid);
+        productMap.put("pid", productRandomKey);
 
        BasketRef.child(productRandomKey).updateChildren(productMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {

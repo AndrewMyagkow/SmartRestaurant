@@ -1,4 +1,4 @@
-package com.example.smartrestaurant.ZalobiBook;
+package com.example.smartrestaurant.Admin.ZalobiBook;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,14 +11,11 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.ui.AppBarConfiguration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartrestaurant.Admin.AdminActivity;
-import com.example.smartrestaurant.Admin.Menu.AddFoodActivity;
 import com.example.smartrestaurant.Model.Feedback;
-import com.example.smartrestaurant.Model.Products;
 import com.example.smartrestaurant.R;
 import com.example.smartrestaurant.ViewHolder.FeedbackViewHolder;
 
@@ -27,14 +24,11 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
 public class ZalobiBookActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private ImageView back,add;
-    private String Age;
-    private AppBarConfiguration mAppBarConfiguration;
+    private ImageView back;
     DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
@@ -63,7 +57,6 @@ public class ZalobiBookActivity extends AppCompatActivity implements NavigationV
     protected void onStart() {
         super.onStart();
         back = findViewById(R.id.back_zalobibook);
-        add = findViewById(R.id.add_zalobibook);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,13 +64,7 @@ public class ZalobiBookActivity extends AppCompatActivity implements NavigationV
                 startActivity(intent);
             }
         });
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ZalobiBookActivity.this, AddZalobiBook.class);
-                startActivity(intent);
-            }
-        });
+
 
         FirebaseRecyclerOptions<Feedback> options = new FirebaseRecyclerOptions.Builder<Feedback>()
                 .setQuery(ProductsRef, Feedback.class).build();
@@ -85,9 +72,9 @@ public class ZalobiBookActivity extends AppCompatActivity implements NavigationV
         FirebaseRecyclerAdapter<Feedback, FeedbackViewHolder> adapter = new FirebaseRecyclerAdapter<Feedback, FeedbackViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull @NotNull FeedbackViewHolder holder, int i, @NonNull @NotNull Feedback model) {
-                holder.txtProductName.setText(model.getPname());
-                holder.txtProductDescription.setText(model.getDescription());
-                holder.txtProductPrice.setText( model.getPrice());
+                holder.txtName.setText(model.getName());
+                holder.txtTime.setText(model.getTime());
+                holder.txtFeedback.setText( model.getFeedback());
             }
 
             @NonNull

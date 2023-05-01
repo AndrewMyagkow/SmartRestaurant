@@ -2,11 +2,9 @@ package com.example.smartrestaurant.Guest;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -15,12 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.smartrestaurant.R;
-import com.example.smartrestaurant.ZalobiBook.ZalobiBookActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.StorageReference;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -28,9 +24,9 @@ import java.util.HashMap;
 
 public class GuestAddZalobiBook extends AppCompatActivity {
 
-    private String categoryName, Description, Price, Pname, saveCurrentDate, saveCurrentTime, productRandomKey, Primer;
+    private String stAge, stFeedback, stName, saveCurrentDate, saveCurrentTime, productRandomKey,dates,times, stTime;
     private ImageView back,addNewProductButton;
-    private EditText productName, productDescription, productPrice, productPrimer;
+    private EditText Name, Age, FeedBack;
 
     private DatabaseReference ProductsRef;
     private ProgressDialog loadingBar;
@@ -59,19 +55,19 @@ public class GuestAddZalobiBook extends AppCompatActivity {
     }
 
     private void ValidateProductData() {
-        Description = productDescription.getText().toString();
-        Price = productPrice.getText().toString();
-        Pname = productName.getText().toString();
+        stAge = Age.getText().toString();
+        stFeedback = FeedBack.getText().toString();
+        stName = Name.getText().toString();
 
 
 
-         if(TextUtils.isEmpty(Description)){
+        if(TextUtils.isEmpty(stAge)){
             Toast.makeText(this, "Добавьте ваш возраст.", Toast.LENGTH_SHORT).show();
         }
-        else if(TextUtils.isEmpty(Price)){
+        else if(TextUtils.isEmpty(stFeedback)){
             Toast.makeText(this, "Добавьте отзыв.", Toast.LENGTH_SHORT).show();
         }
-        else if(TextUtils.isEmpty(Pname)){
+        else if(TextUtils.isEmpty(stName)){
             Toast.makeText(this, "Добавьте имя.", Toast.LENGTH_SHORT).show();
         }
         else {
@@ -90,27 +86,24 @@ public class GuestAddZalobiBook extends AppCompatActivity {
 
         SimpleDateFormat currentDate = new SimpleDateFormat("ddMMyyyy");
         saveCurrentDate = currentDate.format(calendar.getTime());
-
+        SimpleDateFormat Datez = new SimpleDateFormat("dd.MM.yyyy");
+        dates = Datez.format(calendar.getTime());
         SimpleDateFormat currentTime = new SimpleDateFormat("HHmmss");
         saveCurrentTime = currentTime.format(calendar.getTime());
+        SimpleDateFormat Timez = new SimpleDateFormat("HH:mm ");
+        times = Timez.format(calendar.getTime());
 
         productRandomKey = saveCurrentDate + saveCurrentTime;
-
+        stTime = times + dates;
         SaveProductInfoToDatabase();
     }
 
     private void SaveProductInfoToDatabase() {
         HashMap<String, Object> productMap = new HashMap<>();
-        Pname = Pname+" "+Description;
-        productMap.put("pid", productRandomKey);
-        productMap.put("date", saveCurrentDate);
-        productMap.put("time", saveCurrentTime);
-        productMap.put("description", Description);
-        productMap.put("category", categoryName);
-        productMap.put("price", Price);
-        productMap.put("pname", Pname);
-        productMap.put("primer",Primer);
-
+        stName = stName+" "+ stAge;
+        productMap.put("feedback", stFeedback);
+        productMap.put("name", stName);
+        productMap.put("time", stTime);
 
         ProductsRef.child(productRandomKey).updateChildren(productMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -137,10 +130,9 @@ public class GuestAddZalobiBook extends AppCompatActivity {
 
 
     private void init() {
-
-        productName = findViewById(R.id.name_guest_add);
-        productDescription = findViewById(R.id.age_guest_add);
-        productPrice = findViewById(R.id.feedback_add);
+        Name = findViewById(R.id.name_guest_add);
+        Age = findViewById(R.id.age_guest_add);
+        FeedBack = findViewById(R.id.feedback_add);
         addNewProductButton = findViewById(R.id.btn_add_new_feedback_guest);
 
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Feedback");

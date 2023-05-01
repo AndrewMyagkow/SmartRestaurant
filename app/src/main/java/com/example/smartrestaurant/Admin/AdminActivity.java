@@ -1,19 +1,12 @@
 package com.example.smartrestaurant.Admin;
 
-import static android.app.job.JobInfo.PRIORITY_HIGH;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -22,7 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 import com.example.smartrestaurant.Admin.Menu.HomeActivity;
 import com.example.smartrestaurant.Admin.Message.Message;
@@ -30,8 +22,7 @@ import com.example.smartrestaurant.Admin.Reserved.ReservedActivity;
 import com.example.smartrestaurant.Model.Reserved;
 import com.example.smartrestaurant.R;
 import com.example.smartrestaurant.ViewHolder.ReservedViewHolder;
-import com.example.smartrestaurant.ZalobiBook.AddZalobiBook;
-import com.example.smartrestaurant.ZalobiBook.ZalobiBookActivity;
+import com.example.smartrestaurant.Admin.ZalobiBook.ZalobiBookActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.navigation.NavigationView;

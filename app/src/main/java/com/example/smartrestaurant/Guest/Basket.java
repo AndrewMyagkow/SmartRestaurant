@@ -66,6 +66,7 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
     private EditText komment;
     private Button zakaz;
     private String Symma,Kolvo,Accomplishment,saveCurrentDate, saveCurrentTime, productRandomKey, ITOG,Komment,category,barman;
+    //public String deletedpid;
     private String allZakaz = "";
     private String allZakazbar = "";
     private int sym,itog,kol;
@@ -180,9 +181,9 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
         FirebaseRecyclerAdapter<Baskets, ProductViewHolder> adapter = new FirebaseRecyclerAdapter<Baskets, ProductViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull @NotNull ProductViewHolder holder, int i, @NonNull @NotNull Baskets model) {
-                holder.txtProductName.setText(model.getPid());
+                holder.txtProductName.setText(model.getName());
                 holder.txtProductPrice.setText( model.getPrice());
-               // holder.txtPid.setText(model.getPid());
+                holder.txtPid.setText(model.getPid());
                 holder.txtColvo.setText(model.getValuekolvo()+" шт");
                if ((model.getCategory().equals("Напитки"))||(model.getCategory().equals("Винная Карта")))
                {
@@ -243,11 +244,11 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
         return false;
     }
 
-    public static class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView txtProductName, txtProductPrice,txtColvo,txtPid;
         public ItemClickListener listner;
         public ImageView delet;
-        private String pid;
+       // private String pid;
 
 
         public ProductViewHolder(View itemView) {
@@ -257,22 +258,25 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
             txtProductName = itemView.findViewById(R.id.product_name_basket);
             txtProductPrice = itemView.findViewById(R.id.product_price_basket);
             txtColvo = itemView.findViewById(R.id.product_colvo_basket);
-            //txtPid = itemView.findViewById(R.id.pid_basket);
+            txtPid = itemView.findViewById(R.id.pid_basket);
             delet = itemView.findViewById(R.id.delet_basket);
-            pid = txtPid.getText().toString();
+            //String pid = txtPid.getText().toString();
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                 //   ProductsRef = FirebaseDatabase.getInstance().getReference();
-                 //   ProductsRef.child(SettingsGuest.numtab+"/"+pid).setValue(null);
-                 //   System.out.println(SettingsGuest.numtab+"/"+pid);
+
                 }
             });
             delet.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                  //  ProductsRef = FirebaseDatabase.getInstance().getReference();
-                 //   ProductsRef.child(SettingsGuest.numtab+"/"+pid).setValue(null);
+                    String pid = txtPid.getText().toString();
+                    ProductsRef = FirebaseDatabase.getInstance().getReference();
+                    ProductsRef.child(SettingsGuest.numtab+"/"+pid).setValue(null);
+                    finish();
+                    overridePendingTransition(0, 0);
+                    startActivity(getIntent());
+                    overridePendingTransition(0, 0);
                 }
             });
         }

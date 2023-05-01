@@ -13,6 +13,7 @@ import com.example.smartrestaurant.Barman.SetingsBarmanActivity;
 import com.example.smartrestaurant.Entry.MainActivity;
 import com.example.smartrestaurant.Prevalent.Prevalent;
 import com.example.smartrestaurant.R;
+import com.example.smartrestaurant.Waiter.SetingsWaiterActivity;
 
 import io.paperdb.Paper;
 
@@ -26,10 +27,22 @@ public class SetingsCookActivity extends AppCompatActivity {
         cookOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Paper.book().write(Prevalent.UsingPhoneKey,"");
-                Paper.book().write(Prevalent.UsingPasswordKey,"");
-                Intent intent = new Intent(SetingsCookActivity.this, MainActivity.class);
-                startActivity(intent);
+                String UPK = Paper.book().read(Prevalent.UsingPhoneKey);
+                String UPasK = Paper.book().read(Prevalent.UsingPasswordKey);
+                assert UPK != null;
+                assert UPasK != null;
+                if((UPK.equals(""))&&(UPasK.equals("")))
+                {
+                    Intent intent = new Intent(SetingsCookActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
+                else
+                {
+                    Paper.book().write(Prevalent.UsingPhoneKey, "");
+                    Paper.book().write(Prevalent.UsingPasswordKey, "");
+                    Intent intent = new Intent(SetingsCookActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }

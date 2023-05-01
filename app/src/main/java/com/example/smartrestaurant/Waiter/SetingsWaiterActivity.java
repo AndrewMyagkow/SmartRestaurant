@@ -27,7 +27,8 @@ public class SetingsWaiterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String UPK = Paper.book().read(Prevalent.UsingPhoneKey);
                 String UPasK = Paper.book().read(Prevalent.UsingPasswordKey);
-
+                assert UPK != null;
+                assert UPasK != null;
                 if((UPK.equals(""))&&(UPasK.equals("")))
                 {
                     Intent intent = new Intent(SetingsWaiterActivity.this, MainActivity.class);

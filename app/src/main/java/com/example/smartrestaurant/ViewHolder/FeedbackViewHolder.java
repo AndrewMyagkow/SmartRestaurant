@@ -6,14 +6,12 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.smartrestaurant.Interface.ItemClickListener;
 import com.example.smartrestaurant.Interface.ItemClickListenerFeedback;
 import com.example.smartrestaurant.R;
 
 public class FeedbackViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
 {
-    public TextView txtProductName, txtProductDescription, txtProductPrice, txtProductPrimer;
-    public ImageView imageView;
+    public TextView txtName, txtTime, txtFeedback;
     public ItemClickListenerFeedback listner;
 
 
@@ -22,9 +20,9 @@ public class FeedbackViewHolder extends RecyclerView.ViewHolder implements View.
         super(itemView);
 
 
-        txtProductName = itemView.findViewById(R.id.name_guest);
-        txtProductDescription = itemView.findViewById(R.id.age_guest);
-        txtProductPrice = itemView.findViewById(R.id.feedback);
+        txtName = itemView.findViewById(R.id.name_guest_zalobi);
+        txtTime = itemView.findViewById(R.id.time_guest_zalobi);
+        txtFeedback = itemView.findViewById(R.id.feedback);
 
     }
 

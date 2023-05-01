@@ -16,27 +16,20 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.smartrestaurant.Admin.AdminActivity;
-import com.example.smartrestaurant.Admin.Menu.AddFoodActivity;
 import com.example.smartrestaurant.Model.Feedback;
-import com.example.smartrestaurant.Model.Products;
 import com.example.smartrestaurant.R;
 import com.example.smartrestaurant.ViewHolder.FeedbackViewHolder;
 
-import com.example.smartrestaurant.ZalobiBook.AddZalobiBook;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
 public class GuestZalobiBook extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private ImageView back,add;
-    private String Age;
-    private AppBarConfiguration mAppBarConfiguration;
     DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
@@ -87,9 +80,9 @@ public class GuestZalobiBook extends AppCompatActivity implements NavigationView
         FirebaseRecyclerAdapter<Feedback, FeedbackViewHolder> adapter = new FirebaseRecyclerAdapter<Feedback, FeedbackViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull @NotNull FeedbackViewHolder holder, int i, @NonNull @NotNull Feedback model) {
-                holder.txtProductName.setText(model.getPname());
-                holder.txtProductDescription.setText(model.getDescription());
-                holder.txtProductPrice.setText( model.getPrice());
+                holder.txtName.setText(model.getName());
+                holder.txtTime.setText(model.getTime());
+                holder.txtFeedback.setText( model.getFeedback());
             }
 
             @NonNull
