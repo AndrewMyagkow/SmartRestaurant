@@ -109,6 +109,10 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
                     holder.txtTextDateId.setText("ID");
                     holder.txtTextTimeStatus.setText("Статус");
                     holder.txtKolvoNumTab.setText("№ стола");
+                    if(model.getPlace()!=null) {
+                        holder.txtTextName.setText("Место");
+                        holder.txtNameGuest.setText(model.getPlace());
+                    }
                 }
 
 

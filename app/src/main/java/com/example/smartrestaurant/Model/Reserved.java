@@ -1,7 +1,7 @@
 package com.example.smartrestaurant.Model;
 
 public class Reserved {
-    private String pname, description, price, image, category, pid, date, time,primer,clock,minuts,kolvoguest, dishes, symma, komment, barman, table, admin;
+    private String pname, description, price, image, category, pid, date, time,primer,clock,minuts,kolvoguest, dishes, symma, komment, barman, table, admin,place;
 
     public Reserved(){
 
@@ -151,7 +151,15 @@ public class Reserved {
         this.admin = admin;
     }
 
-    public Reserved(String pname, String description, String price, String image, String category, String pid, String date, String time, String primer, String clock, String minuts, String kolvoguest, String dishes, String symma, String komment, String barman, String table, String admin) {
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
+    public Reserved(String pname, String description, String price, String image, String category, String pid, String date, String time, String primer, String clock, String minuts, String kolvoguest, String dishes, String symma, String komment, String barman, String table, String admin, String place) {
         this.pname = pname;
         this.description = description;
         this.price = price;
@@ -170,5 +178,6 @@ public class Reserved {
         this.barman = barman;
         this.table = table;
         this.admin = admin;
+        this.place = place;
     }
 }

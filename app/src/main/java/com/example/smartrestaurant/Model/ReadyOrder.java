@@ -1,7 +1,7 @@
 package com.example.smartrestaurant.Model;
 
 public class ReadyOrder {
-    private String barman,zakaz,komment,symma,table,pid;
+    private String barman,zakaz,komment,symma,table,pid,place;
     public ReadyOrder()
     {}
 
@@ -53,12 +53,21 @@ public class ReadyOrder {
         this.pid = pid;
     }
 
-    public ReadyOrder(String barman, String zakaz, String komment, String symma, String table, String pid) {
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
+    public ReadyOrder(String barman, String zakaz, String komment, String symma, String table, String pid, String place) {
         this.barman = barman;
         this.zakaz = zakaz;
         this.komment = komment;
         this.symma = symma;
         this.table = table;
         this.pid = pid;
+        this.place = place;
     }
 }

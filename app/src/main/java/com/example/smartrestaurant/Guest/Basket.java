@@ -129,7 +129,7 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
                 SimpleDateFormat currentTime = new SimpleDateFormat("HHmmss");
                 saveCurrentTime = currentTime.format(calendar.getTime());
 
-                productRandomKey = saveCurrentDate + saveCurrentTime;
+                productRandomKey = "A"+saveCurrentDate + saveCurrentTime;
 
                 HashMap<String, Object> productMap = new HashMap<>();
 
@@ -167,6 +167,12 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
                               @Override
                               public void onComplete(@NonNull Task<Void> task) {
 
+                              }
+                          });
+                  InfoRef.child(productRandomKey).updateChildren(productMap)
+                          .addOnCompleteListener(new OnCompleteListener<Void>() {
+                              @Override
+                              public void onComplete(@NonNull Task<Void> task) {
                               }
                           });
               }
@@ -210,6 +216,12 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
                                       Intent loginIntent = new Intent(Basket.this, GuestActivity.class);
                                       startActivity(loginIntent);
                                   }
+                              }
+                          });
+                  InfoRef.child(productRandomKey).updateChildren(productMap)
+                          .addOnCompleteListener(new OnCompleteListener<Void>() {
+                              @Override
+                              public void onComplete(@NonNull Task<Void> task) {
                               }
                           });
               }

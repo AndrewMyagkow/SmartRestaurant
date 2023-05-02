@@ -101,7 +101,7 @@ public class WaiterActivity extends AppCompatActivity {
                 holder.txttable.setText(model.getTable());
                 holder.txtsymma.setText(model.getSymma());
                 holder.txtpid.setText(model.getPid());
-                //holder.txtBarman.setText(model.getBarman());
+                holder.txtPlace.setText(model.getPlace());
             }
 
             @NonNull
@@ -139,7 +139,7 @@ public class WaiterActivity extends AppCompatActivity {
 
 
     public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView txtZakaz, txtKomment,txttable, txtsymma,txtpid,txtBarman;
+        public TextView txtZakaz, txtKomment,txttable, txtsymma,txtpid,txtPlace;
         public ItemClickListener listner;
         public ProductViewHolder(View itemView) {
             super(itemView);
@@ -148,7 +148,8 @@ public class WaiterActivity extends AppCompatActivity {
             txtKomment= itemView.findViewById(R.id.komment_waiter);
             txttable = itemView.findViewById(R.id.table_waiter);
             txtsymma = itemView.findViewById(R.id.symma_waiter);
-            txtpid = itemView.findViewById(R.id.pid_waiter);;
+            txtpid = itemView.findViewById(R.id.pid_waiter);
+            txtPlace = itemView.findViewById(R.id.place_waiter_zakaz);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -160,13 +161,13 @@ public class WaiterActivity extends AppCompatActivity {
                     String table = txttable.getText().toString();
                     String symma = txtsymma.getText().toString();
                     String pid = txtpid.getText().toString();
-//                    String bar = txtBarman.getText().toString();
+                    String place = txtPlace.getText().toString();
                     intent.putExtra("zakaz", zakaz);
                     intent.putExtra("koment", koment);
                     intent.putExtra("table", table);
                     intent.putExtra("symma", symma);
                     intent.putExtra("pid", pid);
-                   // intent.putExtra("bar", bar);
+                    intent.putExtra("place", place);
                     startActivity(intent);
                 }
             });

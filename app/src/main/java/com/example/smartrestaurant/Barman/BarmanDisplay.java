@@ -28,7 +28,8 @@ public class BarmanDisplay extends AppCompatActivity {
     private ImageView back;
     private Button done;
     private DatabaseReference ProductsRef;
-    //
+    private DatabaseReference InfoRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +58,7 @@ public class BarmanDisplay extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ProductsRef = FirebaseDatabase.getInstance().getReference().child("ReadyOrder");
+                InfoRef = FirebaseDatabase.getInstance().getReference().child("InfoAdmin");
                 Calendar calendar = Calendar.getInstance();
 
                 SimpleDateFormat currentDate = new SimpleDateFormat("ddMMyyyy");
@@ -65,7 +67,7 @@ public class BarmanDisplay extends AppCompatActivity {
                 SimpleDateFormat currentTime = new SimpleDateFormat("HHmmss");
                 saveCurrentTime = currentTime.format(calendar.getTime());
 
-                productRandomKey = saveCurrentDate + saveCurrentTime;
+                productRandomKey ="B"+pid;
 
 
                 SaveProductInfoToDatabase();
@@ -76,13 +78,16 @@ public class BarmanDisplay extends AppCompatActivity {
             private void SaveProductInfoToDatabase() {
                 HashMap<String, Object> productMap = new HashMap<>();
 
-                productMap.put("pid", productRandomKey);
+                productMap.put("pid", pid);
                 productMap.put("date", saveCurrentDate);
                 productMap.put("time", saveCurrentTime);
                 productMap.put("zakaz", zak);
                 productMap.put("table", tab);
                 productMap.put("symma", sym);
                 productMap.put("komment", kom);
+                productMap.put("admin", "Готово");
+                productMap.put("place", "Бар");
+
 
 
 
@@ -94,6 +99,15 @@ public class BarmanDisplay extends AppCompatActivity {
 
                             }
                         });
+                InfoRef.child(productRandomKey).updateChildren(productMap)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+
+                            }
+                        });
+                InfoRef = FirebaseDatabase.getInstance().getReference();
+                InfoRef.child("InfoAdmin/"+pid).setValue(null);
             }
 
         });

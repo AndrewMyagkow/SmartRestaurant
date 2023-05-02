@@ -26,7 +26,7 @@
             android:textColor="#B1B2B3"
             android:textSize="15dp" />
         <TextView
-            android:text="Заказ"
+            android:id="@+id/place_waiter_zakaz"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginStart="70dp"
