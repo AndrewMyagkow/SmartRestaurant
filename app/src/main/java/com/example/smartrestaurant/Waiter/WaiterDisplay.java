@@ -107,6 +107,8 @@ public class WaiterDisplay extends AppCompatActivity {
                     InfoRef = FirebaseDatabase.getInstance().getReference();
                     InfoRef.child("ReadyOrder/C" + pid).setValue(null);
                 }
+                Intent intent = new Intent(WaiterDisplay.this, WaiterActivity.class);
+                startActivity(intent);
             }
 
         });
