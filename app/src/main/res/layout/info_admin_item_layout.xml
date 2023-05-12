@@ -3,11 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="84dp"
         android:background="#52535A">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="84dp"
+        android:background="@drawable/inputdate"
+        android:layout_margin="7dp">
         <TextView
 
             android:id="@+id/text_date_and_id"
@@ -38,7 +42,7 @@
         <TextView
             android:id="@+id/time_and_status"
             android:layout_width="100dp"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:layout_marginTop="20dp"
             android:layout_marginStart="140dp"
             android:textAlignment="center"
@@ -87,6 +91,7 @@
 
 
 
+    </RelativeLayout>
     </RelativeLayout>
 
 </com.google.android.material.card.MaterialCardView>

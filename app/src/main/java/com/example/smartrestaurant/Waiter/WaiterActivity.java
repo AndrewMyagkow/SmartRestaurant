@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.smartrestaurant.Admin.Message.Message;
 import com.example.smartrestaurant.Cook.CookActivity;
 import com.example.smartrestaurant.Cook.CookDisplay;
+import com.example.smartrestaurant.Guest.SettingsGuest;
 import com.example.smartrestaurant.Interface.ItemClickListener;
 import com.example.smartrestaurant.Model.ReadyOrder;
 import com.example.smartrestaurant.Model.Zakaz;
@@ -96,13 +97,33 @@ public class WaiterActivity extends AppCompatActivity {
         FirebaseRecyclerAdapter<ReadyOrder, WaiterActivity.ProductViewHolder> adapter = new FirebaseRecyclerAdapter<ReadyOrder, WaiterActivity.ProductViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull @NotNull WaiterActivity.ProductViewHolder holder, int i, @NonNull @NotNull ReadyOrder model) {
-                holder.txtZakaz.setText(model.getZakaz());
-                holder.txtKomment.setText(model.getKomment());
-                holder.txttable.setText(model.getTable());
-                holder.txtsymma.setText(model.getSymma());
-                holder.txtpid.setText(model.getPid());
-                holder.txtPlace.setText(model.getPlace());
+                if (!model.getZakaz().equals("Подойдите пожалуйста к столу № "))
+                {
+                    if (!model.getZakaz().equals("Подойдите пожалуйста к администратору")) {
+                        holder.txtZakaz.setText(model.getZakaz());
+                        holder.txtKomment.setText(model.getKomment());
+                        holder.txttable.setText(model.getTable());
+                        holder.txtsymma.setText(model.getSymma());
+                        holder.txtpid.setText(model.getPid());
+                        holder.txtPlace.setText(model.getPlace());
+                    }
+                    else
+                    {
+                        holder.txtpid.setText(model.getPid());
+                        holder.txtVizov.setText(model.getZakaz());
+                        holder.txtTextNum.setText("");
+
+                    }
+                }
+                else
+                {   holder.txtpid.setText(model.getPid());
+                    holder.txtVizov.setText(model.getZakaz()+model.getTable());
+                    holder.txtTextNum.setText("");
+
+                }
+
             }
+
 
             @NonNull
             @NotNull
@@ -139,7 +160,7 @@ public class WaiterActivity extends AppCompatActivity {
 
 
     public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView txtZakaz, txtKomment,txttable, txtsymma,txtpid,txtPlace;
+        public TextView txtZakaz, txtKomment,txttable, txtsymma,txtpid,txtPlace,txtTextNum,txtVizov;
         public ItemClickListener listner;
         public ProductViewHolder(View itemView) {
             super(itemView);
@@ -150,25 +171,41 @@ public class WaiterActivity extends AppCompatActivity {
             txtsymma = itemView.findViewById(R.id.symma_waiter);
             txtpid = itemView.findViewById(R.id.pid_waiter);
             txtPlace = itemView.findViewById(R.id.place_waiter_zakaz);
+            txtTextNum = itemView.findViewById(R.id.text_num_table);
+            txtVizov = itemView.findViewById(R.id.vizov_waiter);
+
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
-                    Intent intent = new Intent(WaiterActivity.this, WaiterDisplay.class);
                     String zakaz = txtZakaz.getText().toString();
-                    String koment = txtKomment.getText().toString();
-                    String table = txttable.getText().toString();
-                    String symma = txtsymma.getText().toString();
-                    String pid = txtpid.getText().toString();
-                    String place = txtPlace.getText().toString();
-                    intent.putExtra("zakaz", zakaz);
-                    intent.putExtra("koment", koment);
-                    intent.putExtra("table", table);
-                    intent.putExtra("symma", symma);
-                    intent.putExtra("pid", pid);
-                    intent.putExtra("place", place);
-                    startActivity(intent);
+                    if (zakaz.equals(""))
+                    {
+                        String pid = txtpid.getText().toString();
+                        ProductsRef = FirebaseDatabase.getInstance().getReference();
+                        ProductsRef.child("ReadyOrder/"+pid).setValue(null);
+                        finish();
+                        overridePendingTransition(0, 0);
+                        startActivity(getIntent());
+                        overridePendingTransition(0, 0);
+                    }
+                    else
+                    {
+                        Intent intent = new Intent(WaiterActivity.this, WaiterDisplay.class);
+                        String koment = txtKomment.getText().toString();
+                        String table = txttable.getText().toString();
+                        String symma = txtsymma.getText().toString();
+                        String pid = txtpid.getText().toString();
+                        String place = txtPlace.getText().toString();
+                        intent.putExtra("zakaz", zakaz);
+                        intent.putExtra("koment", koment);
+                        intent.putExtra("table", table);
+                        intent.putExtra("symma", symma);
+                        intent.putExtra("pid", pid);
+                        intent.putExtra("place", place);
+                        startActivity(intent);
+                    }
                 }
             });
         }

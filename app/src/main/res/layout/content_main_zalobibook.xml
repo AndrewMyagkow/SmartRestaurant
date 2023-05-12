@@ -10,7 +10,7 @@
         android:id="@+id/recycler_menuq"
         android:layout_width="match_parent"
         android:layout_height="680dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="55dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="2"
         app:layout_constraintBottom_toBottomOf="parent"

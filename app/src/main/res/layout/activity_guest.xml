@@ -22,6 +22,24 @@
             android:src="@drawable/settingguest"
             tools:ignore="MissingConstraints" />
         <ImageView
+            android:id="@+id/coll_waiter"
+            android:layout_width="40dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="230dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/challenge"
+            tools:ignore="MissingConstraints" />
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="23dp"
+            android:textColor="#B1B2B3"
+            android:layout_marginLeft="215dp"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:textSize="9dp"
+            android:text="Вызов оффицианта"
+            />
+        <ImageView
             android:id="@+id/zalobiguest"
             android:layout_width="40dp"
             android:layout_height="40dp"

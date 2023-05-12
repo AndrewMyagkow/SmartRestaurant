@@ -4,13 +4,19 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
     <RelativeLayout
-        android:layout_width="346dp"
+        android:layout_width="match_parent"
         android:layout_height="110dp"
         android:background="#52535A">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:background="@drawable/inputdate"
+        android:layout_margin="7dp">
+
         <TextView
             android:id="@+id/zakaz_cook"
-            android:layout_width="140dp"
+            android:layout_width="170dp"
             android:layout_height="110dp"
             android:text="Заказ"
             android:textAlignment="center"
@@ -25,13 +31,14 @@
 
         <TextView
             android:id="@+id/komment_cook"
-            android:layout_width="140dp"
+            android:layout_width="match_parent"
             android:layout_height="110dp"
-            android:layout_marginStart="140dp"
+            android:layout_marginStart="170dp"
             android:text="Комментарий"
             android:textAlignment="center"
             android:textColor="#B1B2B3"
             android:textSize="15dp" />
+
         <TextView
             android:id="@+id/table"
             android:layout_width="0dp"
@@ -50,5 +57,7 @@
 
 
     </RelativeLayout>
+    </RelativeLayout>
+
 
 </com.google.android.material.card.MaterialCardView>

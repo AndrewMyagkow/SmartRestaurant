@@ -3,11 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:background="#52535A">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@drawable/inputdate"
+        android:layout_margin="7dp">
 
         <TextView
             android:id="@+id/name_guest_zalobi"
@@ -55,6 +59,7 @@
             android:textSize="17dp" />
 
 
+    </RelativeLayout>
     </RelativeLayout>
 
 </com.google.android.material.card.MaterialCardView>

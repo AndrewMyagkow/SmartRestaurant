@@ -2,20 +2,32 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Cook.SetingsCookActivity"
     android:background="#52535A">
+    <RelativeLayout
+        android:id="@+id/settings_cook"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Выход из аккауна"
+        android:textSize="15sp"
+        android:textColor="#B1B2B3"
+        android:layout_marginTop="500dp"
+        android:layout_marginStart="20dp"/>
     <Button
         android:id="@+id/CookExitBtn"
-        android:layout_width="230dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="58dp"
-        android:layout_marginBottom="496dp"
-        android:text="@string/NameBtnExitBarman"
+        android:layout_marginTop="490dp"
+        android:layout_marginStart="160dp"
+        android:text="Выход"
 
         />
+</RelativeLayout>
 
 </RelativeLayout>

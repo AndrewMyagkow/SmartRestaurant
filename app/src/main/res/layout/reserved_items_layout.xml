@@ -3,12 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+    <RelativeLayout
 
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#52535A">
     <RelativeLayout
         android:id="@+id/relativereserved"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#52535A">
+        android:layout_height="70dp"
+        android:layout_margin="7dp"
+        android:background="@drawable/inputdate">
         <TextView
 
             android:id="@+id/date_text"
@@ -84,7 +89,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="115dp"
+            android:layout_marginLeft="105dp"
             android:text="**"
             android:textAlignment="center"
             android:textColor="#B1B2B3"
@@ -94,7 +99,7 @@
             android:layout_height="30dp"
             android:layout_marginTop="15dp"
             android:text=":"
-            android:layout_marginLeft="145dp"
+            android:layout_marginLeft="135dp"
 
             android:textColor="#B1B2B3"
             android:textSize="25dp" />
@@ -104,17 +109,17 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="150dp"
+            android:layout_marginLeft="140dp"
             android:text="**"
             android:textAlignment="center"
             android:textColor="#B1B2B3"
             android:textSize="15dp" />
         <TextView
 
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_marginLeft="185dp"
-            android:text="Кол-во мест"
+            android:text="Мест"
             android:textAlignment="center"
             android:textColor="#B1B2B3"
             android:textSize="15dp" />
@@ -124,16 +129,16 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="220dp"
+            android:layout_marginLeft="187dp"
             android:text="**"
             android:textAlignment="center"
             android:textColor="#B1B2B3"
             android:textSize="15dp" />
         <TextView
 
-            android:layout_width="100dp"
+            android:layout_width="match_parent"
             android:layout_height="20dp"
-            android:layout_marginLeft="270dp"
+            android:layout_marginLeft="225dp"
             android:text="ФИО"
             android:textAlignment="center"
             android:textColor="#B1B2B3"
@@ -142,16 +147,17 @@
 
         <TextView
             android:id="@+id/namereservedguest"
-            android:layout_width="130dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="270dp"
+            android:layout_marginLeft="225dp"
             android:text="ФИО"
             android:textAlignment="center"
             android:textColor="#B1B2B3"
             android:textSize="15dp" />
 
 
+    </RelativeLayout>
     </RelativeLayout>
 
 </com.google.android.material.card.MaterialCardView>

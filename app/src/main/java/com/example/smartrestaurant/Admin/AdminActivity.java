@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.NotificationManager;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,16 +16,21 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.smartrestaurant.Admin.Menu.HomeActivity;
 import com.example.smartrestaurant.Admin.Message.Message;
 import com.example.smartrestaurant.Admin.Reserved.ReservedActivity;
+import com.example.smartrestaurant.Guest.GuestActivity;
+import com.example.smartrestaurant.Guest.SettingsGuest;
 import com.example.smartrestaurant.Model.Reserved;
 import com.example.smartrestaurant.R;
 import com.example.smartrestaurant.ViewHolder.InfoAdminViewHolder;
 import com.example.smartrestaurant.Admin.ZalobiBook.ZalobiBookActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -33,13 +39,15 @@ import org.jetbrains.annotations.NotNull;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 
 public class AdminActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-    private String date,mounth,year,clock,minuts,info,secund;
-    int fl=0;
-    private ImageView biznes,writebook,menu,chat,reserved;
+    private String date,mounth,year,clock,minuts, pid,saveCurrentDate, saveCurrentTime;
+    private ImageView biznes,writebook,menu,chat,reserved,call;
     private ImageView setings,zalobi;
     DatabaseReference InfoRef;
+    private DatabaseReference Admin;
+    private ProgressDialog loadingBar;
     Handler handler;
     int limit = 40;
     int count = 0;
@@ -54,6 +62,7 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
+        loadingBar = new ProgressDialog(this);
 
 
         InfoRef = FirebaseDatabase.getInstance().getReference().child("InfoAdmin");
@@ -195,6 +204,42 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
                 count=41;
                 Intent intent = new Intent(AdminActivity.this, ZalobiBookActivity.class);
                 startActivity(intent);
+            }
+        });
+        call = findViewById(R.id.call_admin);
+        call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Admin = FirebaseDatabase.getInstance().getReference().child("ReadyOrder");
+                Calendar calendar = Calendar.getInstance();
+
+                SimpleDateFormat currentDate = new SimpleDateFormat("ddMMyyyy");
+                saveCurrentDate = currentDate.format(calendar.getTime());
+
+                SimpleDateFormat currentTime = new SimpleDateFormat("HHmmss");
+                saveCurrentTime = currentTime.format(calendar.getTime());
+                pid = saveCurrentDate+saveCurrentTime;
+                SaveProductInfoToDatabase();
+            }
+
+            private void SaveProductInfoToDatabase() {
+                HashMap<String, Object> productMap = new HashMap<>();
+
+                productMap.put("pid", pid);
+                productMap.put("date", saveCurrentDate);
+                productMap.put("time", saveCurrentTime);
+                productMap.put("zakaz", "Подойдите пожалуйста к администратору");
+
+
+
+                Admin.child(pid).updateChildren(productMap)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Toast.makeText(AdminActivity.this, "Оффициант скоро будет", Toast.LENGTH_SHORT).show();
+                                loadingBar.dismiss();
+                            }
+                        });
             }
         });
 
