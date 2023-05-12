@@ -15,6 +15,9 @@
         android:theme="@style/Theme.SmartRestaurant"
         tools:targetApi="31">
         <activity
+            android:name=".Admin.Menu.ChoiseMenu"
+            android:exported="false" />
+        <activity
             android:name=".Admin.BiznesDiisplay"
             android:exported="false" />
         <activity

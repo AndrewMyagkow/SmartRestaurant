@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.smartrestaurant.Admin.Menu.ChoiseMenu;
 import com.example.smartrestaurant.Admin.Menu.HomeActivity;
 import com.example.smartrestaurant.Admin.Message.Message;
 import com.example.smartrestaurant.Admin.Reserved.ReservedActivity;
@@ -169,7 +170,7 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
             @Override
             public void onClick(View view) {
                 count=41;
-                Intent intent = new Intent(AdminActivity.this, HomeActivity.class);
+                Intent intent = new Intent(AdminActivity.this, ChoiseMenu.class);
                 startActivity(intent);
             }
         });

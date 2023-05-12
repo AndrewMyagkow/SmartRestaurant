@@ -60,7 +60,7 @@ public class AddFoodActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AddFoodActivity.this, HomeActivity.class);
+                Intent intent = new Intent(AddFoodActivity.this, ChoiseMenu.class);
                 startActivity(intent);
             }
         });
@@ -188,7 +188,7 @@ public class AddFoodActivity extends AppCompatActivity {
                             loadingBar.dismiss();
                             Toast.makeText(AddFoodActivity.this, "Товар добавлен", Toast.LENGTH_SHORT).show();
 
-                            Intent loginIntent = new Intent(AddFoodActivity.this, HomeActivity.class);
+                            Intent loginIntent = new Intent(AddFoodActivity.this, ChoiseMenu.class);
                             startActivity(loginIntent);
                         }
                         else {

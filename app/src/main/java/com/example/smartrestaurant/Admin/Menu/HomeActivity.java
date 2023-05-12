@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.smartrestaurant.Admin.AdminActivity;
+import com.example.smartrestaurant.Guest.SettingsGuest;
 import com.example.smartrestaurant.Interface.ItemClickListener;
 import com.example.smartrestaurant.Model.Products;
 
@@ -49,9 +50,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import io.paperdb.Paper;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private ImageView back,add;
-    private AppBarConfiguration mAppBarConfiguration;
-    DatabaseReference ProductsRef;
+    private ImageView back;
+    private String Category;
+    static DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
 
@@ -63,7 +64,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
 
 
-
+        Bundle arguments = getIntent().getExtras();
+        Category = arguments.get("category").toString();
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
 
 
@@ -78,22 +80,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     protected void onStart() {
         super.onStart();
         back = findViewById(R.id.back);
-        add = findViewById(R.id.add);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this, AdminActivity.class);
+                Intent intent = new Intent(HomeActivity.this, ChoiseMenu.class);
                 startActivity(intent);
             }
         });
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this, AddFoodActivity.class);
-                startActivity(intent);
-            }
-        });
-
 
         FirebaseRecyclerOptions<Products> options = new FirebaseRecyclerOptions.Builder<Products>()
                 .setQuery(ProductsRef, Products.class).build();
@@ -102,9 +95,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             @Override
             protected void onBindViewHolder(@NonNull @NotNull ProductViewHolder holder, int i, @NonNull @NotNull Products model) {
                 holder.txtProductName.setText(model.getPname());
+                holder.txtID.setText(model.getPid());
                 holder.txtProductDescription.setText(model.getDescription());
-                holder.txtProductPrice.setText("Стоимость = " + model.getPrice() + " рублей");
+                holder.txtProductPrice.setText(model.getPrice() + " рублей");
                 Picasso.get().load(model.getImage()).into(holder.imageView);
+                if (!model.getCategory().equals(Category)) {
+                    holder.itemView.setVisibility(View.GONE);
+                    holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
+                }
             }
 
             @NonNull
@@ -136,9 +134,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         return false;
     }
-    public static class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView txtProductName, txtProductDescription, txtProductPrice, txtProductPrimer, txtProductCategory;
-        public ImageView imageView;
+    public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        public TextView txtProductName, txtProductDescription, txtProductPrice, txtID, txtProductCategory;
+        public ImageView imageView,delet;
         public ItemClickListener listner;
         private Context context;
 
@@ -152,6 +150,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             txtProductDescription = itemView.findViewById(R.id.product_description);
             txtProductPrice = itemView.findViewById(R.id.product_price);
             txtProductCategory = itemView.findViewById(R.id.add_category);
+            txtID = itemView.findViewById(R.id.pid_food);
+            delet =itemView.findViewById(R.id.delet_food);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -159,6 +159,18 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                    /* int position = getAdapterPosition();
                     Intent adminIntent = new Intent(context, AdminActivity.class);
                     context.startActivity(adminIntent);*/
+                }
+            });
+            delet.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String pid = txtID.getText().toString();
+                    ProductsRef = FirebaseDatabase.getInstance().getReference();
+                    ProductsRef.child("Products/"+pid).setValue(null);
+                    finish();
+                    overridePendingTransition(0, 0);
+                    startActivity(getIntent());
+                    overridePendingTransition(0, 0);
                 }
             });
         }
