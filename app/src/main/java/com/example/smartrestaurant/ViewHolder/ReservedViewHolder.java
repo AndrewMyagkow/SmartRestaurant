@@ -1,6 +1,7 @@
-package com.example.smartrestaurant.ViewHolder;
+/*package com.example.smartrestaurant.ViewHolder;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -15,6 +16,7 @@ public class ReservedViewHolder extends RecyclerView.ViewHolder implements View.
     public RelativeLayout txtrelative;
     public TextView txtNameGuest, txtDate, txtMounth, txtYear,txtClock,txtMinuts,txtKolvoGuest,txtDateText,txtTiming;
     public ItemClickListenerReserved listner;
+    public ImageView delet;
 
 
     public ReservedViewHolder(View itemView)
@@ -32,6 +34,7 @@ public class ReservedViewHolder extends RecyclerView.ViewHolder implements View.
         txtDateText = itemView.findViewById(R.id.date_text);
         txtTiming =itemView.findViewById(R.id.timing);
         txtrelative = itemView.findViewById(R.id.relativereserved);
+        delet = itemView.findViewById(R.id.delet_reserved);
 
 
 
@@ -48,3 +51,4 @@ public class ReservedViewHolder extends RecyclerView.ViewHolder implements View.
         listner.onClick(view, getAdapterPosition(), false);
     }
 }
+*/

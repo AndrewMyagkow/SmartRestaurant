@@ -6,12 +6,12 @@
     <RelativeLayout
 
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="100dp"
         android:background="#52535A">
     <RelativeLayout
         android:id="@+id/relativereserved"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="100dp"
         android:layout_margin="7dp"
         android:background="@drawable/inputdate">
         <TextView
@@ -78,7 +78,7 @@
             android:id="@+id/timing"
             android:layout_width="85dp"
             android:layout_height="20dp"
-            android:layout_marginLeft="100dp"
+            android:layout_marginLeft="110dp"
             android:text="Время"
             android:textAlignment="center"
             android:textColor="#B1B2B3"
@@ -89,7 +89,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="105dp"
+            android:layout_marginLeft="115dp"
             android:text="**"
             android:textAlignment="center"
             android:textColor="#B1B2B3"
@@ -99,7 +99,7 @@
             android:layout_height="30dp"
             android:layout_marginTop="15dp"
             android:text=":"
-            android:layout_marginLeft="135dp"
+            android:layout_marginLeft="145dp"
 
             android:textColor="#B1B2B3"
             android:textSize="25dp" />
@@ -109,7 +109,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="140dp"
+            android:layout_marginLeft="150dp"
             android:text="**"
             android:textAlignment="center"
             android:textColor="#B1B2B3"
@@ -118,7 +118,7 @@
 
             android:layout_width="wrap_content"
             android:layout_height="20dp"
-            android:layout_marginLeft="185dp"
+            android:layout_marginLeft="205dp"
             android:text="Мест"
             android:textAlignment="center"
             android:textColor="#B1B2B3"
@@ -129,16 +129,16 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="187dp"
+            android:layout_marginLeft="207dp"
             android:text="**"
             android:textAlignment="center"
             android:textColor="#B1B2B3"
             android:textSize="15dp" />
         <TextView
 
-            android:layout_width="match_parent"
+            android:layout_width="60dp"
             android:layout_height="20dp"
-            android:layout_marginLeft="225dp"
+            android:layout_marginTop="60dp"
             android:text="ФИО"
             android:textAlignment="center"
             android:textColor="#B1B2B3"
@@ -147,14 +147,27 @@
 
         <TextView
             android:id="@+id/namereservedguest"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="225dp"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="60dp"
             android:text="ФИО"
             android:textAlignment="center"
             android:textColor="#B1B2B3"
             android:textSize="15dp" />
+        <ImageView
+            android:id="@+id/delet_reserved"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/delete"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="285dp"
+            />
+        <TextView
+            android:id="@+id/pid_reserved"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            />
 
 
     </RelativeLayout>

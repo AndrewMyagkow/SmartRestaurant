@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,10 +18,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartrestaurant.Admin.AdminActivity;
+import com.example.smartrestaurant.Interface.ItemClickListenerReserved;
 import com.example.smartrestaurant.Model.Reserved;
 import com.example.smartrestaurant.R;
 
-import com.example.smartrestaurant.ViewHolder.ReservedViewHolder;
+//import com.example.smartrestaurant.ViewHolder.ReservedViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.navigation.NavigationView;
@@ -33,14 +36,10 @@ import java.util.Calendar;
 
 public class ReservedActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private ImageView back,add;
-    private int fl;
-    private String date,mounth,year,clock,minuts,addclock,addminuts,info;
+    private String date,mounth,year,clock,minuts;
     DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
-    RecyclerView.LayoutManager layoutManager;
-    private NotificationManager notificationManager;
-    private static final int NOTIFY_ID = 1;
-    private static final String CHANNEL_ID = "CHANNEL_ID";
+
 
 
     @Override
@@ -94,6 +93,7 @@ public class ReservedActivity extends AppCompatActivity implements NavigationVie
                     holder.txtClock.setText(model.getClock());
                     holder.txtMinuts.setText(model.getMinuts());
                     holder.txtKolvoGuest.setText(model.getKolvoguest());
+                    holder.txtID.setText(model.getPid());
 
                     Calendar calendar = Calendar.getInstance();
                     SimpleDateFormat currentDate = new SimpleDateFormat("dd");
@@ -162,4 +162,59 @@ public class ReservedActivity extends AppCompatActivity implements NavigationVie
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         return false;
     }
+    public class ReservedViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
+
+    {
+        public RelativeLayout txtrelative;
+        public TextView txtNameGuest, txtDate, txtMounth, txtYear,txtClock,txtMinuts,txtKolvoGuest,txtDateText,txtTiming,txtID;
+        public ItemClickListenerReserved listner;
+        public ImageView delet;
+
+
+        public ReservedViewHolder(View itemView)
+        {
+            super(itemView);
+
+
+            txtNameGuest = itemView.findViewById(R.id.namereservedguest);
+            txtDate = itemView.findViewById(R.id.date);
+            txtMounth = itemView.findViewById(R.id.mounth);
+            txtYear = itemView.findViewById(R.id.year);
+            txtClock = itemView.findViewById(R.id.clock);
+            txtMinuts = itemView.findViewById(R.id.minuts);
+            txtKolvoGuest = itemView.findViewById(R.id.kolvoguest);
+            txtDateText = itemView.findViewById(R.id.date_text);
+            txtTiming =itemView.findViewById(R.id.timing);
+            txtrelative = itemView.findViewById(R.id.relativereserved);
+            delet = itemView.findViewById(R.id.delet_reserved);
+            txtID = itemView.findViewById(R.id.pid_reserved);
+
+            delet.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String pid = txtID.getText().toString();
+                    ProductsRef = FirebaseDatabase.getInstance().getReference();
+                    ProductsRef.child("Reserved/"+pid).setValue(null);
+                    finish();
+                    overridePendingTransition(0, 0);
+                    startActivity(getIntent());
+                    overridePendingTransition(0, 0);
+                }
+            });
+
+        }
+
+
+        public void setItemClickListner(ItemClickListenerReserved listner)
+        {
+            this.listner = listner;
+        }
+
+        @Override
+        public void onClick(View view)
+        {
+            listner.onClick(view, getAdapterPosition(), false);
+        }
+    }
+
 }
