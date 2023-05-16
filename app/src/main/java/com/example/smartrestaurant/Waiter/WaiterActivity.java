@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.smartrestaurant.Admin.Menu.ChoiseMenu;
 import com.example.smartrestaurant.Admin.Message.Message;
 import com.example.smartrestaurant.Cook.CookActivity;
 import com.example.smartrestaurant.Cook.CookDisplay;
@@ -68,7 +69,8 @@ public class WaiterActivity extends AppCompatActivity {
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(WaiterActivity.this, MenuWaiterActivity.class);
+                Intent intent = new Intent(WaiterActivity.this, ChoiseMenu.class);
+                intent.putExtra("role", "Оффициант");
                 startActivity(intent);
             }
         });

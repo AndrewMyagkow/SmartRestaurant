@@ -61,6 +61,7 @@ public class AddFoodActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(AddFoodActivity.this, ChoiseMenu.class);
+                intent.putExtra("role", "Администратор");
                 startActivity(intent);
             }
         });

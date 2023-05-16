@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.smartrestaurant.Admin.Menu.ChoiseMenu;
 import com.example.smartrestaurant.Admin.Menu.HomeActivity;
 import com.example.smartrestaurant.Admin.Message.Message;
 import com.example.smartrestaurant.Cook.CookActivity;
@@ -30,8 +31,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import org.jetbrains.annotations.NotNull;
 
 public class BarmanActivity extends AppCompatActivity {
-    private ImageView writebook,chat;
-    private ImageView setings;
+    private ImageView writebook,chat,menu,setings;
     DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
 
@@ -61,6 +61,14 @@ public class BarmanActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(BarmanActivity.this, WriteBookBarman.class);
+                startActivity(intent);
+            }
+        });
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(BarmanActivity.this, ChoiseMenu.class);
+                intent.putExtra("role", "Бармэн");
                 startActivity(intent);
             }
         });
@@ -114,6 +122,7 @@ public class BarmanActivity extends AppCompatActivity {
         writebook = findViewById(R.id.writebookbarman);
         chat = findViewById(R.id.chatbarman);
         setings = findViewById(R.id.setingsbarman);
+        menu = findViewById(R.id.menubarman);
     }
 
 

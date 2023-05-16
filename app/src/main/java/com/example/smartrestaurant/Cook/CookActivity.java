@@ -20,9 +20,11 @@ import android.widget.Toast;
 
 import com.example.smartrestaurant.Admin.AdminActivity;
 import com.example.smartrestaurant.Admin.Menu.AddFoodActivity;
+import com.example.smartrestaurant.Admin.Menu.ChoiseMenu;
 import com.example.smartrestaurant.Admin.Menu.HomeActivity;
 import com.example.smartrestaurant.Admin.Message.Message;
 
+import com.example.smartrestaurant.Barman.BarmanActivity;
 import com.example.smartrestaurant.Entry.LoginActivity;
 import com.example.smartrestaurant.Interface.ItemClickListener;
 import com.example.smartrestaurant.Model.Products;
@@ -38,8 +40,7 @@ import com.squareup.picasso.Picasso;
 import org.jetbrains.annotations.NotNull;
 
 public class CookActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private ImageView writebook,chat;
-    private ImageView setings;
+    private ImageView writebook,chat,menu,setings;
     DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
 
@@ -70,6 +71,14 @@ public class CookActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(CookActivity.this, WriteBookCook.class);
+                startActivity(intent);
+            }
+        });
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CookActivity.this, ChoiseMenu.class);
+                intent.putExtra("role", "Повар");
                 startActivity(intent);
             }
         });
@@ -126,6 +135,7 @@ public class CookActivity extends AppCompatActivity implements NavigationView.On
         writebook = findViewById(R.id.writebookcook);
         chat = findViewById(R.id.chatcook);
         setings = findViewById(R.id.setingscook);
+        menu = findViewById(R.id.menucook);
     }
 
     @Override

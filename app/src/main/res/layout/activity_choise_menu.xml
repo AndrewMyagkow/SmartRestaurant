@@ -31,6 +31,7 @@
             android:src="@drawable/add"
             tools:ignore="MissingConstraints" />
         <TextView
+            android:id="@+id/textaddposition"
             android:layout_width="100dp"
             android:layout_height="23dp"
             android:textColor="#B1B2B3"

@@ -18,6 +18,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartrestaurant.Admin.AdminActivity;
+import com.example.smartrestaurant.Admin.Menu.ChoiseMenu;
+import com.example.smartrestaurant.Admin.Menu.HomeActivity;
 import com.example.smartrestaurant.Barman.BarmanActivity;
 import com.example.smartrestaurant.Cook.CookActivity;
 import com.example.smartrestaurant.Model.Chat;
@@ -80,29 +82,23 @@ public class Message extends AppCompatActivity implements NavigationView.OnNavig
        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                switch (Role) {
-                    case "Администратор": {
-                        Intent intent = new Intent(Message.this, AdminActivity.class);
-                        startActivity(intent);
-                        break;
-                    }
-                    case "Повар": {
-                        Intent intent = new Intent(Message.this, CookActivity.class);
-                        startActivity(intent);
-                        break;
-                    }
-                    case "Бармэн": {
-                        Intent intent = new Intent(Message.this, BarmanActivity.class);
-                        startActivity(intent);
-                        break;
-                    }
-                    case "Оффициант": {
-                        Intent intent = new Intent(Message.this, WaiterActivity.class);
-                        startActivity(intent);
-                        break;
-                    }
-                }
 
+                if (Role.equals("Администратор")) {
+                    Intent intent = new Intent(Message.this, AdminActivity.class);
+                    startActivity(intent);
+                }
+                if (Role.equals("Повар")) {
+                    Intent intent = new Intent(Message.this, CookActivity.class);
+                    startActivity(intent);
+                }
+                if (Role.equals("Бармэн")) {
+                    Intent intent = new Intent(Message.this, BarmanActivity.class);
+                    startActivity(intent);
+                }
+                if (Role.equals("Оффициант")) {
+                    Intent intent = new Intent(Message.this, WaiterActivity.class);
+                    startActivity(intent);
+                }
 
             }
         });

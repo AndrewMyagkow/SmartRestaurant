@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.smartrestaurant.Admin.AdminActivity;
+import com.example.smartrestaurant.Barman.BarmanActivity;
+import com.example.smartrestaurant.Cook.CookActivity;
 import com.example.smartrestaurant.Guest.SettingsGuest;
 import com.example.smartrestaurant.Interface.ItemClickListener;
 import com.example.smartrestaurant.Model.Products;
@@ -21,6 +23,7 @@ import com.example.smartrestaurant.R;
 
 import com.example.smartrestaurant.Entry.LoginActivity;
 import com.example.smartrestaurant.Entry.RegisterActivity;
+import com.example.smartrestaurant.Waiter.WaiterActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -51,7 +54,7 @@ import io.paperdb.Paper;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private ImageView back;
-    private String Category;
+    private String Category,Role;
     static DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
@@ -66,6 +69,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         Bundle arguments = getIntent().getExtras();
         Category = arguments.get("category").toString();
+        Role = arguments.get("role").toString();
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
 
 
@@ -83,8 +87,27 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this, ChoiseMenu.class);
-                startActivity(intent);
+
+                if (Role.equals("Администратор")) {
+                    Intent intent = new Intent(HomeActivity.this, ChoiseMenu.class);
+                    intent.putExtra("role", Role);
+                    startActivity(intent);
+                }
+                if (Role.equals("Повар")) {
+                    Intent intent = new Intent(HomeActivity.this, ChoiseMenu.class);
+                    intent.putExtra("role", Role);
+                    startActivity(intent);
+                }
+                if (Role.equals("Бармэн")) {
+                    Intent intent = new Intent(HomeActivity.this, ChoiseMenu.class);
+                    intent.putExtra("role", Role);
+                    startActivity(intent);
+                }
+                if (Role.equals("Оффициант")) {
+                    Intent intent = new Intent(HomeActivity.this, ChoiseMenu.class);
+                    intent.putExtra("role", Role);
+                    startActivity(intent);
+                }
             }
         });
 

@@ -171,6 +171,7 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
             public void onClick(View view) {
                 count=41;
                 Intent intent = new Intent(AdminActivity.this, ChoiseMenu.class);
+                intent.putExtra("role", "Администратор");
                 startActivity(intent);
             }
         });
