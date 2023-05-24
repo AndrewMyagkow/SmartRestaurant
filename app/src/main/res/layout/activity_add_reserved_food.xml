@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#52535A"
+    android:background="@drawable/backgrount"
     tools:context=".Admin.Menu.AddFoodActivity">
 
 
@@ -148,28 +148,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Введите дату:"
-        android:textColor="#B1B2B3"
+        android:textColor="#52565A"
         android:layout_marginTop="70dp"
         android:layout_marginLeft="30dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Введите время:"
-        android:textColor="#B1B2B3"
+        android:textColor="#52565A"
         android:layout_marginTop="170dp"
         android:layout_marginLeft="30dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Кличество гостей:"
-        android:textColor="#B1B2B3"
+        android:textColor="#52565A"
         android:layout_marginTop="270dp"
         android:layout_marginLeft="30dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ФИО гостя:"
-        android:textColor="#B1B2B3"
+        android:textColor="#52565A"
         android:layout_marginTop="370dp"
         android:layout_marginLeft="30dp"/>
 
@@ -181,7 +181,7 @@
         android:layout_marginLeft="88dp"
         android:text="."
         android:textSize="25dp"
-        android:textColor="#B1B2B3"/>
+        android:textColor="#52565A"/>
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
@@ -190,12 +190,12 @@
         android:layout_marginLeft="157dp"
         android:text="."
         android:textSize="25dp"
-        android:textColor="#B1B2B3"/>
+        android:textColor="#52565A"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Сегодня"
-        android:textColor="#B1B2B3"
+        android:textColor="#52565A"
         android:layout_marginTop="90dp"
         android:layout_marginLeft="260dp"/>
 

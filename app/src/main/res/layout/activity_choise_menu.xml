@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#52535A"
+    android:background="@drawable/backgrount"
     tools:context=".Admin.Menu.ChoiseMenu">
     <RelativeLayout
 
@@ -55,7 +55,7 @@
     <TextView
         android:layout_width="60dp"
         android:layout_height="20dp"
-        android:textColor="#B1B2B3"
+        android:textColor="#52565A"
         android:layout_marginTop="200dp"
         android:layout_marginLeft="40dp"
         android:text="Салаты"
@@ -71,7 +71,7 @@
     <TextView
         android:layout_width="100dp"
         android:layout_height="20dp"
-        android:textColor="#B1B2B3"
+        android:textColor="#52565A"
         android:layout_marginTop="200dp"
         android:layout_marginLeft="130dp"
         android:text="Горячие блюда"
@@ -87,7 +87,7 @@
     <TextView
         android:layout_width="60dp"
         android:layout_height="20dp"
-        android:textColor="#B1B2B3"
+        android:textColor="#52565A"
         android:layout_marginTop="200dp"
         android:layout_marginLeft="267dp"
         android:text="Супы"
@@ -104,7 +104,7 @@
     <TextView
         android:layout_width="60dp"
         android:layout_height="20dp"
-        android:textColor="#B1B2B3"
+        android:textColor="#52565A"
         android:layout_marginTop="305dp"
         android:layout_marginLeft="38dp"
         android:text="Десерты"
@@ -120,7 +120,7 @@
     <TextView
         android:layout_width="60dp"
         android:layout_height="20dp"
-        android:textColor="#B1B2B3"
+        android:textColor="#52565A"
         android:layout_marginTop="305dp"
         android:layout_marginLeft="147dp"
         android:text="Закуски"
@@ -136,7 +136,7 @@
     <TextView
         android:layout_width="60dp"
         android:layout_height="20dp"
-        android:textColor="#B1B2B3"
+        android:textColor="#52565A"
         android:layout_marginTop="305dp"
         android:layout_marginLeft="255dp"
         android:text="Гарниры"
@@ -152,7 +152,7 @@
     <TextView
         android:layout_width="70dp"
         android:layout_height="20dp"
-        android:textColor="#B1B2B3"
+        android:textColor="#52565A"
         android:layout_marginTop="410dp"
         android:layout_marginLeft="40dp"
         android:text="Фаст Фуд"
@@ -168,7 +168,7 @@
     <TextView
         android:layout_width="60dp"
         android:layout_height="20dp"
-        android:textColor="#B1B2B3"
+        android:textColor="#52565A"
         android:layout_marginTop="410dp"
         android:layout_marginLeft="145dp"
         android:text="Напитки"
@@ -185,7 +185,7 @@
     <TextView
         android:layout_width="100dp"
         android:layout_height="20dp"
-        android:textColor="#B1B2B3"
+        android:textColor="#52565A"
         android:layout_marginTop="410dp"
         android:layout_marginLeft="240dp"
         android:text="Винная карта"

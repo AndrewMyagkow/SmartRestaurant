@@ -7,7 +7,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="#52535A">
+        android:background="@drawable/backgrount">
     <RelativeLayout
         android:id="@+id/relativereserved"
         android:layout_width="match_parent"

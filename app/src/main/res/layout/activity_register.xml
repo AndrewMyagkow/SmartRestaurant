@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Entry.RegisterActivity"
-    android:background="#52535A">
+    android:background="@drawable/backgrount">
     <ImageView
         android:id="@+id/app_logo"
         android:layout_width="350dp"
@@ -25,8 +25,8 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="230dp"
         android:hint="Придумайте пароль"
-        android:textColorHint="#B5B5B8"
-        android:textColor="#B5B5B8"
+        android:textColorHint="#52565A"
+        android:textColor="#52565A"
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:textStyle="bold"
@@ -41,10 +41,10 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="170dp"
         android:hint="Придумайте id"
-        android:textColorHint="#B5B5B8"
+        android:textColorHint="#52565A"
         android:inputType="number"
         android:minHeight="48dp"
-        android:textColor="#B5B5B8"
+        android:textColor="#52565A"
 
         android:textStyle="bold" />
 
@@ -60,7 +60,7 @@
         android:layout_marginBottom="109dp"
         android:entries="@array/role"
         android:hint="Роль"
-        android:textColor="#B5B5B8"
+        android:textColor="#52565A"
         android:minHeight="48dp"
         android:textStyle="bold"
         />
@@ -74,9 +74,9 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="350dp"
         android:hint="Фамилия"
-        android:textColorHint="#B5B5B8"
+        android:textColorHint="#52565A"
         android:minHeight="48dp"
-        android:textColor="#B5B5B8"
+        android:textColor="#52565A"
 
         android:textStyle="bold" />
     <EditText
@@ -89,9 +89,9 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="410dp"
         android:hint="Имя"
-        android:textColorHint="#B5B5B8"
+        android:textColorHint="#52565A"
         android:minHeight="48dp"
-        android:textColor="#B5B5B8"
+        android:textColor="#52565A"
 
         android:textStyle="bold" />
     <EditText
@@ -105,9 +105,9 @@
         android:layout_marginBottom="290dp"
         android:hint="Номер телефона"
         android:inputType="number"
-        android:textColorHint="#B5B5B8"
+        android:textColorHint="#52565A"
         android:minHeight="48dp"
-        android:textColor="#B5B5B8"
+        android:textColor="#52565A"
 
         android:textStyle="bold" />
     <Button
@@ -135,7 +135,7 @@
         android:layout_marginEnd="167dp"
         android:layout_marginBottom="100dp"
         android:text="Выберите роль"
-        android:textColor="#B5B5B8"
+        android:textColor="#52565A"
         android:textSize="19dp"
         android:textStyle="bold" />
 

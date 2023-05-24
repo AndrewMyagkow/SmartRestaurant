@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Cook.CookDisplay"
-    android:background="#52535A">
+    android:background="@drawable/backgrount">
     <RelativeLayout
         android:layout_width="360dp"
         android:layout_height="45dp"
@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:text="Дата"
         android:layout_marginStart="10dp"
-        android:textColor="#B5B5B8"
+        android:textColor="#52565A"
         android:textSize="15sp"
         android:layout_height="wrap_content"/>
 
@@ -53,7 +53,7 @@
         android:text="ID"
         android:layout_marginStart="10dp"
         android:layout_below="@+id/date_zakaz_display"
-        android:textColor="#B5B5B8"
+        android:textColor="#52565A"
         android:textSize="15sp"
         android:layout_height="wrap_content"/>
 
@@ -75,7 +75,7 @@
         android:text="Кухня"
         android:layout_marginStart="10dp"
         android:layout_below="@+id/ID_zakaz_display"
-        android:textColor="#B5B5B8"
+        android:textColor="#52565A"
         android:textSize="15sp"
         android:layout_height="wrap_content"/>
 
@@ -97,7 +97,7 @@
         android:text="Бар"
         android:layout_marginStart="180dp"
         android:layout_below="@+id/ID_zakaz_display"
-        android:textColor="#B5B5B8"
+        android:textColor="#52565A"
         android:textSize="15sp"
         android:layout_height="wrap_content"/>
 
@@ -120,7 +120,7 @@
         android:text="№ стола"
         android:layout_marginStart="10dp"
         android:layout_below="@+id/bar_zakaz_display"
-        android:textColor="#B5B5B8"
+        android:textColor="#52565A"
         android:textSize="15sp"
         android:layout_height="wrap_content"/>
 
@@ -143,7 +143,7 @@
         android:text="Сумма"
         android:layout_marginStart="10dp"
         android:layout_below="@+id/table_zakaz_display"
-        android:textColor="#B5B5B8"
+        android:textColor="#52565A"
         android:textSize="15sp"
         android:layout_height="wrap_content"/>
 

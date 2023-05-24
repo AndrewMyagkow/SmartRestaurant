@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Waiter.PayDisplay"
-    android:background="#52535A">
+    android:background="@drawable/backgrount">
     <RelativeLayout
         android:layout_width="360dp"
         android:layout_height="45dp"
@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:text="Кухня:"
         android:layout_marginStart="10dp"
-        android:textColor="#B5B5B8"
+        android:textColor="#52565A"
         android:textSize="15sp"
         android:layout_height="wrap_content"/>
 
@@ -53,7 +53,7 @@
         android:text="Бар:"
         android:layout_marginStart="10dp"
         android:layout_below="@+id/zakaz_display_pay"
-        android:textColor="#B5B5B8"
+        android:textColor="#52565A"
         android:textSize="15sp"
         android:layout_height="wrap_content"/>
 
@@ -75,7 +75,7 @@
         android:text="ID:"
         android:layout_marginStart="10dp"
         android:layout_below="@+id/bar_display_pay"
-        android:textColor="#B5B5B8"
+        android:textColor="#52565A"
         android:textSize="15sp"
         android:layout_height="wrap_content"/>
     <TextView
@@ -97,7 +97,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
         android:layout_below="@+id/textid"
-        android:textColor="#B5B5B8"
+        android:textColor="#52565A"
         android:textSize="15sp"
         android:layout_height="wrap_content"/>
     <TextView
@@ -118,7 +118,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
         android:layout_below="@+id/textnompay"
-        android:textColor="#B5B5B8"
+        android:textColor="#52565A"
         android:textSize="15sp"
         android:layout_height="wrap_content"/>
     <TextView

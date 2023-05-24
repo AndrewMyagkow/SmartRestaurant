@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Entry.LoginActivity"
-    android:background="#52535A">
+    android:background="@drawable/backgrount">
     <ImageView
         android:id="@+id/app_logo"
         android:layout_width="370dp"
@@ -25,10 +25,10 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="320dp"
         android:hint="Номер телефона"
-        android:textColorHint="#B5B5B8"
+        android:textColorHint="#52565A"
         android:inputType="number"
         android:minHeight="48dp"
-        android:textColor="#B5B5B8"
+        android:textColor="#52565A"
         android:textStyle="bold"
         tools:ignore="TextFields"
        />
@@ -44,9 +44,9 @@
         android:layout_marginBottom="240dp"
         android:hint="Пароль"
         android:inputType="textPassword"
-        android:textColorHint="#B5B5B8"
+        android:textColorHint="#52565A"
         android:minHeight="48dp"
-        android:textColor="#B5B5B8"
+        android:textColor="#52565A"
 
         android:textStyle="bold"
         />
@@ -62,7 +62,7 @@
         android:layout_marginEnd="190dp"
         android:layout_marginBottom="177dp"
         android:text="Запомнить меня"
-        android:textColor="#B5B5B8"
+        android:textColor="#52565A"
         tools:ignore="TouchTargetSizeCheck" />
 
 

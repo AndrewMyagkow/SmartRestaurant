@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Admin.ZalobiBook.ZalobiBookActivity"
-    android:background="#52535A">
+    android:background="@drawable/backgrount">
 
 
     <include layout="@layout/content_main_zalobibook"

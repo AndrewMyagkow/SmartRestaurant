@@ -6,7 +6,7 @@
     <RelativeLayout
         android:layout_width="346dp"
         android:layout_height="70dp"
-        android:background="#52535A">
+        android:background="@drawable/backgrount">
     <RelativeLayout
         android:layout_width="346dp"
         android:layout_height="70dp"

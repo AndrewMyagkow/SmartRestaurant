@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Admin.WriteBookActivity"
-    android:background="#52535A">
+    android:background="@drawable/backgrount">
 
 
 
