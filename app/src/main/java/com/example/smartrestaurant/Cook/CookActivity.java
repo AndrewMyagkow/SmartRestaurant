@@ -43,17 +43,14 @@ import org.jetbrains.annotations.NotNull;
 public class CookActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private ImageView writebook,chat,menu,setings;
     DatabaseReference ProductsRef;
-    Handler handler;
-    int limit = 40;
-    int count = 0;
+
     private RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cook);
         init();
-        handler = new Handler();
-        onEverySecond.run();
+
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -126,19 +123,7 @@ public class CookActivity extends AppCompatActivity implements NavigationView.On
         recyclerView.setAdapter(adapter);
         adapter.startListening();
     }
-    Runnable onEverySecond=new Runnable() {
-        public void run() {
-            count++;
-            if (count == limit) {
 
-                finish();
-                overridePendingTransition(0, 0);
-                startActivity(getIntent());
-                overridePendingTransition(0, 0);
-            } else {handler.postDelayed(onEverySecond, 1000);
-            }
-        }
-    };
     private void init()
     {
         writebook = findViewById(R.id.writebookcook);

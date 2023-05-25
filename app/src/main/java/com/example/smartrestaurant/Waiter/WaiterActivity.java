@@ -35,9 +35,6 @@ import org.jetbrains.annotations.NotNull;
 public class WaiterActivity extends AppCompatActivity {
     private ImageView writebook,menu,chat,pay;
     private ImageView setings;
-    Handler handler;
-    int limit = 40;
-    int count = 0;
     DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
     @Override
@@ -45,8 +42,7 @@ public class WaiterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_waiter);
         init();
-        handler = new Handler();
-        onEverySecond.run();
+
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -141,19 +137,7 @@ public class WaiterActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         adapter.startListening();
     }
-    Runnable onEverySecond=new Runnable() {
-        public void run() {
-            count++;
-            if (count == limit) {
 
-                finish();
-                overridePendingTransition(0, 0);
-                startActivity(getIntent());
-                overridePendingTransition(0, 0);
-            } else {handler.postDelayed(onEverySecond, 1000);
-            }
-        }
-    };
     private void init()
     {
         writebook = findViewById(R.id.writebookwaiter);

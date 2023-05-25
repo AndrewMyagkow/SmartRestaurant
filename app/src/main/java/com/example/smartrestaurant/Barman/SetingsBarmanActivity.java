@@ -24,22 +24,12 @@ public class SetingsBarmanActivity extends AppCompatActivity {
         barmanOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String UPK = Paper.book().read(Prevalent.UsingPhoneKey);
-                String UPasK = Paper.book().read(Prevalent.UsingPasswordKey);
-                assert UPK != null;
-                assert UPasK != null;
-                if((UPK.equals(""))&&(UPasK.equals("")))
-                {
-                    Intent intent = new Intent(SetingsBarmanActivity.this, MainActivity.class);
-                    startActivity(intent);
-                }
-                else
-                {
+
                     Paper.book().write(Prevalent.UsingPhoneKey, "");
                     Paper.book().write(Prevalent.UsingPasswordKey, "");
                     Intent intent = new Intent(SetingsBarmanActivity.this, MainActivity.class);
                     startActivity(intent);
-                }
+
             }
         });
     }

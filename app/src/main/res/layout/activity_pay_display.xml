@@ -44,7 +44,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:textColor="#B5B5B8"
+        android:textColor="#52565A"
         android:textSize="15sp"
         android:background="@drawable/inputdate"/>
     <TextView
@@ -66,7 +66,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:textColor="#B5B5B8"
+        android:textColor="#52565A"
         android:textSize="15sp"
         android:background="@drawable/inputdate"/>
     <TextView
@@ -87,7 +87,7 @@
         android:gravity="center"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:textColor="#B5B5B8"
+        android:textColor="#52565A"
         android:textSize="15sp"
         android:background="@drawable/inputdate"/>
     <TextView
@@ -109,7 +109,7 @@
         android:gravity="center"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:textColor="#B5B5B8"
+        android:textColor="#52565A"
         android:textSize="15sp"
         android:background="@drawable/inputdate"/>
     <TextView
@@ -130,7 +130,7 @@
         android:gravity="center"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:textColor="#B5B5B8"
+        android:textColor="#52565A"
         android:textSize="15sp"
         android:background="@drawable/inputdate"/>
     <Button

@@ -42,7 +42,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:textColor="#B5B5B8"
+        android:textColor="#52565A"
         android:textSize="15sp"
         android:background="@drawable/inputdate"/>
 
@@ -65,7 +65,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:textColor="#B5B5B8"
+        android:textColor="#52565A"
         android:textSize="15sp"
         android:background="@drawable/inputdate"/>
 
@@ -84,7 +84,7 @@
         android:layout_marginTop="445dp"
         android:layout_width="40dp"
         android:layout_marginStart="90dp"
-        android:textColor="#B5B5B8"
+        android:textColor="#52565A"
         android:textSize="15sp"
         android:layout_height="20dp"
         android:background="@drawable/inputdate"/>
