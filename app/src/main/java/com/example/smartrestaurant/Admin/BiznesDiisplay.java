@@ -15,7 +15,6 @@ import com.example.smartrestaurant.R;
 public class BiznesDiisplay extends AppCompatActivity {
     private ImageView back;
     private String table,symma,pid,kitchen,bar,date;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +27,6 @@ public class BiznesDiisplay extends AppCompatActivity {
         date = arguments.get("date").toString();
         pid = arguments.get("pid").toString();
         back = findViewById(R.id.back_biznes_display);
-
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

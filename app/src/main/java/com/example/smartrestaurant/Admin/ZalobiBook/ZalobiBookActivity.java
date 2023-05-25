@@ -32,27 +32,16 @@ public class ZalobiBookActivity extends AppCompatActivity implements NavigationV
     DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zalobibook);
-
-
-
-
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Feedback");
-
-
         recyclerView = findViewById(R.id.recycler_menuq);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-
-
     }
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -64,11 +53,8 @@ public class ZalobiBookActivity extends AppCompatActivity implements NavigationV
                 startActivity(intent);
             }
         });
-
-
         FirebaseRecyclerOptions<Feedback> options = new FirebaseRecyclerOptions.Builder<Feedback>()
                 .setQuery(ProductsRef, Feedback.class).build();
-
         FirebaseRecyclerAdapter<Feedback, FeedbackViewHolder> adapter = new FirebaseRecyclerAdapter<Feedback, FeedbackViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull @NotNull FeedbackViewHolder holder, int i, @NonNull @NotNull Feedback model) {
@@ -76,7 +62,6 @@ public class ZalobiBookActivity extends AppCompatActivity implements NavigationV
                 holder.txtTime.setText(model.getTime());
                 holder.txtFeedback.setText( model.getFeedback());
             }
-
             @NonNull
             @NotNull
             @Override
@@ -86,17 +71,13 @@ public class ZalobiBookActivity extends AppCompatActivity implements NavigationV
                 return holder;
             }
         };
-
         recyclerView.setAdapter(adapter);
         adapter.startListening();
-
-
     }
 
    @Override
     public void onBackPressed() {
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         return true;

@@ -25,7 +25,6 @@ public class PayDisplay extends AppCompatActivity {
     private String zak,tab,sym,pid,bar,saveCurrentDate,saveCurrentTime;
     private Button paidfor;
     private DatabaseReference PaidFor;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,13 +60,10 @@ public class PayDisplay extends AppCompatActivity {
             public void onClick(View view) {
                 PaidFor = FirebaseDatabase.getInstance().getReference().child("PaidFor");
                 Calendar calendar = Calendar.getInstance();
-
                 SimpleDateFormat currentDate = new SimpleDateFormat("dd.MM.yyyy");
                 saveCurrentDate = currentDate.format(calendar.getTime());
-
                 SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss");
                 saveCurrentTime = currentTime.format(calendar.getTime());
-
                 HashMap<String, Object> productMap = new HashMap<>();
 
                 productMap.put("pid", pid);
@@ -78,7 +74,6 @@ public class PayDisplay extends AppCompatActivity {
                 productMap.put("symma", sym);
                 productMap.put("bar", bar);
                 productMap.put("admin", "Оплачено");
-
 
                 PaidFor.child(pid).updateChildren(productMap)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -92,11 +87,8 @@ public class PayDisplay extends AppCompatActivity {
                 PaidFor= FirebaseDatabase.getInstance().getReference();
                 PaidFor.child("InfoAdmin/" + pid).setValue(null);
                 Intent intent = new Intent(PayDisplay.this, PayActivity.class);
-
                 startActivity(intent);
-
             }
-
         });
     }
 }

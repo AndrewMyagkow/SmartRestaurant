@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,15 +34,17 @@ import org.jetbrains.annotations.NotNull;
 public class BarmanActivity extends AppCompatActivity {
     private ImageView writebook,chat,menu,setings;
     DatabaseReference ProductsRef;
+    Handler handler;
+    int limit = 40;
+    int count = 0;
     private RecyclerView recyclerView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_barman);
         init();
-
-
+        handler = new Handler();
+        onEverySecond.run();
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,7 +81,6 @@ public class BarmanActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(layoutManager);
-
     }
     @Override
     protected void onStart() {
@@ -111,12 +113,22 @@ public class BarmanActivity extends AppCompatActivity {
                 return holder;
             }
         };
-
         recyclerView.setAdapter(adapter);
         adapter.startListening();
-
-
     }
+    Runnable onEverySecond=new Runnable() {
+        public void run() {
+            count++;
+            if (count == limit) {
+
+                finish();
+                overridePendingTransition(0, 0);
+                startActivity(getIntent());
+                overridePendingTransition(0, 0);
+            } else {handler.postDelayed(onEverySecond, 1000);
+            }
+        }
+    };
     private void init()
     {
         writebook = findViewById(R.id.writebookbarman);
@@ -124,8 +136,6 @@ public class BarmanActivity extends AppCompatActivity {
         setings = findViewById(R.id.setingsbarman);
         menu = findViewById(R.id.menubarman);
     }
-
-
     @Override
     public void onBackPressed() {
     }
@@ -134,7 +144,6 @@ public class BarmanActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         return true;
     }
-
 
     public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView txtZakaz, txtKomment,txttable, txtsymma,txtpid;
@@ -150,11 +159,9 @@ public class BarmanActivity extends AppCompatActivity {
             txttable = itemView.findViewById(R.id.table);
             txtsymma = itemView.findViewById(R.id.symma);
             txtpid = itemView.findViewById(R.id.pid);
-
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
                     Intent intent = new Intent(BarmanActivity.this,BarmanDisplay.class);
                     String zakaz = txtZakaz.getText().toString();
                     String koment = txtKomment.getText().toString();
@@ -170,8 +177,6 @@ public class BarmanActivity extends AppCompatActivity {
                 }
             });
         }
-
-
         public void setItemClickListner(ItemClickListener listner) {
             this.listner = listner;
         }
@@ -179,7 +184,6 @@ public class BarmanActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             listner.onClick(view, getAdapterPosition(), false);
-
         }
     }
 }

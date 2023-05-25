@@ -70,20 +70,15 @@ public class Primer extends AppCompatActivity implements NavigationView.OnNaviga
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.primer);
-
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
         recyclerView = findViewById(R.id.recycler_primer);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        //SettingsGuest sety = new SettingsGuest();
-        //String id = sety.getNumtab();
-
         loadingBar = new ProgressDialog(this);
     }
     @Override
@@ -122,30 +117,20 @@ public class Primer extends AppCompatActivity implements NavigationView.OnNaviga
         pokypki.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             /*   ProductsRef = FirebaseDatabase.getInstance().getReference()
-                        .child("Chat");
-                ProductsRef.removeValue();*/
-                //удаляет папку из firebase
                 AddBasket();
                 Intent intent = new Intent(Primer.this, Meny.class);
                 intent.putExtra("category", cat);
                 startActivity(intent);
             }
-
-
         });
-      // kolvo.setText(kolvobl);
-
         Bundle arguments = getIntent().getExtras();
         txtdeck = arguments.get("desk").toString();
         txtprice = arguments.get("price").toString();
         txtname = arguments.get("name").toString();
         cat = arguments.get("cat").toString();
         pid = arguments.get("pid").toString();
-
         FirebaseRecyclerOptions<Products> options = new FirebaseRecyclerOptions.Builder<Products>()
                 .setQuery(ProductsRef, Products.class).build();
-
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter = new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull @NotNull ProductViewHolder holder, int i, @NonNull @NotNull Products model) {
@@ -159,7 +144,6 @@ public class Primer extends AppCompatActivity implements NavigationView.OnNaviga
                     holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
                 }
             }
-
             @NonNull
             @NotNull
             @Override
@@ -167,16 +151,11 @@ public class Primer extends AppCompatActivity implements NavigationView.OnNaviga
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_items_layout_primer, parent, false);
                 ProductViewHolder holder = new ProductViewHolder(view);
                 return holder;
-
             }
         };
-
         recyclerView.setAdapter(adapter);
         adapter.startListening();
-
-
     }
-
     private void AddBasket() {
         BasketRef = FirebaseDatabase.getInstance().getReference().child(SettingsGuest.numtab);
         Calendar calendar = Calendar.getInstance();
@@ -202,7 +181,6 @@ public class Primer extends AppCompatActivity implements NavigationView.OnNaviga
                     }
                 });
     }
-
     @Override
     public void onBackPressed() {
     }
@@ -227,7 +205,6 @@ public class Primer extends AppCompatActivity implements NavigationView.OnNaviga
             txtProductName = itemView.findViewById(R.id.product_name_vibor);
             txtProductDescription = itemView.findViewById(R.id.product_description_vibor);
             txtProductPrice = itemView.findViewById(R.id.product_price_vibor);
-
         }
         public void setItemClickListner(ItemClickListener listner) {
             this.listner = listner;
@@ -236,7 +213,6 @@ public class Primer extends AppCompatActivity implements NavigationView.OnNaviga
         @Override
         public void onClick(View view) {
             listner.onClick(view, getAdapterPosition(), false);
-
         }
     }
 }

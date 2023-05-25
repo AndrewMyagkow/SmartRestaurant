@@ -34,24 +34,15 @@ public class GuestZalobiBook extends AppCompatActivity implements NavigationView
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_bar_guest_zalobibook);
-
-
-
-
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Feedback");
-
-
         recyclerView = findViewById(R.id.recycler_menuq);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-
-
     }
 
     @Override
@@ -94,13 +85,9 @@ public class GuestZalobiBook extends AppCompatActivity implements NavigationView
                 return holder;
             }
         };
-
         recyclerView.setAdapter(adapter);
         adapter.startListening();
-
-
     }
-
     @Override
     public void onBackPressed() {
     }

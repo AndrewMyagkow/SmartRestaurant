@@ -14,12 +14,9 @@ public class InfoAdminViewHolder extends RecyclerView.ViewHolder implements View
     public TextView txtNameGuest, txtDateId, txtTimeStatus, txtKolvoGuestNumTab, txtTextName,txtTextDateId,txtTextTimeStatus,txtKolvoNumTab;
     public ItemClickListenerReserved listner;
 
-
     public InfoAdminViewHolder(View itemView)
     {
         super(itemView);
-
-
         txtNameGuest = itemView.findViewById(R.id.FIO);
         txtDateId = itemView.findViewById(R.id.date_and_id);
         txtTimeStatus = itemView.findViewById(R.id.time_and_status);
@@ -28,17 +25,11 @@ public class InfoAdminViewHolder extends RecyclerView.ViewHolder implements View
         txtTextDateId = itemView.findViewById(R.id.text_date_and_id);
         txtTextTimeStatus = itemView.findViewById(R.id.text_time_and_status);
         txtKolvoNumTab = itemView.findViewById(R.id.text_kolvoguest_and_numtable);
-
-
-
-
     }
-
     public void setItemClickListner(ItemClickListenerReserved listner)
     {
         this.listner = listner;
     }
-
     @Override
     public void onClick(View view)
     {

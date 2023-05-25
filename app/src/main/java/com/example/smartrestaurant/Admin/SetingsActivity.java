@@ -1,16 +1,13 @@
 package com.example.smartrestaurant.Admin;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.smartrestaurant.Barman.SetingsBarmanActivity;
-import com.example.smartrestaurant.Cook.SetingsCookActivity;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.smartrestaurant.Entry.MainActivity;
-import com.example.smartrestaurant.Guest.SettingsGuest;
 import com.example.smartrestaurant.Prevalent.Prevalent;
 import com.example.smartrestaurant.R;
 

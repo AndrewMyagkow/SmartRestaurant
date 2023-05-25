@@ -34,7 +34,6 @@ public class BiznesActivity extends AppCompatActivity {
     private ImageView back;
     DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +46,6 @@ public class BiznesActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("PaidFor");
         recyclerView = findViewById(R.id.recycler_biznes_admin);
         recyclerView.setHasFixedSize(true);
@@ -58,10 +56,8 @@ public class BiznesActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
         FirebaseRecyclerOptions<PaidForBiznes> options = new FirebaseRecyclerOptions.Builder<PaidForBiznes>()
                 .setQuery(ProductsRef, PaidForBiznes.class).build();
-
         FirebaseRecyclerAdapter<PaidForBiznes, BiznesActivity.ProductViewHolder> adapter = new FirebaseRecyclerAdapter<PaidForBiznes, BiznesActivity.ProductViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull @NotNull BiznesActivity.ProductViewHolder holder, int i, @NonNull @NotNull PaidForBiznes model) {
@@ -71,9 +67,7 @@ public class BiznesActivity extends AppCompatActivity {
                 holder.txtTable.setText(model.getTable());
                 holder.txtSymma.setText(model.getSymma());
                 holder.txtpid.setText(model.getPid());
-
             }
-
             @NonNull
             @NotNull
             @Override
@@ -86,39 +80,29 @@ public class BiznesActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(adapter);
         adapter.startListening();
-
-
     }
-
-
     @Override
     public void onBackPressed() {
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         return true;
     }
-
 
     public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView txtpid,txtDate,txtBar,txtKitchen,txtSymma,txtTable;
         public ItemClickListener listner;
         public ProductViewHolder(View itemView) {
             super(itemView);
-
             txtpid = itemView.findViewById(R.id.id_zakaz_biznes);
             txtDate = itemView.findViewById(R.id.date_zakaz_biznes);
             txtBar = itemView.findViewById(R.id.bar_zakaz_biznes);
             txtKitchen = itemView.findViewById(R.id.kithen_zakaz_biznes);
             txtSymma = itemView.findViewById(R.id.symma_zakaz_biznes);
             txtTable = itemView.findViewById(R.id.table_zakaz_biznes);
-
-
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
                     Intent intent = new Intent(BiznesActivity.this, BiznesDiisplay.class);
                     String kitchen = txtKitchen.getText().toString();
                     String bar = txtBar.getText().toString();
@@ -138,16 +122,12 @@ public class BiznesActivity extends AppCompatActivity {
                 }
             });
         }
-
-
         public void setItemClickListner(ItemClickListener listner) {
             this.listner = listner;
         }
-
         @Override
         public void onClick(View view) {
             listner.onClick(view, getAdapterPosition(), false);
-
         }
     }
 }

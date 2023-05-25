@@ -39,26 +39,17 @@ public class ReservedActivity extends AppCompatActivity implements NavigationVie
     private String date,mounth,year,clock,minuts;
     DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_bar_reserved);
-
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Reserved");
         recyclerView = findViewById(R.id.recycler_reserved);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(layoutManager);
-
-
     }
-
-
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -84,8 +75,6 @@ public class ReservedActivity extends AppCompatActivity implements NavigationVie
             FirebaseRecyclerAdapter<Reserved, ReservedViewHolder> adapter = new FirebaseRecyclerAdapter<Reserved, ReservedViewHolder>(options) {
                 @Override
                 protected void onBindViewHolder(@NonNull @NotNull ReservedViewHolder holder, int i, @NonNull @NotNull Reserved model) {
-
-
                     holder.txtNameGuest.setText(model.getPname());
                     holder.txtYear.setText(model.getPrimer());
                     holder.txtDate.setText(model.getDescription());
@@ -107,7 +96,6 @@ public class ReservedActivity extends AppCompatActivity implements NavigationVie
                     SimpleDateFormat currentMinuts = new SimpleDateFormat("mm");
                     minuts = currentMinuts.format(calendar.getTime());
 
-
                     if ((model.getDescription().equals(date)) && (model.getPrice().equals(mounth)) && (model.getPrimer().equals(year))) {
                         holder.txtDateText.setBackgroundResource(R.color.chartreuse);
                     }
@@ -116,43 +104,24 @@ public class ReservedActivity extends AppCompatActivity implements NavigationVie
                     }
                     if ((model.getDescription().equals(date)) && (model.getPrice().equals(mounth)) && (model.getPrimer().equals(year)) && (model.getClock().equals(clock)) && (model.getMinuts().equals(minuts))) {
                         holder.txtTiming.setBackgroundResource(R.color.red);
-
-
-
                     }
                 }
-
 
                 @NonNull
                 @NotNull
                 @Override
                 public ReservedViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-
                     View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.reserved_items_layout, parent, false);
                     ReservedViewHolder holder = new ReservedViewHolder(view);
                     return holder;
-
                 }
-
             };
-
-
             recyclerView.setAdapter(adapter);
             adapter.startListening();
-
-
-
-
-
-
     }
-
-
-
    @Override
     public void onBackPressed() {
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         return true;
@@ -163,19 +132,14 @@ public class ReservedActivity extends AppCompatActivity implements NavigationVie
         return false;
     }
     public class ReservedViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
-
     {
         public RelativeLayout txtrelative;
         public TextView txtNameGuest, txtDate, txtMounth, txtYear,txtClock,txtMinuts,txtKolvoGuest,txtDateText,txtTiming,txtID;
         public ItemClickListenerReserved listner;
         public ImageView delet;
-
-
         public ReservedViewHolder(View itemView)
         {
             super(itemView);
-
-
             txtNameGuest = itemView.findViewById(R.id.namereservedguest);
             txtDate = itemView.findViewById(R.id.date);
             txtMounth = itemView.findViewById(R.id.mounth);

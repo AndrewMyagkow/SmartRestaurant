@@ -24,12 +24,10 @@ import java.util.HashMap;
 
 public class BarmanDisplay extends AppCompatActivity {
     private String zak,kom,tab,sym,pid,saveCurrentDate, saveCurrentTime, productRandomKey;
-
     private ImageView back;
     private Button done;
     private DatabaseReference ProductsRef;
     private DatabaseReference InfoRef;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +40,6 @@ public class BarmanDisplay extends AppCompatActivity {
         pid = arguments.get("pid").toString();
         back = findViewById(R.id.back_bar_display);
         done = findViewById(R.id.done_bar);
-
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,24 +57,16 @@ public class BarmanDisplay extends AppCompatActivity {
                 ProductsRef = FirebaseDatabase.getInstance().getReference().child("ReadyOrder");
                 InfoRef = FirebaseDatabase.getInstance().getReference().child("InfoAdmin");
                 Calendar calendar = Calendar.getInstance();
-
                 SimpleDateFormat currentDate = new SimpleDateFormat("ddMMyyyy");
                 saveCurrentDate = currentDate.format(calendar.getTime());
-
                 SimpleDateFormat currentTime = new SimpleDateFormat("HHmmss");
                 saveCurrentTime = currentTime.format(calendar.getTime());
-
                 productRandomKey ="B"+pid;
-
-
                 SaveProductInfoToDatabase();
                 Back();
-
             }
-
             private void SaveProductInfoToDatabase() {
                 HashMap<String, Object> productMap = new HashMap<>();
-
                 productMap.put("pid", pid);
                 productMap.put("date", saveCurrentDate);
                 productMap.put("time", saveCurrentTime);
@@ -88,36 +77,27 @@ public class BarmanDisplay extends AppCompatActivity {
                 productMap.put("admin", "Готово");
                 productMap.put("place", "Бар");
 
-
-
-
-
                 ProductsRef.child(productRandomKey).updateChildren(productMap)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
-
                             }
                         });
                 InfoRef.child(productRandomKey).updateChildren(productMap)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
-
                             }
                         });
                 InfoRef = FirebaseDatabase.getInstance().getReference();
                 InfoRef.child("InfoAdmin/"+pid).setValue(null);
             }
-
         });
     }
-
     private void Back() {
         ProductsRef = FirebaseDatabase.getInstance().getReference();
         ProductsRef.child("AccomplishmentBar/"+pid).setValue(null);
         Intent intent = new Intent(BarmanDisplay.this, BarmanActivity.class);
         startActivity(intent);
     }
-
 }

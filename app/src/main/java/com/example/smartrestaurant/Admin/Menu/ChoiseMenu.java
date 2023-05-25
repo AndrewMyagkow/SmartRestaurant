@@ -74,7 +74,6 @@ public class ChoiseMenu extends AppCompatActivity {
             }
         });
 
-
         salaty = findViewById(R.id.salat_admin);
         salaty.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,7 +164,5 @@ public class ChoiseMenu extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     }
 }

@@ -58,26 +58,18 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     static DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-
-
         Bundle arguments = getIntent().getExtras();
         Category = arguments.get("category").toString();
         Role = arguments.get("role").toString();
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
-
-
         recyclerView = findViewById(R.id.recycler_menu);
         recyclerView.setHasFixedSize(true);
         GridLayoutManager layoutManager=new GridLayoutManager(this,2);
         recyclerView.setLayoutManager(layoutManager);
-
     }
 
     @Override
@@ -137,11 +129,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 return holder;
             }
         };
-
         recyclerView.setAdapter(adapter);
         adapter.startListening();
-
-
     }
 
    @Override
@@ -166,8 +155,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         public ProductViewHolder(View itemView) {
             super(itemView);
-
-
             imageView = itemView.findViewById(R.id.product_image);
             txtProductName = itemView.findViewById(R.id.product_name);
             txtProductDescription = itemView.findViewById(R.id.product_description);
@@ -178,10 +165,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
-                   /* int position = getAdapterPosition();
-                    Intent adminIntent = new Intent(context, AdminActivity.class);
-                    context.startActivity(adminIntent);*/
                 }
             });
             delet.setOnClickListener(new View.OnClickListener() {
@@ -197,8 +180,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 }
             });
         }
-
-
         public void setItemClickListner(ItemClickListener listner) {
             this.listner = listner;
         }

@@ -52,32 +52,20 @@ public class Meny extends AppCompatActivity implements NavigationView.OnNavigati
     private ImageView back, pokypki;
     private String Category;
     public String idy;
-    private AppBarConfiguration mAppBarConfiguration;
     DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
-    RecyclerView.LayoutManager layoutManager;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_bar_meny);
-
         Bundle arguments = getIntent().getExtras();
         Category = arguments.get("category").toString();
-
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
-
-
         recyclerView = findViewById(R.id.recycler_meny);
         recyclerView.setHasFixedSize(true);
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(layoutManager);
-
     }
-
-
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -118,7 +106,6 @@ public class Meny extends AppCompatActivity implements NavigationView.OnNavigati
                     holder.itemView.setVisibility(View.GONE);
                     holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
                 }
-
             }
 
             @NonNull
@@ -131,13 +118,9 @@ public class Meny extends AppCompatActivity implements NavigationView.OnNavigati
 
             }
         };
-
         recyclerView.setAdapter(adapter);
         adapter.startListening();
-
-
     }
-
     @Override
     public void onBackPressed() {
     }
@@ -153,17 +136,11 @@ public class Meny extends AppCompatActivity implements NavigationView.OnNavigati
     }
 
     public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView txtProductName, txtProductDescription, txtProductPrice, txtProductid, txtProductCategory,ide;
-        public String qwe;
+        public TextView txtProductName, txtProductDescription, txtProductPrice, txtProductid, txtProductCategory;
         public ImageView imageView;
         public ItemClickListener listner;
-        private Context context;
-
-
         public ProductViewHolder(View itemView) {
             super(itemView);
-
-
             imageView = itemView.findViewById(R.id.product_image);
             txtProductName = itemView.findViewById(R.id.product_name);
             txtProductDescription = itemView.findViewById(R.id.product_description);
@@ -173,26 +150,20 @@ public class Meny extends AppCompatActivity implements NavigationView.OnNavigati
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
-                    int position = getAdapterPosition();
                     Intent intent = new Intent(Meny.this, Primer.class);
                     String name = txtProductName.getText().toString();
                     String desk = txtProductDescription.getText().toString();
                     String price = txtProductPrice.getText().toString();
                     String pid = txtProductid.getText().toString();
-                  //  String q = id.getText().toString();
                     intent.putExtra("name", name);
                     intent.putExtra("desk", desk);
                     intent.putExtra("price", price);
                     intent.putExtra("cat", Category);
                     intent.putExtra("pid", pid);
-                    //intent.putExtra("vibor",idy);
                     startActivity(intent);
                 }
             });
         }
-
-
         public void setItemClickListner(ItemClickListener listner) {
             this.listner = listner;
         }
@@ -200,7 +171,6 @@ public class Meny extends AppCompatActivity implements NavigationView.OnNavigati
         @Override
         public void onClick(View view) {
             listner.onClick(view, getAdapterPosition(), false);
-
         }
     }
 }

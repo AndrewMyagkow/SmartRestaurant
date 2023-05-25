@@ -11,26 +11,19 @@ import com.example.smartrestaurant.R;
 
 public class WriteBookAdminViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
 {
-    public TextView txtProductName, txtProductDescription, txtProductPrice, txtProductPrimer;
+    public TextView txtProductName, txtProductDescription;
     public ItemClickListenerWriteBookAdmin listnerzs;
-
-
-
     public WriteBookAdminViewHolder(View itemView)
     {
         super(itemView);
-
-
         txtProductName = itemView.findViewById(R.id.write_text);
         txtProductDescription = itemView.findViewById(R.id.time);
-
     }
 
     public void setItemClickListner(ItemClickListenerWriteBookAdmin listnerzs)
     {
         this.listnerzs = listnerzs;
     }
-
     @Override
     public void onClick(View view)
     {

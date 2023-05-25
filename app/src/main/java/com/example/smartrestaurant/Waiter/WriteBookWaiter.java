@@ -39,12 +39,11 @@ public class WriteBookWaiter extends AppCompatActivity implements NavigationView
     private ImageView back;
     DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
-    private String  Description, Price, Pname, saveCurrentDate, saveCurrentTime, productRandomKey,TimeWrite,DateWrite;
+    private String  Description, Pname, saveCurrentDate, saveCurrentTime, productRandomKey,TimeWrite,DateWrite;
     private EditText productName;
     private ImageView addNewProductButton;
     private DatabaseReference ProductsRefs;
     private ProgressDialog loadingBar;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +55,7 @@ public class WriteBookWaiter extends AppCompatActivity implements NavigationView
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(layoutManager);
-
         init();
-
         addNewProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,7 +76,6 @@ public class WriteBookWaiter extends AppCompatActivity implements NavigationView
             }
         });
 
-
         FirebaseRecyclerOptions<WriteBook> options = new FirebaseRecyclerOptions.Builder<WriteBook>()
                 .setQuery(ProductsRef, WriteBook.class).build();
 
@@ -88,8 +84,6 @@ public class WriteBookWaiter extends AppCompatActivity implements NavigationView
             protected void onBindViewHolder(@NonNull @NotNull WriteBookAdminViewHolder holder, int i, @NonNull @NotNull WriteBook model) {
                 holder.txtProductName.setText(model.getPname());
                 holder.txtProductDescription.setText(model.getDescription());
-
-
             }
 
             @NonNull
@@ -101,18 +95,13 @@ public class WriteBookWaiter extends AppCompatActivity implements NavigationView
                 return holder;
             }
         };
-
         recyclerView.setAdapter(adapter);
         adapter.startListening();
-
-
     }
-
 
     @Override
     public void onBackPressed() {
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         return true;
@@ -128,12 +117,8 @@ public class WriteBookWaiter extends AppCompatActivity implements NavigationView
         TimeWrite = Time.format(calendar.getTime());
         SimpleDateFormat Date = new SimpleDateFormat("dd.MM.yyyy");
         DateWrite = Date.format(calendar.getTime());
-
-
-
         Pname = productName.getText().toString();
         Description = TimeWrite+DateWrite;
-
         if (Pname.equals(""))
         {
             Toast.makeText(WriteBookWaiter.this, "Введите заметку", Toast.LENGTH_SHORT).show();
@@ -143,40 +128,28 @@ public class WriteBookWaiter extends AppCompatActivity implements NavigationView
         {
             StoreProductInformation();
         }
-
-
     }
 
     private void StoreProductInformation() {
-
         Calendar calendar = Calendar.getInstance();
-
         SimpleDateFormat currentDate = new SimpleDateFormat("ddMMyyyy");
         saveCurrentDate = currentDate.format(calendar.getTime());
-
         SimpleDateFormat currentTime = new SimpleDateFormat("HHmmss");
         saveCurrentTime = currentTime.format(calendar.getTime());
-
-        productRandomKey = saveCurrentDate + saveCurrentTime;
-
-
+        productRandomKey = "WW"+saveCurrentDate + saveCurrentTime;
         SaveProductInfoToDatabase();
     }
 
     private void SaveProductInfoToDatabase() {
         HashMap<String, Object> productMap = new HashMap<>();
-
         productMap.put("pid", productRandomKey);
         productMap.put("description", Description);
         productMap.put("pname", Pname);
-
-
 
         ProductsRefs.child(productRandomKey).updateChildren(productMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-
                     }
                 });
         FirebaseRecyclerOptions<WriteBook> options = new FirebaseRecyclerOptions.Builder<WriteBook>()
@@ -187,8 +160,6 @@ public class WriteBookWaiter extends AppCompatActivity implements NavigationView
             protected void onBindViewHolder(@NonNull @NotNull WriteBookAdminViewHolder holder, int i, @NonNull @NotNull WriteBook model) {
                 holder.txtProductName.setText(model.getPname());
                 holder.txtProductDescription.setText(model.getDescription());
-
-
             }
 
             @NonNull
@@ -200,15 +171,9 @@ public class WriteBookWaiter extends AppCompatActivity implements NavigationView
                 return holder;
             }
         };
-
         recyclerView.setAdapter(adapter);
         adapter.startListening();
     }
-
-
-
-
-
     private void init() {
         productName = findViewById(R.id.write_text);
         addNewProductButton = findViewById(R.id.add_new_text);

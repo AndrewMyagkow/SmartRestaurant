@@ -30,7 +30,6 @@ public class PayActivity extends AppCompatActivity {
     private ImageView back;
     DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,16 +75,12 @@ public class PayActivity extends AppCompatActivity {
                 return holder;
             }
         };
-
         recyclerView.setAdapter(adapter);
         adapter.startListening();
-
-
     }
     @Override
     public void onBackPressed() {
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         return true;
@@ -97,13 +92,11 @@ public class PayActivity extends AppCompatActivity {
         public ItemClickListener listner;
         public ProductViewHolder(View itemView) {
             super(itemView);
-
             txtZakaz = itemView.findViewById(R.id.zakaz_waiter_pay);
             txttable = itemView.findViewById(R.id.table_waiter_pay);
             txtsymma = itemView.findViewById(R.id.symma_waiter_pay);
             txtpid = itemView.findViewById(R.id.id_zakaz);
             txtBarman = itemView.findViewById(R.id.barman_waiter_pay);
-
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -123,8 +116,6 @@ public class PayActivity extends AppCompatActivity {
                 }
             });
         }
-
-
         public void setItemClickListner(ItemClickListener listner) {
             this.listner = listner;
         }

@@ -41,7 +41,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 
 public class Message extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private ImageView back,deletemessage;
+    private ImageView back;
     DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
     private String  Description, Role, Pname, saveCurrentDate, saveCurrentTime, productRandomKey,TimeSms;
@@ -49,8 +49,6 @@ public class Message extends AppCompatActivity implements NavigationView.OnNavig
     private ImageView addNewProductButton;
     private DatabaseReference ProductsRefs;
     private ProgressDialog loadingBar;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,9 +59,7 @@ public class Message extends AppCompatActivity implements NavigationView.OnNavig
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(layoutManager);
-
         init();
-
         addNewProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,7 +68,6 @@ public class Message extends AppCompatActivity implements NavigationView.OnNavig
         });
 
     }
-
 
     @Override
     protected void onStart() {
@@ -103,20 +98,15 @@ public class Message extends AppCompatActivity implements NavigationView.OnNavig
             }
         });
 
-
         FirebaseRecyclerOptions<Chat> options = new FirebaseRecyclerOptions.Builder<Chat>()
                 .setQuery(ProductsRef, Chat.class).build();
-
         FirebaseRecyclerAdapter<Chat, MessageViewHolder> adapter = new FirebaseRecyclerAdapter<Chat, MessageViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull @NotNull MessageViewHolder holder, int i, @NonNull @NotNull Chat model) {
                 holder.txtProductName.setText(model.getPname());
                 holder.txtProductDescription.setText(model.getDescription());
                 holder.txtProductPrice.setText( model.getPrice());
-
-
             }
-
             @NonNull
             @NotNull
             @Override
@@ -126,14 +116,9 @@ public class Message extends AppCompatActivity implements NavigationView.OnNavig
                     return holder;
             }
         };
-
         recyclerView.setAdapter(adapter);
         adapter.startListening();
-
-
 }
-
-
    @Override
     public void onBackPressed() {
     }
@@ -148,16 +133,13 @@ public class Message extends AppCompatActivity implements NavigationView.OnNavig
         return false;
     }
     private void ValidateProductData() {
-
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat Time = new SimpleDateFormat("HH:mm");
         TimeSms = Time.format(calendar.getTime());
         Bundle arguments = getIntent().getExtras();
-
         Role = arguments.get("role").toString();
         Pname = productName.getText().toString();
         Description = TimeSms;
-
         if (Pname.equals(""))
         {
             Toast.makeText(Message.this, "Введите сообщение", Toast.LENGTH_SHORT).show();
@@ -167,26 +149,17 @@ public class Message extends AppCompatActivity implements NavigationView.OnNavig
         {
             StoreProductInformation();
         }
-
-
     }
 
     private void StoreProductInformation() {
-
         Calendar calendar = Calendar.getInstance();
-
         SimpleDateFormat currentDate = new SimpleDateFormat("ddMMyyyy");
         saveCurrentDate = currentDate.format(calendar.getTime());
-
         SimpleDateFormat currentTime = new SimpleDateFormat("HHmmss");
         saveCurrentTime = currentTime.format(calendar.getTime());
-
-        productRandomKey = saveCurrentDate + saveCurrentTime;
-
-
+        productRandomKey = "C"+saveCurrentDate + saveCurrentTime;
         SaveProductInfoToDatabase();
     }
-
     private void SaveProductInfoToDatabase() {
         HashMap<String, Object> productMap = new HashMap<>();
 
@@ -194,15 +167,10 @@ public class Message extends AppCompatActivity implements NavigationView.OnNavig
         productMap.put("description", Description);
         productMap.put("price", Role);
         productMap.put("pname", Pname);
-        //productMap.put("timesms", TimeSms);
-
-
-
         ProductsRefs.child(productRandomKey).updateChildren(productMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-
                     }
                 });
         FirebaseRecyclerOptions<Chat> options = new FirebaseRecyclerOptions.Builder<Chat>()
@@ -214,10 +182,7 @@ public class Message extends AppCompatActivity implements NavigationView.OnNavig
                 holder.txtProductName.setText(model.getPname());
                 holder.txtProductDescription.setText(model.getDescription());
                 holder.txtProductPrice.setText( model.getPrice());
-
-
             }
-
             @NonNull
             @NotNull
             @Override
@@ -227,16 +192,9 @@ public class Message extends AppCompatActivity implements NavigationView.OnNavig
                 return holder;
             }
         };
-
         recyclerView.setAdapter(adapter);
         adapter.startListening();
-
     }
-
-
-
-
-
     private void init() {
         productName = findViewById(R.id.product_namez);
         addNewProductButton = findViewById(R.id.btn_add_new_productz);

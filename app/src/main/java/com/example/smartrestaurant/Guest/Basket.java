@@ -66,12 +66,10 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
     private EditText komment;
     private Button zakaz;
     private String AdminInfo ="Выполняется";
-    private String Symma,Kolvo,Accomplishment,saveCurrentDate, saveCurrentTime, productRandomKey, ITOG,Komment,category,barman;
-    //public String deletedpid;
+    private String Symma,Kolvo,Accomplishment,saveCurrentDate, saveCurrentTime, productRandomKey, ITOG,Komment,barman;
     private String allZakaz = "";
     private String allZakazbar = "";
     private int sym,itog,kol;
-    private AppBarConfiguration mAppBarConfiguration;
     static DatabaseReference ProductsRef;
     private DatabaseReference AccomplishmentRef;
     private DatabaseReference PayRef;
@@ -81,12 +79,10 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
     RecyclerView.LayoutManager layoutManager;
     private ProgressDialog loadingBar;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basket);
-
         ProductsRef = FirebaseDatabase.getInstance().getReference().child(SettingsGuest.numtab);
         AccomplishmentRef = FirebaseDatabase.getInstance().getReference().child("Accomplishment");
         PayRef = FirebaseDatabase.getInstance().getReference().child("Pay");
@@ -97,11 +93,7 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-
     }
-
-
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -109,7 +101,6 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
         zakaz = findViewById(R.id.zakaz);
         komment = findViewById(R.id.komment);
         TextView itogsym = findViewById(R.id.itog);
-
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -122,17 +113,13 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
             public void onClick(View view) {
                 Komment = komment.getText().toString();
                 Calendar calendar = Calendar.getInstance();
-
                 SimpleDateFormat currentDate = new SimpleDateFormat("ddMMyyyy");
                 saveCurrentDate = currentDate.format(calendar.getTime());
-
                 SimpleDateFormat currentTime = new SimpleDateFormat("HHmmss");
                 saveCurrentTime = currentTime.format(calendar.getTime());
-
                 productRandomKey = "A"+saveCurrentDate + saveCurrentTime;
 
                 HashMap<String, Object> productMap = new HashMap<>();
-
                 productMap.put("pid", productRandomKey);
                 productMap.put("date", saveCurrentDate);
                 productMap.put("time", saveCurrentTime);
@@ -143,7 +130,6 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
                 productMap.put("table", SettingsGuest.numtab);
                 productMap.put("admin", AdminInfo);
 
-
               if((!allZakaz.equals(""))&&(!allZakazbar.equals(""))) {
                   AccomplishmentRef.child(productRandomKey).updateChildren(productMap)
                           .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -152,13 +138,11 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
                                   if (task.isSuccessful()) {
                                       Toast.makeText(Basket.this, "Заказ принят", Toast.LENGTH_SHORT).show();
                                       loadingBar.dismiss();
-
                                       ProductsRef = FirebaseDatabase.getInstance().getReference();
                                       ProductsRef.child(SettingsGuest.numtab).setValue(null);
                                       Intent loginIntent = new Intent(Basket.this, GuestActivity.class);
                                       startActivity(loginIntent);
                                   }
-
                               }
                           });
 
@@ -166,7 +150,6 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
                           .addOnCompleteListener(new OnCompleteListener<Void>() {
                               @Override
                               public void onComplete(@NonNull Task<Void> task) {
-
                               }
                           });
                   InfoRef.child(productRandomKey).updateChildren(productMap)
@@ -191,7 +174,6 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
                                       Intent loginIntent = new Intent(Basket.this, GuestActivity.class);
                                       startActivity(loginIntent);
                                   }
-
                               }
                           });
                   InfoRef.child(productRandomKey).updateChildren(productMap)
@@ -229,13 +211,10 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
-
                             }
                         });
-
             }
         });
-
 
         FirebaseRecyclerOptions<Baskets> options = new FirebaseRecyclerOptions.Builder<Baskets>()
                 .setQuery(ProductsRef, Baskets.class).build();
@@ -267,12 +246,7 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
                 itog = (sym*kol)+itog;
                  ITOG = Integer.toString(itog);
                 itogsym.setText("Итог: "+ITOG);
-
-               // holder.txtColvo.setText(AGE_AS_STRING);
-
-
             }
-
             @NonNull
             @NotNull
             @Override
@@ -280,18 +254,12 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_items_layout_basket, parent, false);
                 ProductViewHolder holder = new ProductViewHolder(view);
                 return holder;
-
             }
         };
 
         recyclerView.setAdapter(adapter);
         adapter.startListening();
-
-
     }
-
-
-
     @Override
     public void onBackPressed() {
     }
@@ -310,9 +278,6 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
         public TextView txtProductName, txtProductPrice,txtColvo,txtPid;
         public ItemClickListener listner;
         public ImageView delet;
-       // private String pid;
-
-
         public ProductViewHolder(View itemView) {
             super(itemView);
 
@@ -322,11 +287,9 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
             txtColvo = itemView.findViewById(R.id.product_colvo_basket);
             txtPid = itemView.findViewById(R.id.pid_basket);
             delet = itemView.findViewById(R.id.delet_basket);
-            //String pid = txtPid.getText().toString();
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
                 }
             });
             delet.setOnClickListener(new View.OnClickListener() {
@@ -342,8 +305,6 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
                 }
             });
         }
-
-
         public void setItemClickListner(ItemClickListener listner) {
             this.listner = listner;
         }
@@ -351,7 +312,6 @@ public class Basket extends AppCompatActivity implements NavigationView.OnNaviga
         @Override
         public void onClick(View view) {
             listner.onClick(view, getAdapterPosition(), false);
-
         }
     }
 }

@@ -86,8 +86,6 @@ public class AddFoodActivity extends AppCompatActivity {
         Pname = productName.getText().toString();
         Category = categoryN.getSelectedItem().toString();
 
-
-
         if(ImageUri == null){
             Toast.makeText(this, "Добавьте изображение товара.", Toast.LENGTH_SHORT).show();
         }
@@ -107,7 +105,6 @@ public class AddFoodActivity extends AppCompatActivity {
             StoreProductInformation();
         }
     }
-
     private void StoreProductInformation() {
 
         loadingBar.setTitle("Загрузка данных");
@@ -123,7 +120,7 @@ public class AddFoodActivity extends AppCompatActivity {
         SimpleDateFormat currentTime = new SimpleDateFormat("HHmmss");
         saveCurrentTime = currentTime.format(calendar.getTime());
 
-        productRandomKey = saveCurrentDate + saveCurrentTime;
+        productRandomKey = "P"+saveCurrentDate + saveCurrentTime;
 
         final StorageReference filePath = ProductImageRef.child(ImageUri.getLastPathSegment() + productRandomKey + ".jpg");
 
@@ -179,7 +176,6 @@ public class AddFoodActivity extends AppCompatActivity {
         productMap.put("pname", Pname);
         productMap.put("primer",Primer);
 
-
         ProductsRef.child(productRandomKey).updateChildren(productMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -201,7 +197,6 @@ public class AddFoodActivity extends AppCompatActivity {
                     }
                 });
     }
-
     private void OpenGallery() {
         Intent galleryIntent = new Intent();
         galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
@@ -218,9 +213,7 @@ public class AddFoodActivity extends AppCompatActivity {
             productImage.setImageURI(ImageUri);
         }
     }
-
     private void init() {
-      //  categoryName = getIntent().getExtras().get("category").toString();
         productImage = findViewById(R.id.select_product_image);
         productName = findViewById(R.id.product_name);
         productDescription = findViewById(R.id.product_description);

@@ -142,10 +142,8 @@ public class GuestActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Officiant = FirebaseDatabase.getInstance().getReference().child("ReadyOrder");
                 Calendar calendar = Calendar.getInstance();
-
                 SimpleDateFormat currentDate = new SimpleDateFormat("ddMMyyyy");
                 saveCurrentDate = currentDate.format(calendar.getTime());
-
                 SimpleDateFormat currentTime = new SimpleDateFormat("HHmmss");
                 saveCurrentTime = currentTime.format(calendar.getTime());
                 pid = saveCurrentDate+saveCurrentTime;
@@ -154,14 +152,11 @@ public class GuestActivity extends AppCompatActivity {
 
             private void SaveProductInfoToDatabase() {
                 HashMap<String, Object> productMap = new HashMap<>();
-
                 productMap.put("pid", pid);
                 productMap.put("date", saveCurrentDate);
                 productMap.put("time", saveCurrentTime);
                 productMap.put("table", SettingsGuest.numtab);
                 productMap.put("zakaz", "Подойдите пожалуйста к столу № ");
-
-
 
                 Officiant.child(pid).updateChildren(productMap)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {

@@ -16,7 +16,6 @@ import com.example.smartrestaurant.R;
 import io.paperdb.Paper;
 
 public class SetingsBarmanActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

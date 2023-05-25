@@ -60,19 +60,12 @@ public class WaiterDisplay extends AppCompatActivity {
             public void onClick(View view) {
                 InfoRef = FirebaseDatabase.getInstance().getReference().child("InfoAdmin");
                 Calendar calendar = Calendar.getInstance();
-
                 SimpleDateFormat currentDate = new SimpleDateFormat("ddMMyyyy");
                 saveCurrentDate = currentDate.format(calendar.getTime());
-
                 SimpleDateFormat currentTime = new SimpleDateFormat("HHmmss");
                 saveCurrentTime = currentTime.format(calendar.getTime());
-
-
-
-
                 SaveProductInfoToDatabase();
             }
-
             private void SaveProductInfoToDatabase() {
                 HashMap<String, Object> productMap = new HashMap<>();
 
@@ -84,8 +77,6 @@ public class WaiterDisplay extends AppCompatActivity {
                 productMap.put("symma", sym);
                 productMap.put("komment", kom);
                 productMap.put("admin", "Ожидается оплата");
-
-
 
                 InfoRef.child(pid).updateChildren(productMap)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {

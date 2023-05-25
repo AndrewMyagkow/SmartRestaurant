@@ -29,16 +29,12 @@ import java.util.HashMap;
 
 public class AddReservedActivity extends AppCompatActivity {
 
-    private String categoryName, Description, Price, Pname, saveCurrentDate, saveCurrentTime, productRandomKey, Primer,Clock,Minuts,KolvoGuest,provdate,provmounth,provyear;
-    private String downloadImageUrl;
+    private String Description, Price, Pname, saveCurrentDate, saveCurrentTime, productRandomKey, Primer,Clock,Minuts,KolvoGuest,provdate,provmounth,provyear;
     private Switch dates;
-    private ImageView productImage,back;
+    private ImageView back;
     private int flag;
     private EditText productName, productDescription, productPrice, productPrimer,productClock,productMinuts,productKolvoGuest;
     private Button addNewProductButton;
-    private static final int GALLERYPICK = 1;
-    private Uri ImageUri;
-    private StorageReference ProductImageRef;
     private DatabaseReference ProductsRef;
     private DatabaseReference InfoRef;
     private ProgressDialog loadingBar;
@@ -48,7 +44,6 @@ public class AddReservedActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_reserved_food);
-
         init();
         back = findViewById(R.id.back_add_reserved);
         back.setOnClickListener(new View.OnClickListener() {
@@ -66,8 +61,6 @@ public class AddReservedActivity extends AppCompatActivity {
            }
        });
 
-
-
         addNewProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,7 +68,6 @@ public class AddReservedActivity extends AppCompatActivity {
             }
         });
     }
-
     private void ValidateProductData() {
         Description = productDescription.getText().toString();
         Price = productPrice.getText().toString();
@@ -84,12 +76,9 @@ public class AddReservedActivity extends AppCompatActivity {
         Clock = productClock.getText().toString();
         Minuts = productMinuts.getText().toString();
         KolvoGuest = productKolvoGuest.getText().toString();
-
-            ResivingDate();
-            StoreProductInformation();
-
+        ResivingDate();
+        StoreProductInformation();
     }
-
     private void ResivingDate() {
         if (flag==1)
         {   Calendar calendar = Calendar.getInstance();
@@ -108,30 +97,21 @@ public class AddReservedActivity extends AppCompatActivity {
     }
 
     private void StoreProductInformation() {
-
         Calendar calendar = Calendar.getInstance();
-
         SimpleDateFormat currentDate = new SimpleDateFormat("ddMMyyyy");
         saveCurrentDate = currentDate.format(calendar.getTime());
-
         SimpleDateFormat currentTime = new SimpleDateFormat("HHmmss");
         saveCurrentTime = currentTime.format(calendar.getTime());
-
-        productRandomKey = saveCurrentDate + saveCurrentTime;
-
-
-                            SaveProductInfoToDatabase();
-
+        productRandomKey = "R"+saveCurrentDate + saveCurrentTime;
+        SaveProductInfoToDatabase();
     }
 
     private void SaveProductInfoToDatabase() {
         HashMap<String, Object> productMap = new HashMap<>();
-
         productMap.put("pid", productRandomKey);
         productMap.put("date", saveCurrentDate);
         productMap.put("time", saveCurrentTime);
         productMap.put("description", Description);
-        productMap.put("category", categoryName);
         productMap.put("price", Price);
         productMap.put("pname", Pname);
         productMap.put("primer",Primer);
@@ -139,15 +119,11 @@ public class AddReservedActivity extends AppCompatActivity {
         productMap.put("minuts",Minuts);
         productMap.put("kolvoguest",KolvoGuest);
 
-
         ProductsRef.child(productRandomKey).updateChildren(productMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
-
-
-
                             Intent loginIntent = new Intent(AddReservedActivity.this, ReservedActivity.class);
                             startActivity(loginIntent);
                         }
@@ -167,10 +143,7 @@ public class AddReservedActivity extends AppCompatActivity {
                     }
                 });
     }
-
-
     private void init() {
-
         productName = findViewById(R.id.namereservedguest);
         productDescription = findViewById(R.id.date);
         productPrice = findViewById(R.id.mounth);
@@ -182,6 +155,5 @@ public class AddReservedActivity extends AppCompatActivity {
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Reserved");
         InfoRef = FirebaseDatabase.getInstance().getReference().child("InfoAdmin");
         loadingBar = new ProgressDialog(this);
-
     }
 }

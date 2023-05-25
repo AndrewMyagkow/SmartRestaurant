@@ -14,18 +14,13 @@ public class FeedbackViewHolder extends RecyclerView.ViewHolder implements View.
     public TextView txtName, txtTime, txtFeedback;
     public ItemClickListenerFeedback listner;
 
-
     public FeedbackViewHolder(View itemView)
     {
         super(itemView);
-
-
         txtName = itemView.findViewById(R.id.name_guest_zalobi);
         txtTime = itemView.findViewById(R.id.time_guest_zalobi);
         txtFeedback = itemView.findViewById(R.id.feedback);
-
     }
-
     public void setItemClickListner(ItemClickListenerFeedback listner)
     {
         this.listner = listner;

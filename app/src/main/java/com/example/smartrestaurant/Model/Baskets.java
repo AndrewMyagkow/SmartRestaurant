@@ -6,7 +6,6 @@ public class Baskets {
     public Baskets(){
 
     }
-
     public String getName() {
         return name;
     }

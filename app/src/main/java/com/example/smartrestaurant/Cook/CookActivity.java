@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,16 +43,17 @@ import org.jetbrains.annotations.NotNull;
 public class CookActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private ImageView writebook,chat,menu,setings;
     DatabaseReference ProductsRef;
+    Handler handler;
+    int limit = 40;
+    int count = 0;
     private RecyclerView recyclerView;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cook);
         init();
-
-
+        handler = new Handler();
+        onEverySecond.run();
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,15 +85,12 @@ public class CookActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-
-
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Accomplishment");
         recyclerView = findViewById(R.id.recycler_cook);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(layoutManager);
-
     }
     @Override
     protected void onStart() {
@@ -124,12 +123,22 @@ public class CookActivity extends AppCompatActivity implements NavigationView.On
                 return holder;
             }
         };
-
         recyclerView.setAdapter(adapter);
         adapter.startListening();
-
-
     }
+    Runnable onEverySecond=new Runnable() {
+        public void run() {
+            count++;
+            if (count == limit) {
+
+                finish();
+                overridePendingTransition(0, 0);
+                startActivity(getIntent());
+                overridePendingTransition(0, 0);
+            } else {handler.postDelayed(onEverySecond, 1000);
+            }
+        }
+    };
     private void init()
     {
         writebook = findViewById(R.id.writebookcook);
@@ -154,9 +163,6 @@ public class CookActivity extends AppCompatActivity implements NavigationView.On
     public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView txtZakaz, txtKomment,txttable, txtsymma,txtpid,txtBar;
         public ItemClickListener listner;
-        private ImageView done;
-
-
         public ProductViewHolder(View itemView) {
             super(itemView);
 
@@ -166,11 +172,9 @@ public class CookActivity extends AppCompatActivity implements NavigationView.On
             txtsymma = itemView.findViewById(R.id.symma);
             txtpid = itemView.findViewById(R.id.pid);
             txtBar = itemView.findViewById(R.id.bar_cook);
-
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
                     Intent intent = new Intent(CookActivity.this, CookDisplay.class);
                     String zakaz = txtZakaz.getText().toString();
                     String koment = txtKomment.getText().toString();
@@ -188,8 +192,6 @@ public class CookActivity extends AppCompatActivity implements NavigationView.On
                 }
             });
         }
-
-
         public void setItemClickListner(ItemClickListener listner) {
             this.listner = listner;
         }

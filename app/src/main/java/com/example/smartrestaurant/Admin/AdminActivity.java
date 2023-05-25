@@ -53,19 +53,11 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
     int limit = 40;
     int count = 0;
     private RecyclerView recyclerView;
-    RecyclerView.LayoutManager layoutManager;
-    private NotificationManager notificationManager;
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
         loadingBar = new ProgressDialog(this);
-
-
         InfoRef = FirebaseDatabase.getInstance().getReference().child("InfoAdmin");
         recyclerView = findViewById(R.id.recycler_admin);
         recyclerView.setHasFixedSize(true);
@@ -75,11 +67,8 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
         handler = new Handler();
         onEverySecond.run();
 
-
-
         FirebaseRecyclerOptions<Reserved> options = new FirebaseRecyclerOptions.Builder<Reserved>()
                 .setQuery(InfoRef, Reserved.class).build();
-
         FirebaseRecyclerAdapter<Reserved, InfoAdminViewHolder> adapter = new FirebaseRecyclerAdapter<Reserved, InfoAdminViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull @NotNull InfoAdminViewHolder holder, int i, @NonNull @NotNull Reserved model) {
@@ -108,7 +97,6 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
                     if (!(model.getDescription().equals(date)) || !(model.getPrice().equals(mounth)) || !(model.getPrimer().equals(year)) || !(model.getClock().equals(clock)) || !(model.getMinuts().equals(minuts))) {
                         holder.itemView.setVisibility(View.GONE);
                         holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
-
                     }
                 }
                 else
@@ -124,38 +112,26 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
                         holder.txtNameGuest.setText(model.getPlace());
                     }
                 }
-
-
             }
-
             @NonNull
             @NotNull
             @Override
             public InfoAdminViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent,
                                                          int viewType) {
-
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.info_admin_item_layout, parent, false);
                 InfoAdminViewHolder holder = new InfoAdminViewHolder(view);
                 return holder;
             }
-
         };
-
         recyclerView.setAdapter(adapter);
         adapter.startListening();
-
-
         init();
-
-
         biznes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 count=41;
                 Intent intent = new Intent(AdminActivity.this, BiznesActivity.class);
                 startActivity(intent);
-
-
             }
         });
         writebook.setOnClickListener(new View.OnClickListener() {
@@ -214,25 +190,19 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
             public void onClick(View view) {
                 Admin = FirebaseDatabase.getInstance().getReference().child("ReadyOrder");
                 Calendar calendar = Calendar.getInstance();
-
                 SimpleDateFormat currentDate = new SimpleDateFormat("ddMMyyyy");
                 saveCurrentDate = currentDate.format(calendar.getTime());
-
                 SimpleDateFormat currentTime = new SimpleDateFormat("HHmmss");
                 saveCurrentTime = currentTime.format(calendar.getTime());
                 pid = saveCurrentDate+saveCurrentTime;
                 SaveProductInfoToDatabase();
             }
-
             private void SaveProductInfoToDatabase() {
                 HashMap<String, Object> productMap = new HashMap<>();
-
                 productMap.put("pid", pid);
                 productMap.put("date", saveCurrentDate);
                 productMap.put("time", saveCurrentTime);
                 productMap.put("zakaz", "Подойдите пожалуйста к администратору");
-
-
 
                 Admin.child(pid).updateChildren(productMap)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -244,17 +214,11 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
                         });
             }
         });
-
-
-
     }
-
     Runnable onEverySecond=new Runnable() {
         public void run() {
-
             count++;
             if (count == limit) {
-
                 finish();
                 overridePendingTransition(0, 0);
                 startActivity(getIntent());
@@ -273,8 +237,6 @@ public class AdminActivity extends AppCompatActivity implements NavigationView.O
         setings = findViewById(R.id.setings);
         zalobi = findViewById(R.id.zalobi);
     }
-
-
     @Override
     public void onBackPressed () {
     }

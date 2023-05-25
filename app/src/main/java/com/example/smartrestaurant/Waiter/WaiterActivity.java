@@ -2,6 +2,7 @@ package com.example.smartrestaurant.Waiter;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,16 +35,18 @@ import org.jetbrains.annotations.NotNull;
 public class WaiterActivity extends AppCompatActivity {
     private ImageView writebook,menu,chat,pay;
     private ImageView setings;
+    Handler handler;
+    int limit = 40;
+    int count = 0;
     DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_waiter);
         init();
-
-
+        handler = new Handler();
+        onEverySecond.run();
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,7 +124,6 @@ public class WaiterActivity extends AppCompatActivity {
                 {   holder.txtpid.setText(model.getPid());
                     holder.txtVizov.setText(model.getZakaz()+model.getTable());
                     holder.txtTextNum.setText("");
-
                 }
 
             }
@@ -136,12 +138,22 @@ public class WaiterActivity extends AppCompatActivity {
                 return holder;
             }
         };
-
         recyclerView.setAdapter(adapter);
         adapter.startListening();
-
-
     }
+    Runnable onEverySecond=new Runnable() {
+        public void run() {
+            count++;
+            if (count == limit) {
+
+                finish();
+                overridePendingTransition(0, 0);
+                startActivity(getIntent());
+                overridePendingTransition(0, 0);
+            } else {handler.postDelayed(onEverySecond, 1000);
+            }
+        }
+    };
     private void init()
     {
         writebook = findViewById(R.id.writebookwaiter);
@@ -166,7 +178,6 @@ public class WaiterActivity extends AppCompatActivity {
         public ItemClickListener listner;
         public ProductViewHolder(View itemView) {
             super(itemView);
-
             txtZakaz = itemView.findViewById(R.id.zakaz_waiter);
             txtKomment= itemView.findViewById(R.id.komment_waiter);
             txttable = itemView.findViewById(R.id.table_waiter);
@@ -175,8 +186,6 @@ public class WaiterActivity extends AppCompatActivity {
             txtPlace = itemView.findViewById(R.id.place_waiter_zakaz);
             txtTextNum = itemView.findViewById(R.id.text_num_table);
             txtVizov = itemView.findViewById(R.id.vizov_waiter);
-
-
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

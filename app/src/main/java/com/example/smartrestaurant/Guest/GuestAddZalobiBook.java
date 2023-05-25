@@ -35,7 +35,6 @@ public class GuestAddZalobiBook extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guest_add_zalobi_book);
-
         init();
 
         back = findViewById(R.id.back_guest_zalobibook_add);
@@ -59,8 +58,6 @@ public class GuestAddZalobiBook extends AppCompatActivity {
         stFeedback = FeedBack.getText().toString();
         stName = Name.getText().toString();
 
-
-
         if(TextUtils.isEmpty(stAge)){
             Toast.makeText(this, "Добавьте ваш возраст.", Toast.LENGTH_SHORT).show();
         }
@@ -76,14 +73,12 @@ public class GuestAddZalobiBook extends AppCompatActivity {
     }
 
     private void StoreProductInformation() {
-
         loadingBar.setTitle("Загрузка данных");
         loadingBar.setMessage("Пожалуйста, подождите...");
         loadingBar.setCanceledOnTouchOutside(false);
         loadingBar.show();
 
         Calendar calendar = Calendar.getInstance();
-
         SimpleDateFormat currentDate = new SimpleDateFormat("ddMMyyyy");
         saveCurrentDate = currentDate.format(calendar.getTime());
         SimpleDateFormat Datez = new SimpleDateFormat("dd.MM.yyyy");
@@ -92,8 +87,7 @@ public class GuestAddZalobiBook extends AppCompatActivity {
         saveCurrentTime = currentTime.format(calendar.getTime());
         SimpleDateFormat Timez = new SimpleDateFormat("HH:mm ");
         times = Timez.format(calendar.getTime());
-
-        productRandomKey = saveCurrentDate + saveCurrentTime;
+        productRandomKey ="F"+saveCurrentDate + saveCurrentTime;
         stTime = times + dates;
         SaveProductInfoToDatabase();
     }
@@ -127,14 +121,11 @@ public class GuestAddZalobiBook extends AppCompatActivity {
                 });
     }
 
-
-
     private void init() {
         Name = findViewById(R.id.name_guest_add);
         Age = findViewById(R.id.age_guest_add);
         FeedBack = findViewById(R.id.feedback_add);
         addNewProductButton = findViewById(R.id.btn_add_new_feedback_guest);
-
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Feedback");
         loadingBar = new ProgressDialog(this);
 

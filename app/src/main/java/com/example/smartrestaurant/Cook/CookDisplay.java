@@ -27,12 +27,10 @@ import java.util.HashMap;
 
 public class CookDisplay extends AppCompatActivity {
     private String zak,kom,tab,sym,pid,bar,saveCurrentDate, saveCurrentTime, productRandomKey;
-
     private ImageView back;
     private Button done;
     private DatabaseReference ProductsRef;
     private DatabaseReference InfoRef;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +44,6 @@ public class CookDisplay extends AppCompatActivity {
         bar = arguments.get("bar").toString();
         back = findViewById(R.id.back_cook_display);
         done = findViewById(R.id.done_cook);
-
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,24 +61,17 @@ public class CookDisplay extends AppCompatActivity {
                 ProductsRef = FirebaseDatabase.getInstance().getReference().child("ReadyOrder");
                 InfoRef = FirebaseDatabase.getInstance().getReference().child("InfoAdmin");
                 Calendar calendar = Calendar.getInstance();
-
                 SimpleDateFormat currentDate = new SimpleDateFormat("ddMMyyyy");
                 saveCurrentDate = currentDate.format(calendar.getTime());
-
                 SimpleDateFormat currentTime = new SimpleDateFormat("HHmmss");
                 saveCurrentTime = currentTime.format(calendar.getTime());
-
                 productRandomKey ="C"+pid;
-
-
                 SaveProductInfoToDatabase();
                 Back();
-
             }
 
             private void SaveProductInfoToDatabase() {
                 HashMap<String, Object> productMap = new HashMap<>();
-
                 productMap.put("pid", pid);
                 productMap.put("date", saveCurrentDate);
                 productMap.put("time", saveCurrentTime);
@@ -91,9 +81,6 @@ public class CookDisplay extends AppCompatActivity {
                 productMap.put("komment", kom);
                 productMap.put("admin", "Готово");
                 productMap.put("place", "Кухня");
-
-
-
 
                 ProductsRef.child(productRandomKey).updateChildren(productMap)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -112,7 +99,6 @@ public class CookDisplay extends AppCompatActivity {
                 InfoRef = FirebaseDatabase.getInstance().getReference();
                 InfoRef.child("InfoAdmin/"+pid).setValue(null);
             }
-
         });
     }
 

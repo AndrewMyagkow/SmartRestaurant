@@ -20,7 +20,6 @@ import io.paperdb.Paper;
 
 public class SetingsCookActivity extends AppCompatActivity {
     private RelativeLayout settings;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
