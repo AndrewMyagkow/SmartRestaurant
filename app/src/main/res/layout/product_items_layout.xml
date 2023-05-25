@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="180dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <RelativeLayout
-        android:layout_width="180dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ADD1F4">
     <RelativeLayout
-        android:layout_width="180dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/inputdate"
-        android:layout_margin="7dp">
+        android:layout_margin="7dp"
+        >
 
         <TextView
             android:id="@+id/product_name"
-            android:layout_width="180dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Название"
             android:textAlignment="center"
@@ -25,7 +26,7 @@
             android:id="@+id/product_image"
             android:layout_width="150dp"
             android:layout_height="170dp"
-            android:layout_marginStart="7dp"
+            android:layout_marginStart="87dp"
             android:layout_below="@+id/product_name"
             />
         <TextView
@@ -41,7 +42,7 @@
 
         <TextView
             android:id="@+id/product_price"
-            android:layout_width="180dp"
+            android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_below="@+id/product_description"
             android:text="Цена"
@@ -58,8 +59,8 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/delete"
-            android:layout_marginStart="65dp"
-            android:layout_marginTop="230dp"
+            android:layout_marginStart="265dp"
+            android:layout_marginTop="90dp"
 
             />
         <TextView

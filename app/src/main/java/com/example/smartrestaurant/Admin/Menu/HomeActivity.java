@@ -68,7 +68,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
         recyclerView = findViewById(R.id.recycler_menu);
         recyclerView.setHasFixedSize(true);
-        GridLayoutManager layoutManager=new GridLayoutManager(this,2);
+        GridLayoutManager layoutManager=new GridLayoutManager(this,1);
         recyclerView.setLayoutManager(layoutManager);
     }
 

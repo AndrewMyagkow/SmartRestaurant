@@ -98,7 +98,7 @@ public class GuestActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(GuestActivity.this, Meny.class);
-                intent.putExtra("category", "ФастФуд");
+                intent.putExtra("category", "Фаст Фуд");
                 startActivity(intent);
             }
         });

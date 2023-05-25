@@ -139,7 +139,7 @@ public class ChoiseMenu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ChoiseMenu.this, HomeActivity.class);
-                intent.putExtra("category", "ФастФуд");
+                intent.putExtra("category", "Фаст Фуд");
                 intent.putExtra("role", Role);
                 startActivity(intent);
             }
