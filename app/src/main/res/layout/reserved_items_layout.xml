@@ -7,7 +7,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="@drawable/backgrount">
+        android:background="#ADD1F4">
     <RelativeLayout
         android:id="@+id/relativereserved"
         android:layout_width="match_parent"
@@ -22,7 +22,7 @@
 
             android:text="Дата"
             android:textAlignment="center"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="15dp" />
 
         <TextView
@@ -32,7 +32,7 @@
             android:layout_marginTop="20dp"
             android:text="**"
             android:textAlignment="center"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="15dp" />
         <TextView
             android:layout_width="4dp"
@@ -41,7 +41,7 @@
             android:text="."
             android:layout_marginLeft="25dp"
 
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="25dp" />
 
         <TextView
@@ -52,7 +52,7 @@
             android:text="**"
             android:layout_marginTop="20dp"
             android:textAlignment="center"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="15dp" />
         <TextView
             android:layout_width="4dp"
@@ -61,7 +61,7 @@
             android:text="."
             android:layout_marginLeft="60dp"
 
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="25dp" />
 
         <TextView
@@ -72,7 +72,7 @@
             android:layout_marginTop="20dp"
             android:text="**"
             android:textAlignment="center"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="15dp" />
         <TextView
             android:id="@+id/timing"
@@ -81,7 +81,7 @@
             android:layout_marginLeft="110dp"
             android:text="Время"
             android:textAlignment="center"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="15dp" />
 
         <TextView
@@ -92,7 +92,7 @@
             android:layout_marginLeft="115dp"
             android:text="**"
             android:textAlignment="center"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="15dp" />
         <TextView
             android:layout_width="4dp"
@@ -101,7 +101,7 @@
             android:text=":"
             android:layout_marginLeft="145dp"
 
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="25dp" />
 
         <TextView
@@ -112,7 +112,7 @@
             android:layout_marginLeft="150dp"
             android:text="**"
             android:textAlignment="center"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="15dp" />
         <TextView
 
@@ -121,7 +121,7 @@
             android:layout_marginLeft="205dp"
             android:text="Мест"
             android:textAlignment="center"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="15dp" />
 
         <TextView
@@ -132,7 +132,7 @@
             android:layout_marginLeft="207dp"
             android:text="**"
             android:textAlignment="center"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="15dp" />
         <TextView
 
@@ -141,7 +141,7 @@
             android:layout_marginTop="60dp"
             android:text="ФИО"
             android:textAlignment="center"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="15dp" />
 
 
@@ -153,7 +153,7 @@
             android:layout_marginLeft="60dp"
             android:text="ФИО"
             android:textAlignment="center"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="15dp" />
         <ImageView
             android:id="@+id/delet_reserved"

@@ -6,7 +6,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="110dp"
-        android:background="#52535A">
+        android:background="#ADD1F4">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             android:layout_height="110dp"
             android:text="Заказ"
             android:textAlignment="center"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="15dp" />
         <TextView
             android:id="@+id/bar_cook"
@@ -36,7 +36,7 @@
             android:layout_marginStart="170dp"
             android:text="Комментарий"
             android:textAlignment="center"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="15dp" />
 
         <TextView

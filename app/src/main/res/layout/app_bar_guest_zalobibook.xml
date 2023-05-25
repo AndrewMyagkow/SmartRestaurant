@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Guest.GuestZalobiBook"
-    android:background="@drawable/fonguest">
+    >
 
 
     <include layout="@layout/content_main_guest_zalobibook"
@@ -15,7 +15,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="58dp"
-        android:background="#1B1C1E"
         android:gravity="center"
 
         >

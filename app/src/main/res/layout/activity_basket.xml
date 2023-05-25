@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Guest.Basket"
-    android:background="@drawable/fonguest">
+    >
 
 
     <include layout="@layout/content_main_basket"
@@ -15,7 +15,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="140dp"
-        android:background="#1B1C1E"
+
         android:layout_marginTop="445dp"
         >
         <EditText
@@ -29,8 +29,8 @@
             android:background="@drawable/guestphon"
             android:hint="  Введите комментарий к заказу"
             android:inputType="textMultiLine"
-            android:textColor="#B1B2B3"
-            android:textColorHint="#B1B2B3"
+            android:textColor="#52565A"
+            android:textColorHint="#52565A"
             android:textSize="13dp" />
         <TextView
             android:id="@+id/itog"
@@ -38,7 +38,7 @@
             android:layout_height="30sp"
           android:layout_marginStart="20dp"
             android:layout_marginTop="90dp"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="20sp"/>
         <Button
             android:id="@+id/zakaz"
@@ -55,7 +55,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="58dp"
-        android:background="#1B1C1E"
 
 
         >

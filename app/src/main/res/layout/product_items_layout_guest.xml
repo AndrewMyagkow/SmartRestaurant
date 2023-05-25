@@ -4,9 +4,11 @@
     android:layout_width="180dp"
     android:layout_height="wrap_content">
     <RelativeLayout
-        android:layout_width="180dp"
-        android:layout_height="340dp"
-        android:background="@drawable/fonguest">
+        android:layout_width="175dp"
+        android:layout_height="285dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/guestphon"
+        >
 
         <TextView
             android:id="@+id/product_name"
@@ -14,7 +16,7 @@
             android:layout_height="40dp"
             android:text="Название"
             android:textAlignment="center"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="20dp" />
         <ImageView
             android:id="@+id/product_image"
@@ -26,11 +28,7 @@
             android:id="@+id/product_description"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:textAlignment="center"
-            android:textSize="20dp"
             android:layout_below="@+id/product_image"
-            android:textColor="#B1B2B3"
-            android:text="Описание"
             />
 
         <TextView
@@ -40,7 +38,7 @@
             android:layout_below="@+id/product_description"
             android:text="Цена"
             android:textAlignment="center"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="20dp" />
         <TextView
             android:id="@+id/add_category"

@@ -5,8 +5,7 @@
     android:layout_height="470dp">
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="470dp"
-        android:background="@drawable/fonguest">
+        android:layout_height="470dp">
 
         <TextView
             android:id="@+id/product_name_vibor"
@@ -14,7 +13,7 @@
             android:layout_height="30dp"
             android:text="Название"
             android:textAlignment="center"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="17dp" />
         <ImageView
             android:id="@+id/product_image_vibor"
@@ -29,7 +28,7 @@
             android:textAlignment="center"
             android:textSize="17dp"
             android:layout_below="@+id/product_image_vibor"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:text="Описание"
             />
 
@@ -40,7 +39,7 @@
             android:layout_below="@+id/product_description_vibor"
             android:text="Цена"
             android:textAlignment="center"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="15dp" />
 
 

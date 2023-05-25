@@ -7,7 +7,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:background="@drawable/fonguest">
+        android:background="@drawable/guestphon"
+        android:layout_margin="5dp"
+        >
 
         <TextView
             android:id="@+id/name_guest_zalobi"
@@ -20,7 +22,7 @@
             android:layout_marginBottom="20dp"
             android:text="Имя"
 
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="15dp" />
 
         <TextView
@@ -36,7 +38,7 @@
             android:layout_marginBottom="10dp"
             android:text="Время"
             android:textAlignment="center"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="15dp" />
 
         <TextView
@@ -51,7 +53,7 @@
             android:layout_marginBottom="20dp"
             android:text="Отзыв"
             android:textAlignment="center"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="17dp" />
 
 

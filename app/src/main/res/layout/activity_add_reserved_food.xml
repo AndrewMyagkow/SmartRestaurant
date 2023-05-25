@@ -44,8 +44,8 @@
         android:textSize="13dp"
         android:inputType="number"
         android:background="@drawable/inputdate"
-        android:textColor="#B1B2B3"
-        android:textColorHint="#B1B2B3"
+        android:textColor="#52565A"
+        android:textColorHint="#52565A"
 
 
         />
@@ -59,8 +59,8 @@
         android:textSize="13dp"
         android:inputType="number"
         android:background="@drawable/inputdate"
-        android:textColor="#B1B2B3"
-        android:textColorHint="#B1B2B3"
+        android:textColor="#52565A"
+        android:textColorHint="#52565A"
 
 
         />
@@ -74,8 +74,8 @@
         android:textSize="13dp"
         android:inputType="number"
         android:background="@drawable/inputdate"
-        android:textColor="#B1B2B3"
-        android:textColorHint="#B1B2B3"
+        android:textColor="#52565A"
+        android:textColorHint="#52565A"
 
 
         />
@@ -89,8 +89,8 @@
         android:textSize="13dp"
         android:inputType="number"
         android:background="@drawable/inputdate"
-        android:textColor="#B1B2B3"
-        android:textColorHint="#B1B2B3"
+        android:textColor="#52565A"
+        android:textColorHint="#52565A"
 
 
         />
@@ -104,8 +104,8 @@
         android:textSize="13dp"
         android:inputType="number"
         android:background="@drawable/inputdate"
-        android:textColor="#B1B2B3"
-        android:textColorHint="#B1B2B3"
+        android:textColor="#52565A"
+        android:textColorHint="#52565A"
 
 
         />
@@ -118,8 +118,8 @@
         android:textSize="13dp"
         android:inputType="number"
         android:background="@drawable/inputdate"
-        android:textColor="#B1B2B3"
-        android:textColorHint="#B1B2B3"/>
+        android:textColor="#52565A"
+        android:textColorHint="#52565A"/>
     <EditText
         android:id="@+id/namereservedguest"
         android:layout_width="300dp"
@@ -128,8 +128,8 @@
         android:layout_marginLeft="30dp"
         android:textSize="13dp"
         android:background="@drawable/inputdate"
-        android:textColor="#B1B2B3"
-        android:textColorHint="#B1B2B3"/>
+        android:textColor="#52565A"
+        android:textColorHint="#52565A"/>
 
 
     <Button

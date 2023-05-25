@@ -6,7 +6,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="84dp"
-        android:background="#52535A">
+        android:background="#ADD1F4">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="84dp"
@@ -18,7 +18,7 @@
             android:layout_width="140dp"
             android:layout_height="20dp"
             android:textAlignment="center"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="15dp" />
 
         <TextView
@@ -28,7 +28,7 @@
             android:layout_marginTop="20dp"
 
             android:textAlignment="center"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="15dp" />
         <TextView
 
@@ -37,7 +37,7 @@
             android:layout_height="20dp"
             android:layout_marginStart="140dp"
             android:textAlignment="center"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="15dp" />
         <TextView
             android:id="@+id/time_and_status"
@@ -46,7 +46,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginStart="140dp"
             android:textAlignment="center"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="15dp" />
         <TextView
 
@@ -55,7 +55,7 @@
             android:layout_height="20dp"
             android:layout_marginStart="240dp"
             android:textAlignment="center"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="15dp" />
         <TextView
             android:id="@+id/kolvoguest_and_numtable"
@@ -64,7 +64,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginStart="240dp"
             android:textAlignment="center"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="15dp" />
         <TextView
 
@@ -72,7 +72,7 @@
             android:layout_width="110dp"
             android:layout_height="20dp"
             android:textAlignment="center"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:layout_marginTop="50dp"
             android:textSize="15dp" />
         <TextView
@@ -82,7 +82,7 @@
             android:layout_marginTop="50dp"
             android:layout_marginStart="110dp"
             android:textAlignment="center"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="15dp" />
 
 

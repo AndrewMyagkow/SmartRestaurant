@@ -100,7 +100,7 @@ public class GuestAddZalobiBook extends AppCompatActivity {
 
     private void SaveProductInfoToDatabase() {
         HashMap<String, Object> productMap = new HashMap<>();
-        stName = stName+" "+ stAge;
+        stName = stName+" Возраст: "+ stAge;
         productMap.put("feedback", stFeedback);
         productMap.put("name", stName);
         productMap.put("time", stTime);

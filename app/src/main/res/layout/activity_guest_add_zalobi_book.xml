@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fonguest"
+
     tools:context=".Guest.GuestAddZalobiBook">
 
 
@@ -13,7 +13,7 @@
         android:layout_width="400dp"
         android:layout_height="40dp"
 
-        android:background="#1B1C1E"
+
         android:orientation="horizontal"
         >
         <ImageView
@@ -30,7 +30,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="Добавление отзыва"
-            android:textColor="#B1B2B3" />
+            android:textColor="#52565A"/>
 
 
     </LinearLayout>
@@ -47,8 +47,8 @@
         android:hint="  Введите ваше имя"
         android:background="@drawable/guestphon"
         android:textSize="13dp"
-        android:textColor="#B1B2B3"
-        android:textColorHint="#B1B2B3"
+        android:textColor="#52565A"
+        android:textColorHint="#52565A"
         android:inputType="textMultiLine"
         />
 
@@ -64,8 +64,8 @@
         android:inputType="number"
         android:background="@drawable/guestphon"
         android:hint="  Введите ваш возраст"
-        android:textColor="#B1B2B3"
-        android:textColorHint="#B1B2B3"
+        android:textColor="#52565A"
+        android:textColorHint="#52565A"
         android:textSize="13dp" />
 
     <EditText
@@ -80,8 +80,8 @@
         android:background="@drawable/guestphon"
         android:hint="  Введите ваш отзыв"
         android:inputType="textMultiLine"
-        android:textColor="#B1B2B3"
-        android:textColorHint="#B1B2B3"
+        android:textColor="#52565A"
+        android:textColorHint="#52565A"
         android:textSize="13dp" />
 
 

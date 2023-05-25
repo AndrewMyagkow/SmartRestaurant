@@ -7,7 +7,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#52535A">
+        android:background="#ADD1F4">
 
         <TextView
             android:id="@+id/write_text"
@@ -20,7 +20,7 @@
 
             android:text="Сообшение"
 
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="17dp"
             android:background="@drawable/inputdate"/>
 
@@ -31,7 +31,7 @@
             android:layout_marginLeft="200dp"
             android:text="Время"
             android:textAlignment="center"
-            android:textColor="#B1B2B3"
+            android:textColor="#52565A"
             android:textSize="15dp" />
 
 
