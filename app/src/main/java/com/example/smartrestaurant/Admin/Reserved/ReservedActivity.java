@@ -159,6 +159,8 @@ public class ReservedActivity extends AppCompatActivity implements NavigationVie
                     String pid = txtID.getText().toString();
                     ProductsRef = FirebaseDatabase.getInstance().getReference();
                     ProductsRef.child("Reserved/"+pid).setValue(null);
+                    ProductsRef = FirebaseDatabase.getInstance().getReference();
+                    ProductsRef.child("InfoAdmin/"+pid).setValue(null);
                     finish();
                     overridePendingTransition(0, 0);
                     startActivity(getIntent());
